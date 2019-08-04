@@ -17,7 +17,6 @@ public class EventsViewModel extends AndroidViewModel {
         super(application);
         eventsRepository = new EventsRepository(application);
         allEvents = eventsRepository.loadAllEvents();
-
     }
 
     LiveData<List<EventItem>> loadAllEvents() {
@@ -28,8 +27,12 @@ public class EventsViewModel extends AndroidViewModel {
         eventsRepository.insert(eventItem);
     }
 
-    EventItem getEventById(String id) {
+    public EventItem getEventById(String id) {
         return eventsRepository.loadEventById(id);
+    }
+
+    public void deleteEvents() {
+        eventsRepository.deleteEvents();
     }
 
 }

@@ -28,7 +28,7 @@ public class EventsRepository {
         new insertAsyncTask(eventsDao).execute(eventItem);
     }
 
-    EventItem loadEventById(String id) {
+    public EventItem loadEventById(String id) {
         getEventById task = new getEventById(eventsDao);
         try {
             return task.execute(id).get();
@@ -36,6 +36,11 @@ public class EventsRepository {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void deleteEvents() {
+        deleteEventsTask task = new deleteEventsTask(eventsDao);
+        task.execute();
     }
 
     private static class insertAsyncTask extends AsyncTask<EventItem, Void, Void> {
@@ -62,6 +67,20 @@ public class EventsRepository {
         @Override
         protected EventItem doInBackground(String... params) {
             return mAsyncTaskDao.loadEventById(params[0]);
+        }
+    }
+
+    private static class deleteEventsTask extends AsyncTask<Void, Void, Void> {
+        private EventsDao mAsyncTaskDao;
+
+        deleteEventsTask(EventsDao dao) {
+            mAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            mAsyncTaskDao.deleteAllEvents();
+            return null;
         }
     }
 

@@ -1,7 +1,7 @@
 package in.org.celesta.iitp.home;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.transition.TransitionInflater;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
@@ -11,14 +11,16 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
 
 import in.org.celesta.iitp.R;
-import in.org.celesta.iitp.events.EventsActivity;
+import in.org.celesta.iitp.events.EventsFragment;
+import in.org.celesta.iitp.events.EventsRecyclerAdapter;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, HomeFragment.OnItemSelectedListener, EventCategoryFragment.OnEventCategorySelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
+        HomeFragment.OnItemSelectedListener, EventCategoryFragment.OnEventCategorySelectedListener,
+        EventsRecyclerAdapter.OnEventSelectedListener {
 
     FrameLayout frameLayout;
 
@@ -93,24 +95,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    private void transactFragment(Fragment newFragment) {
+
+        Fragment current = getSupportFragmentManager().findFragmentById(R.id.main_frame_layout);
+
+        if (current != null) {
+            current.setExitTransition(TransitionInflater.from(this).inflateTransition(android.R.transition.slide_left));
+            newFragment.setEnterTransition(TransitionInflater.from(this).inflateTransition(android.R.transition.slide_right));
+        }
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, newFragment)
+                .addToBackStack(newFragment.getTag()).commit();
+    }
+
     @Override
     public void onItemSelected(Fragment newFragment) {
-
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.main_frame_layout, newFragment);
-        fragmentTransaction.addToBackStack(newFragment.getTag());
-        fragmentTransaction.commit();
-
-//        Animator animator = ViewAnimationUtils.createCircularReveal(frameLayout, 500, 800, 0, 1500f);
-//        animator.setInterpolator(new AccelerateDecelerateInterpolator());
-//        animator.setDuration(800);
-//        animator.start();
+        transactFragment(newFragment);
     }
 
     @Override
     public void onEventCategorySelected(int category) {
-        Intent intent = new Intent(MainActivity.this, EventsActivity.class);
-        intent.putExtra("category", category);
-        startActivity(intent);
+        Fragment nextFragment = EventsFragment.newInstance(category);
+        transactFragment(nextFragment);
+    }
+
+    @Override
+    public void onEventSelected(String id) {
+
     }
 }
