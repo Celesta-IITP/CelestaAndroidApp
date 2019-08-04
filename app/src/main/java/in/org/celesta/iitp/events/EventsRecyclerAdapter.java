@@ -12,6 +12,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import in.org.celesta.iitp.R;
@@ -20,10 +24,10 @@ public class EventsRecyclerAdapter extends RecyclerView.Adapter<EventsRecyclerAd
 
     private Context context;
     private List<EventItem> eventItemList;
-    final private OnFeedSelectedListener callback;
+    final private OnEventSelectedListener callback;
 
 
-    public EventsRecyclerAdapter(Context context, OnFeedSelectedListener listener){
+    public EventsRecyclerAdapter(Context context, OnEventSelectedListener listener){
         this.context = context;
         callback = listener;
     }
@@ -39,41 +43,32 @@ public class EventsRecyclerAdapter extends RecyclerView.Adapter<EventsRecyclerAd
     @Override
     public void onBindViewHolder(@NonNull final FeedViewHolder holder, int position) {
 
-//        if (eventItemList != null) {
-//            final EventItem current = eventItemList.get(position);
-//
-//            holder.title.setText(current.getEventName());
-//            holder.venue.setText(current.getEventVenue());
-//            Glide.with(context)
-//                    .load(current.getEventImageUrl())
-//                    .centerCrop()
-//                    .placeholder(R.drawable.baseline_dashboard_24)
-//                    .into(holder.imageView);
-//            holder.imageView.setTransitionName("transition" + position);
-//
-//            if(current.isInterested()){
-//                holder.availableIndicator.setBackgroundResource(R.color.red_dark2);
-//            } else {
-//                if (current.getEventDate() < (System.currentTimeMillis() - 3600000))
-//                    holder.availableIndicator.setBackgroundResource(R.color.dark_gray);
-//                else holder.availableIndicator.setBackgroundResource(R.color.light_green);
-//            }
-//
-//            Date date = new Date(current.getEventDate());
-//            SimpleDateFormat format = new SimpleDateFormat("dd MMM YYYY, hh:mm a");
-//            holder.time.setText(format.format(date));
-//
-//            holder.rootLayout.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    callback.onFeedSelected(current.getId(), holder.imageView, holder.getAdapterPosition());
-//                }
-//            });
+        if (eventItemList != null) {
+            final EventItem current = eventItemList.get(position);
+
+            holder.title.setText(current.getName());
+            holder.venue.setText(current.getVenue());
+            Glide.with(context)
+                    .load(current.getImageUrl())
+                    .centerCrop()
+                    .placeholder(R.drawable.events_icon_2)
+                    .into(holder.imageView);
+
+            Date date = new Date(current.getDate());
+            SimpleDateFormat format = new SimpleDateFormat("dd MMM YYYY, hh:mm a");
+            holder.time.setText(format.format(date));
+
+            holder.rootLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    callback.onEventSelected(current.getId());
+                }
+            });
 
 
-//        } else {
-//            holder.title.setText("Loading ...");
-//        }
+        } else {
+            holder.title.setText("Loading ...");
+        }
     }
 
     @Override
@@ -108,7 +103,7 @@ public class EventsRecyclerAdapter extends RecyclerView.Adapter<EventsRecyclerAd
         notifyDataSetChanged();
     }
 
-    public interface OnFeedSelectedListener {
-        void onFeedSelected(String id, View view, int position);
+    public interface OnEventSelectedListener {
+        void onEventSelected(String id);
     }
 }
