@@ -77,16 +77,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            // Handle the camera action
+
         } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_tools) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
 
         }
 
@@ -100,8 +92,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Fragment current = getSupportFragmentManager().findFragmentById(R.id.main_frame_layout);
 
         if (current != null) {
-            current.setExitTransition(TransitionInflater.from(this).inflateTransition(android.R.transition.slide_left));
-            newFragment.setEnterTransition(TransitionInflater.from(this).inflateTransition(android.R.transition.slide_right));
+            current.setExitTransition(TransitionInflater.from(this).inflateTransition(android.R.transition.fade));
+            newFragment.setEnterTransition(TransitionInflater.from(this).inflateTransition(android.R.transition.fade));
         }
 
         getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, newFragment)
