@@ -6,27 +6,53 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:title="@string/menu_home" />
+            android:icon="@drawable/ic_home"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_events"
+            android:icon="@drawable/events_icon_2"
+            android:title="Events" />
+        <item
+            android:id="@+id/nav_ongoing"
+            android:icon="@drawable/ic_ongoing"
+            android:title="Ongoing Events" />
+        <item
+            android:id="@+id/nav_workshops"
+            android:title="Workshops" />
+        <item
+            android:id="@+id/nav_lectures"
+            android:icon="@drawable/ic_lectures"
+            android:title="Lectures" />
         <item
             android:id="@+id/nav_gallery"
-            android:title="@string/menu_gallery" />
+            android:icon="@drawable/ic_gallery"
+            android:title="Gallery" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:id="@+id/nav_team"
+            android:icon="@drawable/ic_team"
+            android:title="Team" />
         <item
-            android:id="@+id/nav_tools"
-            android:title="@string/menu_tools" />
-    </group>
+            android:id="@+id/nav_sponsors"
+            android:icon="@drawable/ic_sponsor"
+            android:title="Sponsors" />
+        <item
+            android:id="@+id/nav_maps"
+            android:icon="@drawable/ic_map"
+            android:title="Maps" />
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_info"
+            android:title="About" />
+        <item
+            android:id="@+id/nav_login"
+            android:icon="@drawable/ic_login"
+            android:title="Login/Register" />
+        <item
+            android:id="@+id/nav_account"
+            android:title="Account"
+            android:icon="@drawable/ic_account"
+            android:visible="false"/>
 
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:title="@string/menu_share" />
-            <item
-                android:id="@+id/nav_send"
-                android:title="@string/menu_send" />
-        </menu>
-    </item>
+    </group>
 
 </menu>
