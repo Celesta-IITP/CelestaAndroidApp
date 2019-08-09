@@ -15,6 +15,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
 
+import in.org.celesta.iitp.Auth.LoginRegisterActivity;
 import in.org.celesta.iitp.R;
 import in.org.celesta.iitp.events.EventsActivity;
 
@@ -76,7 +77,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (id == R.id.nav_home) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        }
+        else if(id == R.id.nav_login_register){
+            Intent intent=new Intent(MainActivity.this, LoginRegisterActivity.class);
+            startActivity(intent);
+        }
+        else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
 
