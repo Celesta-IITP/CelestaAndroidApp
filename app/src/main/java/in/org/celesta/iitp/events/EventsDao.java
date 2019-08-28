@@ -12,7 +12,7 @@ import static androidx.room.OnConflictStrategy.REPLACE;
 @Dao
 public interface EventsDao {
 
-    @Query("SELECT * FROM events ORDER BY date ASC")
+    @Query("SELECT * FROM events ORDER BY startTime ASC")
     LiveData<List<EventItem>> loadAllEvents();
 
     @Query("select * from events where id = :id")

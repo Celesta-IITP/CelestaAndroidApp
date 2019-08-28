@@ -159,7 +159,7 @@
                 android:layout_weight="1"
                 android:id="@+id/main_gallery_ll"
                 android:padding="16dp"
-                android:src="@drawable/ic_image_white_24dp"
+                android:src="@drawable/ic_gallery"
                 android:tint="@android:color/white" />
 
             <TextView
@@ -178,7 +178,7 @@
             android:layout_row="1"
             android:layout_rowWeight="1"
             android:layout_column="0"
-            android:id="@+id/main_schedule_ll"
+            android:id="@+id/main_ongoing_ll"
             android:layout_columnWeight="1"
             android:orientation="vertical"
             android:padding="24dp">
@@ -188,13 +188,13 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:padding="16dp"
-                android:src="@drawable/ic_schedule_white_24dp" />
+                android:src="@drawable/ic_ongoing" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal|bottom"
-                android:text="Schedule"
+                android:text="Ongoing"
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />
 
@@ -216,7 +216,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:padding="16dp"
-                android:src="@drawable/ic_team_white_24dp"
+                android:src="@drawable/ic_team"
                 android:tint="@android:color/white" />
 
             <TextView
@@ -245,7 +245,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:padding="16dp"
-                android:src="@drawable/ic_attach_money_white_24dp"
+                android:src="@drawable/ic_sponsor"
                 android:tint="@android:color/white" />
 
             <TextView
