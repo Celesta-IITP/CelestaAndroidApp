@@ -22,8 +22,8 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="in.org.celesta.iitp.home.HomeFragment"
-        tools:layout="@layout/fragment_home" />
+        android:name="in.org.celesta.iitp.gallery.GalleryFragment"
+        tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_ongoing"
