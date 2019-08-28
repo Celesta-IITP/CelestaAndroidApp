@@ -10,4 +10,6 @@
     <color name="event_card_background">#551B5F7E</color>
     <color name="transparent">#00000000</color>
 
+    <color name="navigation_background">#cc252936</color>
+
 </resources>

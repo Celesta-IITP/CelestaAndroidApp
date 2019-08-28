@@ -1,61 +1,44 @@
 package in.org.celesta.iitp.home;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import in.org.celesta.iitp.R;
-import in.org.celesta.iitp.events.EventsFragment;
 
 public class HomeFragment extends Fragment {
 
     public HomeFragment() {
     }
 
-    private OnItemSelectedListener callback;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        Map<Integer, Fragment> map = new HashMap<>();
+        Map<Integer, Integer> map = new HashMap<>();
 
-        map.put(R.id.main_pronite_ll, new EventCategoryFragment());
-        map.put(R.id.main_event_ll, new EventCategoryFragment());
-        map.put(R.id.main_gallery_ll, new EventCategoryFragment());
-        map.put(R.id.main_schedule_ll, new EventCategoryFragment());
-        map.put(R.id.main_team_ll, new EventCategoryFragment());
-        map.put(R.id.main_sponsor_ll, new EventCategoryFragment());
+        map.put(R.id.main_pronite_ll, R.id.nav_pronite);
+        map.put(R.id.main_event_ll, R.id.nav_events_cat);
+        map.put(R.id.main_gallery_ll, R.id.nav_gallery);
+        map.put(R.id.main_ongoing_ll, R.id.nav_ongoing);
+        map.put(R.id.main_team_ll, R.id.nav_team);
+        map.put(R.id.main_sponsor_ll, R.id.nav_sponsors);
 
-        for (final Map.Entry<Integer, Fragment> pair : map.entrySet()) {
+        for (final Map.Entry<Integer, Integer> pair : map.entrySet()) {
             View mainView = view.findViewById(pair.getKey());
-            mainView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    callback.onItemSelected(pair.getValue());
-                }
+            mainView.setOnClickListener(v -> {
+                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+                navController.navigate(pair.getValue());
             });
         }
-
         return view;
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof MainActivity) {
-            callback = (OnItemSelectedListener) context;
-        }
-    }
-
-    interface OnItemSelectedListener {
-        void onItemSelected(Fragment newFragment);
     }
 }

@@ -178,7 +178,7 @@
             android:layout_row="1"
             android:layout_rowWeight="1"
             android:layout_column="0"
-            android:id="@+id/main_schedule_ll"
+            android:id="@+id/main_ongoing_ll"
             android:layout_columnWeight="1"
             android:orientation="vertical"
             android:padding="24dp">
@@ -194,7 +194,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal|bottom"
-                android:text="Schedule"
+                android:text="Ongoing"
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />
 
