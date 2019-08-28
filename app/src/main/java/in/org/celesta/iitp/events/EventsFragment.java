@@ -33,14 +33,6 @@ public class EventsFragment extends Fragment {
     public EventsFragment() {
     }
 
-    public static EventsFragment newInstance(int category) {
-        EventsFragment fragment = new EventsFragment();
-        Bundle args = new Bundle();
-        args.putInt(ARG_PARAM1, category);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,17 +47,12 @@ public class EventsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_events, container, false);
 
         swipeRefreshLayout = view.findViewById(R.id.swipe_refresh_events);
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                updateData();
-            }
-        });
+        swipeRefreshLayout.setOnRefreshListener(this::updateData);
 
         recyclerView = view.findViewById(R.id.rv_feed_single_type);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        adapter = new EventsRecyclerAdapter(getContext(), (EventsRecyclerAdapter.OnEventSelectedListener) getActivity());
+        adapter = new EventsRecyclerAdapter(getContext());
         recyclerView.setAdapter(adapter);
 
         observeAll();

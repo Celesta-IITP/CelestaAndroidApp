@@ -1,6 +1,7 @@
 package in.org.celesta.iitp.events;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -17,6 +20,7 @@ import com.bumptech.glide.Glide;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import in.org.celesta.iitp.R;
 
@@ -24,12 +28,9 @@ public class EventsRecyclerAdapter extends RecyclerView.Adapter<EventsRecyclerAd
 
     private Context context;
     private List<EventItem> eventItemList;
-    final private OnEventSelectedListener callback;
 
-
-    public EventsRecyclerAdapter(Context context, OnEventSelectedListener listener){
+    public EventsRecyclerAdapter(Context context) {
         this.context = context;
-        callback = listener;
     }
 
     @NonNull
@@ -55,14 +56,12 @@ public class EventsRecyclerAdapter extends RecyclerView.Adapter<EventsRecyclerAd
                     .into(holder.imageView);
 
             Date date = new Date(current.getDate());
-            SimpleDateFormat format = new SimpleDateFormat("dd MMM YYYY, hh:mm a");
+            SimpleDateFormat format = new SimpleDateFormat("dd MMM YYYY, hh:mm a", Locale.getDefault());
             holder.time.setText(format.format(date));
 
-            holder.rootLayout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    callback.onEventSelected(current.getId());
-                }
+            holder.rootLayout.setOnClickListener(v -> {
+                NavController navController = Navigation.findNavController((Activity) context, R.id.nav_host_fragment);
+//                    navController.navigate(pair.getValue());
             });
 
 
@@ -98,12 +97,8 @@ public class EventsRecyclerAdapter extends RecyclerView.Adapter<EventsRecyclerAd
         }
     }
 
-    void setEventItemList(List<EventItem> feeds){
+    void setEventItemList(List<EventItem> feeds) {
         eventItemList = feeds;
         notifyDataSetChanged();
-    }
-
-    public interface OnEventSelectedListener {
-        void onEventSelected(String id);
     }
 }

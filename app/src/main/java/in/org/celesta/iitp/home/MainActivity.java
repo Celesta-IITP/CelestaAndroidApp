@@ -1,34 +1,27 @@
 package in.org.celesta.iitp.home;
 
 import android.os.Bundle;
-import android.transition.TransitionInflater;
-import android.view.MenuItem;
-import android.widget.FrameLayout;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
 
 import in.org.celesta.iitp.R;
-import in.org.celesta.iitp.events.EventsFragment;
-import in.org.celesta.iitp.events.EventsRecyclerAdapter;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
-        HomeFragment.OnItemSelectedListener, EventCategoryFragment.OnEventCategorySelectedListener,
-        EventsRecyclerAdapter.OnEventSelectedListener {
+public class MainActivity extends AppCompatActivity {
 
-    FrameLayout frameLayout;
+    private AppBarConfiguration mAppBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
@@ -38,81 +31,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_home, R.id.nav_events, R.id.nav_ongoing, R.id.nav_workshops,
+                R.id.nav_lectures, R.id.nav_gallery, R.id.nav_team, R.id.nav_sponsors,
+                R.id.nav_maps, R.id.nav_about, R.id.nav_login, R.id.nav_account)
+                .setDrawerLayout(drawer)
+                .build();
+        NavController navController;
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navController);
 
-//        startActivity(new Intent(this, AccountActivity.class));
-
-        frameLayout = findViewById(R.id.main_frame_layout);
-
-        setBaseFragment();
-
-    }
-
-    private void setBaseFragment() {
-        if (findViewById(R.id.main_frame_layout) != null) {
-            HomeFragment firstFragment = new HomeFragment();
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.main_frame_layout, firstFragment).commit();
-        }
     }
 
     @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_home) {
-
-        } else if (id == R.id.nav_gallery) {
-
-        }
-
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
-
-    private void transactFragment(Fragment newFragment) {
-
-        Fragment current = getSupportFragmentManager().findFragmentById(R.id.main_frame_layout);
-
-        if (current != null) {
-            current.setExitTransition(TransitionInflater.from(this).inflateTransition(android.R.transition.fade));
-            newFragment.setEnterTransition(TransitionInflater.from(this).inflateTransition(android.R.transition.fade));
-        }
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame_layout, newFragment)
-                .addToBackStack(newFragment.getTag()).commit();
-    }
-
-    @Override
-    public void onItemSelected(Fragment newFragment) {
-        transactFragment(newFragment);
-    }
-
-    @Override
-    public void onEventCategorySelected(int category) {
-        Fragment nextFragment = EventsFragment.newInstance(category);
-        transactFragment(nextFragment);
-    }
-
-    @Override
-    public void onEventSelected(String id) {
-
+    public boolean onSupportNavigateUp() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+                || super.onSupportNavigateUp();
     }
 }
