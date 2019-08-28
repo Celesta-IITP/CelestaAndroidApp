@@ -50,12 +50,12 @@ public class EventsRecyclerAdapter extends RecyclerView.Adapter<EventsRecyclerAd
             holder.title.setText(current.getName());
             holder.venue.setText(current.getVenue());
             Glide.with(context)
-                    .load(current.getImageUrl())
+                    .load(current.getImage())
                     .centerCrop()
                     .placeholder(R.drawable.events_icon_2)
                     .into(holder.imageView);
 
-            Date date = new Date(current.getDate());
+            Date date = new Date(current.getStartTime());
             SimpleDateFormat format = new SimpleDateFormat("dd MMM YYYY, hh:mm a", Locale.getDefault());
             holder.time.setText(format.format(date));
 
