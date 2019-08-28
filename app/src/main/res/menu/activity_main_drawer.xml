@@ -10,10 +10,6 @@
             android:title="Home" />
 
         <item
-            android:id="@+id/nav_login_register"
-            android:title="Login/Register" />
-
-        <item
             android:id="@+id/nav_events_cat"
             android:icon="@drawable/events_icon_2"
             android:title="Events" />
