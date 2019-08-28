@@ -11,7 +11,7 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_events"
+        android:id="@+id/nav_events_cat"
         android:name="in.org.celesta.iitp.home.EventCategoryFragment"
         tools:layout="@layout/fragment_event_category" />
 
@@ -27,8 +27,8 @@
 
     <fragment
         android:id="@+id/nav_ongoing"
-        android:name="in.org.celesta.iitp.home.HomeFragment"
-        tools:layout="@layout/fragment_home" />
+        android:name="in.org.celesta.iitp.ongoing.OngoingEventsFragment"
+        tools:layout="@layout/fragment_events" />
 
     <fragment
         android:id="@+id/nav_team"

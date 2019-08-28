@@ -21,26 +21,24 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setBackgroundDrawableResource(R.drawable.img1);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
-        getWindow().setNavigationBarColor(getResources().getColor(android.R.color.transparent));
-        getWindow().setBackgroundDrawableResource(R.drawable.img1);
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_events, R.id.nav_ongoing, R.id.nav_workshops,
+                R.id.nav_home, R.id.nav_events_cat, R.id.nav_ongoing, R.id.nav_pronite, R.id.nav_workshops,
                 R.id.nav_lectures, R.id.nav_gallery, R.id.nav_team, R.id.nav_sponsors,
                 R.id.nav_maps, R.id.nav_about, R.id.nav_login, R.id.nav_account)
                 .setDrawerLayout(drawer)
                 .build();
-        NavController navController;
-        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
