@@ -7,37 +7,44 @@
 
     <fragment
         android:id="@+id/nav_home"
+        android:label=" "
         android:name="in.org.celesta.iitp.home.HomeFragment"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_events_cat"
+        android:label="Events"
         android:name="in.org.celesta.iitp.home.EventCategoryFragment"
         tools:layout="@layout/fragment_event_category" />
 
     <fragment
         android:id="@+id/nav_pronite"
+        android:label="Pronite"
         android:name="in.org.celesta.iitp.home.EventCategoryFragment"
         tools:layout="@layout/fragment_event_category" />
 
     <fragment
         android:id="@+id/nav_gallery"
+        android:label="Gallery"
         android:name="in.org.celesta.iitp.gallery.GalleryFragment"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_ongoing"
+        android:label="Ongoing Events"
         android:name="in.org.celesta.iitp.ongoing.OngoingEventsFragment"
         tools:layout="@layout/fragment_events" />
 
     <fragment
         android:id="@+id/nav_team"
-        android:name="in.org.celesta.iitp.home.HomeFragment"
-        tools:layout="@layout/fragment_home" />
+        android:label="Team"
+        android:name="in.org.celesta.iitp.team.TeamFragment"
+        tools:layout="@layout/fragment_team" />
 
     <fragment
         android:id="@+id/nav_sponsors"
-        android:name="in.org.celesta.iitp.home.HomeFragment"
-        tools:layout="@layout/fragment_home" />
+        android:label="Sponsors"
+        android:name="in.org.celesta.iitp.sponsors.SponsorsFragment"
+        tools:layout="@layout/fragment_sponsors" />
 
 </navigation>

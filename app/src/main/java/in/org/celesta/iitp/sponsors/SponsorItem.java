@@ -6,6 +6,15 @@ public class SponsorItem {
     private String name;
     private String image;
 
+    public SponsorItem(){
+
+    }
+
+    public SponsorItem(String name, String image, String website) {
+        this.name = name;
+        this.image = image;
+        this.website = website;
+    }
 
     public String getWebsite() {
         return website;
