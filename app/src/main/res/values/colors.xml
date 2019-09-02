@@ -8,6 +8,9 @@
     <color name="medBlue">#4eb8dd</color>
 
     <color name="event_card_background">#551B5F7E</color>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
     <color name="transparent">#00000000</color>
 
     <color name="navigation_background">#cc252936</color>
