@@ -46,5 +46,10 @@
         android:label="Sponsors"
         android:name="in.org.celesta.iitp.sponsors.SponsorsFragment"
         tools:layout="@layout/fragment_sponsors" />
+    <activity
+        android:id="@+id/nav_login"
+        android:name="in.org.celesta.iitp.Auth.LoginRegisterActivity"
+        android:label="Account"
+        tools:layout="@layout/activity_login_signup" />
 
 </navigation>

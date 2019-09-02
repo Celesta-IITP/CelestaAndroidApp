@@ -14,19 +14,16 @@ public class LoginRegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setBackgroundDrawableResource(R.drawable.img1);
         setContentView(R.layout.activity_login_signup);
         loadFragment(new LoginFragment());
     }
 
-    private boolean loadFragment(Fragment fragment) {
-
-        //replacing the fragment
+    private void loadFragment(Fragment fragment) {
         if (fragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.fragment_auth_container, fragment);
             ft.commit();
-            return true;
         }
-        return false;
     }
 }
