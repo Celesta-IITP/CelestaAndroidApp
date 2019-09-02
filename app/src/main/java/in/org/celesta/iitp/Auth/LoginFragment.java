@@ -1,12 +1,6 @@
 package in.org.celesta.iitp.Auth;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -16,12 +10,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import in.org.celesta.iitp.R;
 
 public class LoginFragment extends Fragment {
-    TextView register_textview;
-    EditText login_celesta_id_editext,login_password_edittext;
-    Button login_button;
+    private TextView register_textview;
+    private EditText login_celesta_id_editext,login_password_edittext;
+    private Button login_button;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,6 +54,7 @@ public class LoginFragment extends Fragment {
         if (fragment != null) {
             FragmentTransaction ft = getFragmentManager().beginTransaction();
             ft.replace(R.id.fragment_auth_container, fragment);
+            ft.addToBackStack(fragment.getTag());
             ft.commit();
             return true;
         }
