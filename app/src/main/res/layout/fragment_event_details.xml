@@ -1,9 +1,201 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".events.EventDetailsFragment">
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/venue_linear_layout"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Register"
+            android:textColor="@android:color/white"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:id="@+id/date_linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:text="Date : "
+                android:textColor="@color/white"
+                android:textAppearance="@android:style/TextAppearance.Material.Headline"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/event_info_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:text="7th Aug"
+                android:textColor="@color/white"
+                android:textAppearance="@android:style/TextAppearance.Material.Headline"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/time_linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/date_linear_layout"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="80dp"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:text="Time : "
+                android:textAppearance="@android:style/TextAppearance.Material.Headline"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/event_info_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:text="2:30 PM"
+                android:textColor="@color/white"
+                android:textAppearance="@android:style/TextAppearance.Material.Headline"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/venue_linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/time_linear_layout"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="80dp"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:text="Venue : "
+                android:textAppearance="@android:style/TextAppearance.Material.Headline"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/event_info_venue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoLink="web"
+                android:fontFamily="sans-serif-light"
+                android:text="Tutorial Block - Room no. 107"
+                android:textColor="@color/white"
+                android:textAppearance="@android:style/TextAppearance.Material.Headline"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/event_reg_link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/venue_linear_layout"
+            android:textColor="@color/white"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-light"
+            android:text="Will be updated soon"
+            android:textAppearance="@android:style/TextAppearance.Material.Headline"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/event_already_registered"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-light"
+            android:text="Already registered"
+            android:textAppearance="@android:style/TextAppearance.Material.Headline"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="18sp"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/event_info_textview"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_register"
+            android:fontFamily="sans-serif-light"
+            android:text="Lorem ipsum dolor sit amet untes gungslla goog oo gaa lossly roemsid dsfaks slal skdlfkan"
+            android:textAppearance="@android:style/TextAppearance.Holo.Medium"
+            android:textIsSelectable="true" />
+
+        <TextView
+            android:id="@+id/rules_header"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/event_info_textview"
+            android:layout_marginTop="16dp"
+            android:text="Rules"
+            android:textAppearance="@android:style/TextAppearance.Material.Headline"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/event_rules_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rules_header"
+            android:layout_marginTop="8dp"
+            android:autoLink="web"
+            android:text="asdff"
+            android:fontFamily="sans-serif-light"
+            android:textAppearance="@android:style/TextAppearance.Holo.Medium"
+            android:textColor="@color/white"/>
 
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/event_organizers_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/event_rules_textview"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/white"
+            android:text="Organisers"
+            android:textAppearance="@android:style/TextAppearance.Material.Headline"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/event_organizers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_below="@id/event_organizers_header"
+            android:layout_marginTop="8dp"
+            android:autoLink="phone"
+            android:fontFamily="sans-serif-light"
+            android:text="Mayank Vaidya"
+            android:textAppearance="@android:style/TextAppearance.Holo.Medium" />
+
+        <TextView
+            android:id="@+id/event_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_below="@id/event_organizers_header"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@id/event_organizers"
+            android:text="9955539372"
+            android:textAppearance="@android:style/TextAppearance.Holo.Medium"
+            android:textIsSelectable="true" />
+    </RelativeLayout>
+</LinearLayout>

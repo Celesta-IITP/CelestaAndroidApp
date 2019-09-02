@@ -15,7 +15,11 @@
         android:id="@+id/nav_events_cat"
         android:label="Events"
         android:name="in.org.celesta.iitp.home.EventCategoryFragment"
-        tools:layout="@layout/fragment_event_category" />
+        tools:layout="@layout/fragment_event_category" >
+        <action
+            android:id="@+id/action_nav_events_cat_to_eventsFragment"
+            app:destination="@id/nav_events" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_pronite"
@@ -51,5 +55,10 @@
         android:name="in.org.celesta.iitp.Auth.LoginRegisterActivity"
         android:label="Account"
         tools:layout="@layout/activity_login_signup" />
+    <fragment
+        android:id="@+id/nav_events"
+        android:name="in.org.celesta.iitp.events.EventsFragment"
+        android:label="Events"
+        tools:layout="@layout/fragment_events" />
 
 </navigation>
