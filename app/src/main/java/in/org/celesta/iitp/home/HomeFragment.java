@@ -40,12 +40,6 @@ public class HomeFragment extends Fragment {
             });
         }
 
-//        View mainView = view.findViewById(R.id.main_event_ll);
-//        mainView.setOnClickListener(v -> {
-//            EventDetailsFragment fragment = new EventDetailsFragment();
-//            fragment.show(requireActivity().getSupportFragmentManager(), fragment.getTag());
-//        });
-
         return view;
     }
 }

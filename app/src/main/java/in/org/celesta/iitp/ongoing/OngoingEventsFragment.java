@@ -40,7 +40,7 @@ public class OngoingEventsFragment extends Fragment {
         recyclerView = view.findViewById(R.id.rv_feed_single_type);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        adapter = new EventsRecyclerAdapter(getContext());
+        adapter = new EventsRecyclerAdapter(requireContext(), (EventsRecyclerAdapter.OnEventSelectedListener) requireContext());
         recyclerView.setAdapter(adapter);
 
         updateData();
