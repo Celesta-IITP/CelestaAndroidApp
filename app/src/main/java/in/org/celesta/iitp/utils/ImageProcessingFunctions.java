@@ -11,10 +11,9 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.net.Uri;
-import android.provider.MediaStore;
+import android.os.Build;
 import android.provider.MediaStore.Images;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.MalformedURLException;
@@ -170,7 +169,7 @@ public class ImageProcessingFunctions {
         return inSampleSize;
     }
 
-    private static final Bitmap storeThumbnail(
+    private static Bitmap storeThumbnail(
             ContentResolver cr,
             Bitmap source,
             long id,
@@ -205,14 +204,12 @@ public class ImageProcessingFunctions {
             thumb.compress(Bitmap.CompressFormat.JPEG, 100, thumbOut);
             thumbOut.close();
             return thumb;
-        } catch (FileNotFoundException ex) {
-            return null;
         } catch (IOException ex) {
             return null;
         }
     }
 
-    public static final String insertImage(ContentResolver cr,
+    public static String insertImage(ContentResolver cr,
                                            Bitmap source,
                                            String title,
                                            String description) {
@@ -224,13 +221,14 @@ public class ImageProcessingFunctions {
         values.put(Images.Media.MIME_TYPE, "image/jpeg");
         // Add the date meta data to ensure the image is added at the front of the gallery
         values.put(Images.Media.DATE_ADDED, System.currentTimeMillis());
-        values.put(Images.Media.DATE_TAKEN, System.currentTimeMillis());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q)
+            values.put(Images.Media.DATE_TAKEN, System.currentTimeMillis());
 
         Uri url = null;
         String stringUrl = null;    /* value to be returned */
 
         try {
-            url = cr.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+            url = cr.insert(Images.Media.EXTERNAL_CONTENT_URI, values);
             //url = cr.insert(Uri.fromFile(dir), values);
 
             if (source != null) {

@@ -13,15 +13,21 @@ public class EventsRepository {
 
     private EventsDao eventsDao;
     private LiveData<List<EventItem>> allEvents;
+    private LiveData<List<String>> allClubs;
 
     EventsRepository(Application application) {
         AppDatabase db = AppDatabase.getDatabase(application);
         eventsDao = db.eventsDao();
         allEvents = eventsDao.loadAllEvents();
+        allClubs = eventsDao.loadAllClubs();
     }
 
     LiveData<List<EventItem>> loadAllEvents() {
         return allEvents;
+    }
+
+    LiveData<List<String>> loadAllClubs() {
+        return allClubs;
     }
 
     public void insert(EventItem eventItem) {

@@ -77,14 +77,12 @@
 
         <ImageView
             android:id="@+id/item_event_image"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="100dp"
-            android:layout_gravity="end"
+            android:layout_gravity="end|center"
             android:contentDescription="speaker avatar"
-            android:padding="16dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/events_icon_2"
-            android:tint="@color/colorPrimary" />
+            android:scaleType="centerInside"
+            android:src="@drawable/logo_alt"/>
 
     </LinearLayout>
 

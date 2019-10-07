@@ -12,8 +12,11 @@ import static androidx.room.OnConflictStrategy.REPLACE;
 @Dao
 public interface EventsDao {
 
-    @Query("SELECT * FROM events ORDER BY startTime ASC")
+    @Query("SELECT * FROM events WHERE evCategory = 'Events' ORDER BY evStartTime ASC")
     LiveData<List<EventItem>> loadAllEvents();
+
+    @Query("SELECT evClub FROM events WHERE evCategory = 'Events'")
+    LiveData<List<String>> loadAllClubs();
 
     @Query("select * from events where id = :id")
     EventItem loadEventById(String id);

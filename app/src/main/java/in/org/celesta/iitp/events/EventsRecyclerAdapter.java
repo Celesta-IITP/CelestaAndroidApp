@@ -10,14 +10,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import in.org.celesta.iitp.R;
 
@@ -46,22 +44,30 @@ public class EventsRecyclerAdapter extends RecyclerView.Adapter<EventsRecyclerAd
         if (eventItemList != null) {
             final EventItem current = eventItemList.get(position);
 
-            holder.title.setText(current.getName());
-            holder.venue.setText(current.getVenue());
+            holder.title.setText(current.getEvName());
+            if (current.getEvVenue() != null)
+                holder.venue.setText(current.getEvVenue());
             Glide.with(context)
-                    .load(current.getImage())
+                    .load(current.getEvPosterUrl())
                     .centerCrop()
                     .placeholder(R.drawable.events_icon_2)
                     .into(holder.imageView);
 
-            Date date = new Date(current.getStartTime());
-            SimpleDateFormat format = new SimpleDateFormat("dd MMM, hh:mm a", Locale.getDefault());
-            holder.time.setText(format.format(date));
+            holder.time.setText(String.format("%s  -  %s", current.getEvStartTime(), current.getEvEndTime()));
+            holder.venue.setText(current.getEvDate() == null ? "" : current.getEvDate());
 
             holder.rootLayout.setOnClickListener(v -> {
-//                NavController navController = Navigation.findNavController((Activity) context, R.id.nav_host_fragment);
-//                    navController.navigate(pair.getValue());
-                callback.onEventSelected(current.getId());
+                Palette palette = Palette.from(holder.imageView.getDrawingCache()).generate();
+                Palette.Swatch swatch = palette.getDominantSwatch();
+
+                int[] color = {0,0,0};
+                if (swatch != null) {
+                    color[0] = swatch.getRgb();
+                    color[1] = swatch.getTitleTextColor();
+                    color[2] = swatch.getBodyTextColor();
+                }
+
+                callback.onEventSelected(current.getId(), color);
             });
 
 
@@ -94,6 +100,7 @@ public class EventsRecyclerAdapter extends RecyclerView.Adapter<EventsRecyclerAd
             venue = itemView.findViewById(R.id.item_venue_text);
             rootLayout = itemView.findViewById(R.id.item_root_layout);
             imageView = itemView.findViewById(R.id.item_event_image);
+            imageView.setDrawingCacheEnabled(true);
         }
     }
 
@@ -103,6 +110,6 @@ public class EventsRecyclerAdapter extends RecyclerView.Adapter<EventsRecyclerAd
     }
 
     public interface OnEventSelectedListener {
-        void onEventSelected(String id);
+        void onEventSelected(String id, int[] color);
     }
 }

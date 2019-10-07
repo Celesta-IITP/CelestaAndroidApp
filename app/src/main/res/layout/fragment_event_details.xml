@@ -1,201 +1,215 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="4dp">
 
-        <Button
-            android:id="@+id/btn_register"
-            android:layout_width="wrap_content"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_event_details_primary"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/venue_linear_layout"
-            android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:text="Register"
-            android:textColor="@android:color/white"
-            android:visibility="visible" />
+            app:cardBackgroundColor="@color/card_background"
+            app:cardCornerRadius="8dp">
 
-        <LinearLayout
-            android:id="@+id/date_linear_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
-                android:text="Date : "
-                android:textColor="@color/white"
-                android:textAppearance="@android:style/TextAppearance.Material.Headline"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/event_info_date"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
-                android:text="7th Aug"
-                android:textColor="@color/white"
-                android:textAppearance="@android:style/TextAppearance.Material.Headline"
-                android:textSize="20sp" />
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/poster"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp" />
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:gravity="center"
+                    android:padding="12dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    tools:text="name" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_event_details_sec"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:cardBackgroundColor="@color/card_background"
+            app:cardCornerRadius="8dp">
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="Description not available"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_event_details_ter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:cardBackgroundColor="@color/card_background"
+            app:cardCornerRadius="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="Date : TBD"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="Timing : TBD"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/venue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="Location : TBD"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_event_details_qua"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:cardBackgroundColor="@color/card_background"
+            app:cardCornerRadius="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/organisers"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="8dp"
+                    android:text="Organisers : TBD"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/organiser_phone"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_local_phone_black_24dp"
+                    android:tint="@color/white" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_event_details_pen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:cardBackgroundColor="@color/card_background"
+            app:cardCornerRadius="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/rulebook"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="8dp"
+                    android:text="Rulebook"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/rulebook_img"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+                    android:tint="@color/white" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="8dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="64dp"
+                android:padding="16dp"
+                android:text="Register"
+                app:backgroundTint="@color/card_background" />
+
+            <ImageButton
+                android:id="@+id/button_map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/card_background"
+                android:padding="18dp"
+                android:src="@drawable/ic_map"
+                android:text="Register"
+                android:tint="@color/white" />
+
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/time_linear_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/date_linear_layout"
-            android:orientation="horizontal">
+    </LinearLayout>
 
-            <TextView
-                android:layout_width="80dp"
-                android:textColor="@color/white"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
-                android:text="Time : "
-                android:textAppearance="@android:style/TextAppearance.Material.Headline"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/event_info_time"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
-                android:text="2:30 PM"
-                android:textColor="@color/white"
-                android:textAppearance="@android:style/TextAppearance.Material.Headline"
-                android:textSize="20sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/venue_linear_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/time_linear_layout"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="80dp"
-                android:textColor="@color/white"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
-                android:text="Venue : "
-                android:textAppearance="@android:style/TextAppearance.Material.Headline"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/event_info_venue"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autoLink="web"
-                android:fontFamily="sans-serif-light"
-                android:text="Tutorial Block - Room no. 107"
-                android:textColor="@color/white"
-                android:textAppearance="@android:style/TextAppearance.Material.Headline"
-                android:textSize="20sp" />
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/event_reg_link"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/venue_linear_layout"
-            android:textColor="@color/white"
-            android:layout_marginTop="8dp"
-            android:fontFamily="sans-serif-light"
-            android:text="Will be updated soon"
-            android:textAppearance="@android:style/TextAppearance.Material.Headline"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/event_already_registered"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="sans-serif-light"
-            android:text="Already registered"
-            android:textAppearance="@android:style/TextAppearance.Material.Headline"
-            android:textColor="@android:color/holo_green_dark"
-            android:textSize="18sp"
-            android:visibility="invisible" />
-
-        <TextView
-            android:id="@+id/event_info_textview"
-            android:textColor="@color/white"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/btn_register"
-            android:fontFamily="sans-serif-light"
-            android:text="Lorem ipsum dolor sit amet untes gungslla goog oo gaa lossly roemsid dsfaks slal skdlfkan"
-            android:textAppearance="@android:style/TextAppearance.Holo.Medium"
-            android:textIsSelectable="true" />
-
-        <TextView
-            android:id="@+id/rules_header"
-            android:textColor="@color/white"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/event_info_textview"
-            android:layout_marginTop="16dp"
-            android:text="Rules"
-            android:textAppearance="@android:style/TextAppearance.Material.Headline"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/event_rules_textview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/rules_header"
-            android:layout_marginTop="8dp"
-            android:autoLink="web"
-            android:text="asdff"
-            android:fontFamily="sans-serif-light"
-            android:textAppearance="@android:style/TextAppearance.Holo.Medium"
-            android:textColor="@color/white"/>
-
-
-        <TextView
-            android:id="@+id/event_organizers_header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/event_rules_textview"
-            android:layout_marginTop="16dp"
-            android:textColor="@color/white"
-            android:text="Organisers"
-            android:textAppearance="@android:style/TextAppearance.Material.Headline"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/event_organizers"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:layout_below="@id/event_organizers_header"
-            android:layout_marginTop="8dp"
-            android:autoLink="phone"
-            android:fontFamily="sans-serif-light"
-            android:text="Mayank Vaidya"
-            android:textAppearance="@android:style/TextAppearance.Holo.Medium" />
-
-        <TextView
-            android:id="@+id/event_contact"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:layout_below="@id/event_organizers_header"
-            android:layout_marginTop="8dp"
-            android:layout_toRightOf="@id/event_organizers"
-            android:text="9955539372"
-            android:textAppearance="@android:style/TextAppearance.Holo.Medium"
-            android:textIsSelectable="true" />
-    </RelativeLayout>
-</LinearLayout>
+</androidx.core.widget.NestedScrollView>

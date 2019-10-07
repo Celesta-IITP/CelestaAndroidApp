@@ -15,6 +15,7 @@
         android:id="@+id/main_logo_iv"
         android:padding="8dp"
         android:src="@drawable/logo_alt"
+        android:tint="@color/colorAccent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout

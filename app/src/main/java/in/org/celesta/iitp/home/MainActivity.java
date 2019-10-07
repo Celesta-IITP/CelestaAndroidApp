@@ -1,10 +1,10 @@
 package in.org.celesta.iitp.home;
 
 import android.os.Bundle;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -55,11 +55,25 @@ public class MainActivity extends AppCompatActivity implements EventsRecyclerAda
     }
 
     @Override
-    public void onEventSelected(String id) {
+    public void onBackPressed() {
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
 
-        Toast.makeText(this, id, Toast.LENGTH_SHORT).show();
+
+    @Override
+    public void onEventSelected(String id, int[] color) {
+        Bundle b = new Bundle();
+        b.putString("data", id);
+        b.putIntArray("color", color);
 
         EventDetailsFragment fragment = new EventDetailsFragment();
+        fragment.setArguments(b);
+        fragment.setRetainInstance(true);
         fragment.show(getSupportFragmentManager(), fragment.getTag());
     }
 }
