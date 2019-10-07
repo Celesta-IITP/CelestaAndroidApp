@@ -1,5 +1,6 @@
 package in.org.celesta.iitp.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +21,7 @@ import in.org.celesta.iitp.events.EventsRecyclerAdapter;
 public class MainActivity extends AppCompatActivity implements EventsRecyclerAdapter.OnEventSelectedListener {
 
     private AppBarConfiguration mAppBarConfiguration;
+    private NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +43,27 @@ public class MainActivity extends AppCompatActivity implements EventsRecyclerAda
                 .setDrawerLayout(drawer)
                 .build();
 
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+    }
+
+    private void handleIntent(Intent appLinkIntent) {
+        String appLinkAction = appLinkIntent.getAction();
+        String appLinkData = appLinkIntent.getDataString();
+
+        if (Intent.ACTION_VIEW.equals(appLinkAction) && appLinkData != null) {
+
+            if (appLinkData.contains("/notification/")) {
+                String time = appLinkData.substring(appLinkData.lastIndexOf("/") + 1);
+
+                Bundle bundle = new Bundle();
+                bundle.putString("time", time);
+
+
+            }
+        }
     }
 
     @Override
