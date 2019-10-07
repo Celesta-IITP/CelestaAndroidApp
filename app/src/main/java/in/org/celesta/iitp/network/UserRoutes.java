@@ -23,16 +23,4 @@ public interface UserRoutes {
     @POST("/users/activate")
     Call<ResponseBody> verifyOtp(@Body RequestBody body);
 
-//    @GET("/users/batch/{year}")
-//    Call<List<Person>> getUsersByBatch(@Header("Authorization") String credentials, @Path("year") String batch);
-//
-//    @GET("/users/branch/{br}")
-//    Call<List<Person>> getUsersByBranch(@Header("Authorization") String credentials, @Path("br") String branch);
-//
-//    @GET("/users/batchAndBranch/{year}/{br}")
-//    Call<List<Person>> getUsersByBatchNBranch(@Header("Authorization") String credentials, @Path("year") String batch, @Path("br") String branch);
-//
-//    @GET("/users/instituteId/{id}")
-//    Call<Person> getUserByInstituteId(@Header("Authorization") String credentials, @Path("id") String instituteId);
-
 }

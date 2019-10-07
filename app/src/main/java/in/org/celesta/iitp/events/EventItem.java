@@ -14,7 +14,7 @@ public class EventItem {
     @Expose
     @NonNull
     @PrimaryKey
-    private String id;
+    private String id = "";
     @SerializedName("ev_id")
     @Expose
     private String evId;
@@ -24,6 +24,9 @@ public class EventItem {
     @SerializedName("ev_name")
     @Expose
     private String evName;
+    @SerializedName("ev_venue")
+    @Expose
+    private String evVenue;
     @SerializedName("ev_description")
     @Expose
     private String evDescription;
@@ -51,14 +54,6 @@ public class EventItem {
     @SerializedName("ev_end_time")
     @Expose
     private String evEndTime;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getEvId() {
         return evId;
@@ -154,5 +149,22 @@ public class EventItem {
 
     public void setEvEndTime(String evEndTime) {
         this.evEndTime = evEndTime;
+    }
+
+    public String getEvVenue() {
+        return evVenue;
+    }
+
+    public void setEvVenue(String evVenue) {
+        this.evVenue = evVenue;
+    }
+
+    @NonNull
+    public String getId() {
+        return id;
+    }
+
+    public void setId(@NonNull String id) {
+        this.id = id;
     }
 }
