@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.fragment.NavHostFragment;
@@ -30,12 +31,10 @@ import retrofit2.Response;
 
 public class EventsFragment extends Fragment {
 
-    private static final String ARG_PARAM1 = "category";
+    private static final String ARG_PARAM1 = "data";
 
     private String club;
     private EventsRecyclerAdapter adapter;
-    private RecyclerView recyclerView;
-    private View emptyView;
     private EventsViewModel viewModel;
     private SwipeRefreshLayout swipeRefreshLayout;
     private Context context;
@@ -67,10 +66,14 @@ public class EventsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
+        if (getActivity() != null)
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(club + " Events");
+
+
         swipeRefreshLayout = view.findViewById(R.id.swipe_refresh_events);
         swipeRefreshLayout.setOnRefreshListener(this::updateData);
 
-        recyclerView = view.findViewById(R.id.rv_feed_single_type);
+        RecyclerView recyclerView = view.findViewById(R.id.rv_feed_single_type);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
         adapter = new EventsRecyclerAdapter(context, (EventsRecyclerAdapter.OnEventSelectedListener) context);
@@ -83,20 +86,11 @@ public class EventsFragment extends Fragment {
 
     private void observeAll() {
         viewModel.loadAllEvents().observe(this, eventItems -> {
-
             List<EventItem> newList = new ArrayList<>();
             for (EventItem n : eventItems) {
                 if (n.getEvClub().equals(club)) newList.add(n);
             }
             adapter.setEventItemList(newList);
-
-//            if (newList.size() == 0) {
-//                recyclerView.setVisibility(View.INVISIBLE);
-////                emptyView.setVisibility(View.VISIBLE);
-//            } else {
-//                recyclerView.setVisibility(View.VISIBLE);
-////                emptyView.setVisibility(View.INVISIBLE);
-//            }
         });
 
     }
@@ -136,8 +130,8 @@ public class EventsFragment extends Fragment {
             public void onFailure(@NonNull Call<List<EventItem>> call, @NonNull Throwable t) {
                 Log.e(getClass().getSimpleName(), t.getMessage());
                 if (swipeRefreshLayout != null)
-                    swipeRefreshLayout.setRefreshing(false);            }
+                    swipeRefreshLayout.setRefreshing(false);
+            }
         });
     }
-
 }

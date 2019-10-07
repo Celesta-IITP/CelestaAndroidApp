@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import in.org.celesta.iitp.R;
@@ -90,7 +91,15 @@ public class EventCategoryFragment extends Fragment {
 
     private void observeAll() {
         viewModel.loadAllClubs().observe(this, strings -> {
-            adapter.setEventCategoryList(strings);
+
+            List<String> temp = new ArrayList<>();
+
+            for (String s : strings)
+                if (!temp.contains(s))
+                    temp.add(s);
+
+            adapter.setEventCategoryList(temp);
+
             if (strings.size() == 0) {
                 recyclerView.setVisibility(View.INVISIBLE);
                 emptyView.setVisibility(View.VISIBLE);

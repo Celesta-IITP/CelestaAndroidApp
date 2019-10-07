@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -53,11 +54,20 @@ public class EventsRecyclerAdapter extends RecyclerView.Adapter<EventsRecyclerAd
                     .into(holder.imageView);
 
             holder.time.setText(String.format("%s  -  %s", current.getEvStartTime(), current.getEvEndTime()));
-            if (current.getEvVenue() != null)
-                holder.venue.setText(current.getEvVenue());
+            holder.venue.setText(current.getEvDate() == null ? "" : current.getEvDate());
 
             holder.rootLayout.setOnClickListener(v -> {
-                callback.onEventSelected(current.getId());
+                Palette palette = Palette.from(holder.imageView.getDrawingCache()).generate();
+                Palette.Swatch swatch = palette.getDominantSwatch();
+
+                int[] color = {0,0,0};
+                if (swatch != null) {
+                    color[0] = swatch.getRgb();
+                    color[1] = swatch.getTitleTextColor();
+                    color[2] = swatch.getBodyTextColor();
+                }
+
+                callback.onEventSelected(current.getId(), color);
             });
 
 
@@ -90,6 +100,7 @@ public class EventsRecyclerAdapter extends RecyclerView.Adapter<EventsRecyclerAd
             venue = itemView.findViewById(R.id.item_venue_text);
             rootLayout = itemView.findViewById(R.id.item_root_layout);
             imageView = itemView.findViewById(R.id.item_event_image);
+            imageView.setDrawingCacheEnabled(true);
         }
     }
 
@@ -99,6 +110,6 @@ public class EventsRecyclerAdapter extends RecyclerView.Adapter<EventsRecyclerAd
     }
 
     public interface OnEventSelectedListener {
-        void onEventSelected(String id);
+        void onEventSelected(String id, int[] color);
     }
 }

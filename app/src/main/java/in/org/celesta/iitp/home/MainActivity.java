@@ -1,7 +1,6 @@
 package in.org.celesta.iitp.home;
 
 import android.os.Bundle;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -67,11 +66,14 @@ public class MainActivity extends AppCompatActivity implements EventsRecyclerAda
 
 
     @Override
-    public void onEventSelected(String id) {
-
-        Toast.makeText(this, id, Toast.LENGTH_SHORT).show();
+    public void onEventSelected(String id, int[] color) {
+        Bundle b = new Bundle();
+        b.putString("data", id);
+        b.putIntArray("color", color);
 
         EventDetailsFragment fragment = new EventDetailsFragment();
+        fragment.setArguments(b);
+        fragment.setRetainInstance(true);
         fragment.show(getSupportFragmentManager(), fragment.getTag());
     }
 }

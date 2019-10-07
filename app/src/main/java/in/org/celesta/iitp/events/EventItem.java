@@ -54,6 +54,15 @@ public class EventItem {
     @SerializedName("ev_end_time")
     @Expose
     private String evEndTime;
+    @SerializedName("ev_amount")
+    @Expose
+    private String evAmount;
+    @SerializedName("is_team_event")
+    @Expose
+    private String isTeamEvent;
+    @SerializedName("map_url")
+    @Expose
+    private String mapUrl;
 
     public String getEvId() {
         return evId;
@@ -166,5 +175,29 @@ public class EventItem {
 
     public void setId(@NonNull String id) {
         this.id = id;
+    }
+
+    public String getEvAmount() {
+        return evAmount;
+    }
+
+    public void setEvAmount(String evAmount) {
+        this.evAmount = evAmount;
+    }
+
+    public String getIsTeamEvent() {
+        return isTeamEvent;
+    }
+
+    public void setIsTeamEvent(String isTeamEvent) {
+        this.isTeamEvent = isTeamEvent;
+    }
+
+    public String getMapUrl() {
+        return mapUrl;
+    }
+
+    public void setMapUrl(String mapUrl) {
+        this.mapUrl = mapUrl;
     }
 }
