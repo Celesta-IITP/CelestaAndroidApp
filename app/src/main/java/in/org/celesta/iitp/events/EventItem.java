@@ -4,158 +4,155 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 @Entity(tableName = "events")
 public class EventItem {
 
+    @SerializedName("id")
+    @Expose
     @NonNull
     @PrimaryKey
-    private String id = "new_event";
-    private String name;
-    private String bio;
-    private String description;
-    private String venue;
-    private String image;
-    private long startTime;
-    private long endTime;
-    private String regUrl;
-    private String rulesUrl;
-    private String venueUrl;
-    private int day;
-    private int type;
-    private String organiser;
-    private String contact;
+    private String id;
+    @SerializedName("ev_id")
+    @Expose
+    private String evId;
+    @SerializedName("ev_category")
+    @Expose
+    private String evCategory;
+    @SerializedName("ev_name")
+    @Expose
+    private String evName;
+    @SerializedName("ev_description")
+    @Expose
+    private String evDescription;
+    @SerializedName("ev_organiser")
+    @Expose
+    private String evOrganiser;
+    @SerializedName("ev_club")
+    @Expose
+    private String evClub;
+    @SerializedName("ev_org_phone")
+    @Expose
+    private String evOrgPhone;
+    @SerializedName("ev_poster_url")
+    @Expose
+    private String evPosterUrl;
+    @SerializedName("ev_rule_book_url")
+    @Expose
+    private String evRuleBookUrl;
+    @SerializedName("ev_date")
+    @Expose
+    private String evDate;
+    @SerializedName("ev_start_time")
+    @Expose
+    private String evStartTime;
+    @SerializedName("ev_end_time")
+    @Expose
+    private String evEndTime;
 
-    private boolean registered = false;
-
-    public EventItem() {
-    }
-
-    @NonNull
     public String getId() {
         return id;
     }
 
-    public void setId(@NonNull String id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
+    public String getEvId() {
+        return evId;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setEvId(String evId) {
+        this.evId = evId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getEvCategory() {
+        return evCategory;
     }
 
-    public String getName() {
-        return name;
+    public void setEvCategory(String evCategory) {
+        this.evCategory = evCategory;
     }
 
-    public boolean isRegistered() {
-        return registered;
+    public String getEvName() {
+        return evName;
     }
 
-    public String getVenue() {
-        return venue;
+    public void setEvName(String evName) {
+        this.evName = evName;
     }
 
-    public void setRegistered(boolean registered) {
-        this.registered = registered;
+    public String getEvDescription() {
+        return evDescription;
     }
 
-    public void setVenue(String venue) {
-        this.venue = venue;
+    public void setEvDescription(String evDescription) {
+        this.evDescription = evDescription;
     }
 
-    public int getDay() {
-        return day;
+    public String getEvOrganiser() {
+        return evOrganiser;
     }
 
-    public void setDay(int day) {
-        this.day = day;
+    public void setEvOrganiser(String evOrganiser) {
+        this.evOrganiser = evOrganiser;
     }
 
-    public int getType() {
-        return type;
+    public String getEvClub() {
+        return evClub;
     }
 
-    public void setType(int type) {
-        this.type = type;
+    public void setEvClub(String evClub) {
+        this.evClub = evClub;
     }
 
-    public String getImage() {
-        return image;
+    public String getEvOrgPhone() {
+        return evOrgPhone;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setEvOrgPhone(String evOrgPhone) {
+        this.evOrgPhone = evOrgPhone;
     }
 
-    public String getBio() {
-        return bio;
+    public String getEvPosterUrl() {
+        return evPosterUrl;
     }
 
-    public void setBio(String bio) {
-        this.bio = bio;
+    public void setEvPosterUrl(String evPosterUrl) {
+        this.evPosterUrl = evPosterUrl;
     }
 
-    public String getRegUrl() {
-        return regUrl;
+    public String getEvRuleBookUrl() {
+        return evRuleBookUrl;
     }
 
-    public void setRegUrl(String regUrl) {
-        this.regUrl = regUrl;
+    public void setEvRuleBookUrl(String evRuleBookUrl) {
+        this.evRuleBookUrl = evRuleBookUrl;
     }
 
-    public String getRulesUrl() {
-        return rulesUrl;
+    public String getEvDate() {
+        return evDate;
     }
 
-    public void setRulesUrl(String rulesUrl) {
-        this.rulesUrl = rulesUrl;
+    public void setEvDate(String evDate) {
+        this.evDate = evDate;
     }
 
-    public String getVenueUrl() {
-        return venueUrl;
+    public String getEvStartTime() {
+        return evStartTime;
     }
 
-    public void setVenueUrl(String venueUrl) {
-        this.venueUrl = venueUrl;
+    public void setEvStartTime(String evStartTime) {
+        this.evStartTime = evStartTime;
     }
 
-    public String getOrganiser() {
-        return organiser;
+    public String getEvEndTime() {
+        return evEndTime;
     }
 
-    public void setOrganiser(String organiser) {
-        this.organiser = organiser;
-    }
-
-    public String getContact() {
-        return contact;
-    }
-
-    public void setContact(String contact) {
-        this.contact = contact;
-    }
-
-    public long getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(long startTime) {
-        this.startTime = startTime;
-    }
-
-    public long getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(long endTime) {
-        this.endTime = endTime;
+    public void setEvEndTime(String evEndTime) {
+        this.evEndTime = evEndTime;
     }
 }
