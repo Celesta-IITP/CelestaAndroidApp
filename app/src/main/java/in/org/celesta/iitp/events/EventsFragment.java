@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import in.org.celesta.iitp.R;
@@ -71,19 +70,6 @@ public class EventsFragment extends Fragment {
         List<EventItem> eventItems = new ArrayList<>();
         for (int i = 0; i < 8; ++i) {
             EventItem n = new EventItem();
-            n.setBio("bio");
-            n.setContact("1414141414");
-            n.setDay(1);
-            n.setDescription("description");
-            n.setEndTime(new Date().getTime());
-            n.setImage("image");
-            n.setName("New Event");
-            n.setOrganiser("organiser");
-            n.setVenue("venue");
-            n.setStartTime(new Date().getTime());
-            n.setType(1);
-            String id = "new_id_" + i;
-            n.setId(id);
             eventItems.add(n);
         }
 
@@ -103,7 +89,7 @@ public class EventsFragment extends Fragment {
 
             List<EventItem> newList = new ArrayList<>();
             for (EventItem n : eventItems) {
-                if (n.getType() == category) newList.add(n);
+//                if (n.getType() == category) newList.add(n);
             }
             adapter.setEventItemList(newList);
 //            if (newList.size() == 0) {
