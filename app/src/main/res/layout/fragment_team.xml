@@ -13,7 +13,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/img1"
         android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
@@ -67,6 +66,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:text="73030 69559"
+                    android:autoLink="phone"
                     android:textColor="@color/silver"
                     android:gravity="center_vertical"
                     android:textSize="16sp"/>
@@ -133,6 +133,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:text="99395 12017"
+                    android:autoLink="phone"
                     android:textColor="@color/silver"
                     android:gravity="center_vertical"
                     android:textSize="16sp"/>
@@ -194,6 +195,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:autoLink="phone"
                     android:layout_weight="1"
                     android:text="80585 01770"
                     android:textColor="@color/silver"
@@ -259,6 +261,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:text="xxxxx xxxxxx"
+                    android:autoLink="phone"
                     android:textColor="@color/silver"
                     android:gravity="center_vertical"
                     android:textSize="16sp"/>
@@ -322,6 +325,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:text="99310 59201"
+                    android:autoLink="phone"
                     android:textColor="@color/silver"
                     android:gravity="center_vertical"
                     android:textSize="16sp"/>
@@ -384,6 +388,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:autoLink="phone"
                         android:text="xxxxx xxxxx"
                         android:textColor="@color/silver"
                         android:gravity="center_vertical"
@@ -448,6 +453,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:text="95705 66557"
+                        android:autoLink="phone"
                         android:textColor="@color/silver"
                         android:gravity="center_vertical"
                         android:textSize="16sp"/>
@@ -510,6 +516,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:autoLink="phone"
                         android:text="85859 92062"
                         android:textColor="@color/silver"
                         android:gravity="center_vertical"
@@ -574,6 +581,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:text="70441 70063"
+                        android:autoLink="phone"
                         android:textColor="@color/silver"
                         android:gravity="center_vertical"
                         android:textSize="16sp"/>
@@ -634,6 +642,7 @@
 
                     <TextView
                         android:layout_width="match_parent"
+                        android:autoLink="phone"
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:text="96666 63764"
@@ -698,6 +707,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
+                        android:autoLink="phone"
                         android:layout_weight="1"
                         android:text="89676 54843"
                         android:textColor="@color/silver"
@@ -761,6 +771,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
+                        android:autoLink="phone"
                         android:layout_weight="1"
                         android:text="xxxxx xxxxxx"
                         android:textColor="@color/silver"
@@ -824,6 +835,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
+                        android:autoLink="phone"
                         android:layout_weight="1"
                         android:text="xxxxx xxxxxx"
                         android:textColor="@color/silver"
@@ -887,6 +899,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
+                        android:autoLink="phone"
                         android:layout_weight="1"
                         android:text="91829 94302"
                         android:textColor="@color/silver"
@@ -953,6 +966,7 @@
                         android:layout_weight="1"
                         android:text="89852 65942"
                         android:textColor="@color/silver"
+                        android:autoLink="phone"
                         android:gravity="center_vertical"
                         android:textSize="16sp"/>
 
@@ -1014,6 +1028,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:autoLink="phone"
                         android:text="xxxxx xxxxx"
                         android:textColor="@color/silver"
                         android:gravity="center_vertical"
@@ -1076,6 +1091,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
+                        android:autoLink="phone"
                         android:layout_weight="1"
                         android:text="xxxxx xxxxx"
                         android:textColor="@color/silver"
@@ -1140,6 +1156,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:autoLink="phone"
                         android:text="62055 59807"
                         android:textColor="@color/silver"
                         android:gravity="center_vertical"
@@ -1202,6 +1219,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
+                        android:autoLink="phone"
                         android:layout_weight="1"
                         android:text="83288 64643"
                         android:textColor="@color/silver"
@@ -1266,6 +1284,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:autoLink="phone"
                         android:text="82715 72990"
                         android:textColor="@color/silver"
                         android:gravity="center_vertical"

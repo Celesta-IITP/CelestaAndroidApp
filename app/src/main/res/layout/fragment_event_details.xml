@@ -96,14 +96,35 @@
                     android:textColor="@android:color/white"
                     android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/venue"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:text="Location : TBD"
-                    android:textColor="@android:color/white"
-                    android:textSize="18sp" />
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:id="@+id/venue"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="8dp"
+                        android:text="Location : TBD"
+                        android:textColor="@android:color/white"
+                        android:textSize="18sp" />
+
+                    <ImageButton
+                        android:id="@+id/button_map"
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:backgroundTint="@color/transparent"
+                        android:padding="4dp"
+                        android:src="@drawable/ic_map"
+                        android:text="Register"
+                        android:tint="@color/white" />
+
+                </LinearLayout>
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -137,7 +158,7 @@
                     android:layout_width="40dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_vertical"
-                    android:padding="4dp"
+                    android:padding="6dp"
                     android:src="@drawable/ic_local_phone_black_24dp"
                     android:tint="@color/white" />
 
@@ -182,33 +203,14 @@
 
         </androidx.cardview.widget.CardView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_register"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="8dp">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_register"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="64dp"
-                android:padding="16dp"
-                android:text="Register"
-                app:backgroundTint="@color/card_background" />
-
-            <ImageButton
-                android:id="@+id/button_map"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/card_background"
-                android:padding="18dp"
-                android:src="@drawable/ic_map"
-                android:text="Register"
-                android:tint="@color/white" />
-
-
-        </LinearLayout>
+            android:layout_gravity="center"
+            android:padding="16dp"
+            android:text="Register"
+            app:backgroundTint="@color/card_background" />
 
     </LinearLayout>
 
