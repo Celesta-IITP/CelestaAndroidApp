@@ -13,8 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-
 import java.util.List;
 
 import in.org.celesta.iitp.R;
@@ -45,10 +43,10 @@ public class EventsCategoryAdapter extends RecyclerView.Adapter<EventsCategoryAd
             final String current = categoryList.get(position);
 
             holder.title.setText(current);
-            Glide.with(context)
-                    .load(R.raw.gif_abc)
-                    .centerCrop()
-                    .into(holder.imageView);
+//            Glide.with(context)
+//                    .load(R.raw.gif_abc)
+//                    .centerCrop()
+//                    .into(holder.imageView);
 
             holder.rootLayout.setOnClickListener(v -> {
                 Bundle b = new Bundle();

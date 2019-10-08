@@ -87,7 +87,6 @@ public class EventDetailsFragment extends BottomSheetDialogFragment {
         CardView cardPen = view.findViewById(R.id.card_event_details_pen);
 
         Button register = view.findViewById(R.id.button_register);
-        ImageButton map = view.findViewById(R.id.button_map);
 
         if (color[0] != 0) {
             cardPrimary.setCardBackgroundColor(color[0]);
@@ -96,12 +95,12 @@ public class EventDetailsFragment extends BottomSheetDialogFragment {
             cardQua.setCardBackgroundColor(color[0]);
             cardPen.setCardBackgroundColor(color[0]);
             register.setBackgroundTintList(ColorStateList.valueOf(color[0]));
-            map.setBackgroundTintList(ColorStateList.valueOf(color[0]));
         }
 
         TextView name = view.findViewById(R.id.name);
         TextView date = view.findViewById(R.id.date);
         TextView venue = view.findViewById(R.id.venue);
+        ImageButton map = view.findViewById(R.id.button_map);
         TextView time = view.findViewById(R.id.time);
         TextView description = view.findViewById(R.id.description);
         TextView organisers = view.findViewById(R.id.organisers);
@@ -109,12 +108,11 @@ public class EventDetailsFragment extends BottomSheetDialogFragment {
         TextView rulebook = view.findViewById(R.id.rulebook);
         ImageView rulebookImg = view.findViewById(R.id.rulebook_img);
 
-        if (color[1] != 0)
-            name.setTextColor(color[1]);
-
         if (color[2] != 0) {
+            name.setTextColor(color[2]);
             date.setTextColor(color[2]);
             venue.setTextColor(color[2]);
+            map.setImageTintList(ColorStateList.valueOf(color[2]));
             time.setTextColor(color[2]);
             description.setTextColor(color[2]);
             organisers.setTextColor(color[2]);
@@ -122,7 +120,6 @@ public class EventDetailsFragment extends BottomSheetDialogFragment {
             rulebook.setTextColor(color[2]);
             rulebookImg.setImageTintList(ColorStateList.valueOf(color[2]));
             register.setTextColor(color[2]);
-            map.setImageTintList(ColorStateList.valueOf(color[2]));
         }
 
         name.setText(current.getEvName());
@@ -136,6 +133,13 @@ public class EventDetailsFragment extends BottomSheetDialogFragment {
 
         if (current.getEvVenue() != null && !current.getEvVenue().isEmpty())
             venue.setText(String.format("Location : %s", current.getEvVenue()));
+
+        if (current.getMapUrl() != null && !current.getMapUrl().isEmpty()) {
+            map.setOnClickListener(view13 -> {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(current.getMapUrl()));
+                startActivity(intent);
+            });
+        }
 
         if (current.getEvStartTime() != null && !current.getEvStartTime().isEmpty())
             time.setText(String.format("Timing : %s  -  %s", current.getEvStartTime(), current.getEvEndTime()));
@@ -159,13 +163,6 @@ public class EventDetailsFragment extends BottomSheetDialogFragment {
             });
         } else {
             cardPen.setVisibility(View.GONE);
-        }
-
-        if (current.getMapUrl() != null && !current.getMapUrl().isEmpty()) {
-            map.setOnClickListener(view13 -> {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(current.getMapUrl()));
-                startActivity(intent);
-            });
         }
 
         if (current.getEvAmount() != null && !current.getEvAmount().isEmpty()) {
