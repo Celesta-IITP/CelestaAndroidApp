@@ -24,6 +24,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import in.org.celesta.iitp.R;
+import in.org.celesta.iitp.utils.ImageViewerActivity;
 
 public class EventDetailsFragment extends BottomSheetDialogFragment {
 
@@ -79,6 +80,12 @@ public class EventDetailsFragment extends BottomSheetDialogFragment {
                 .centerCrop()
                 .placeholder(R.drawable.events_icon_2)
                 .into(poster);
+
+        poster.setOnClickListener(view14 -> {
+            Intent i = new Intent(context, ImageViewerActivity.class);
+            i.putExtra("image_url", current.getEvPosterUrl());
+            startActivity(i);
+        });
 
         CardView cardPrimary = view.findViewById(R.id.card_event_details_primary);
         CardView cardSecondary = view.findViewById(R.id.card_event_details_sec);
