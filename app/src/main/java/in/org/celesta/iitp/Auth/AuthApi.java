@@ -9,4 +9,7 @@ public interface AuthApi {
 
     @POST("mob_functions.php")
     Call<LoginResponse> login(@Body RequestBody body);
+
+    @POST("mob_functions.php")
+    Call<RegisterResponse> register(@Body RequestBody body);
 }

@@ -1,5 +1,6 @@
 package in.org.celesta.iitp.Auth;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -19,6 +20,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import in.org.celesta.iitp.R;
 import in.org.celesta.iitp.network.RetrofitClientInstance;
+import in.org.celesta.iitp.utils.CheckNetwork;
+import in.org.celesta.iitp.utils.Keyboard;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -30,6 +33,7 @@ public class LoginFragment extends Fragment {
     private EditText login_celesta_id_editext, login_password_edittext;
     private Button login_button;
     private AuthApi authApi;
+    private ProgressDialog progressDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,30 +60,10 @@ public class LoginFragment extends Fragment {
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                authApi = RetrofitClientInstance.getAuthRetrofitInstance().create(AuthApi.class);
-
-                RequestBody requestBody = new MultipartBody.Builder()
-                        .setType(MultipartBody.FORM)
-                        .addFormDataPart("f", "login_user")
-                        .addFormDataPart("celestaid", login_celesta_id_editext.getText().toString().trim())
-                        .addFormDataPart("password", login_password_edittext.getText().toString().trim())
-                        .build();
-
-                Call<LoginResponse> call = authApi.login(requestBody);
-
-                call.enqueue(new Callback<LoginResponse>() {
-                    @Override
-                    public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                        Log.e("success", "onResponse: " + response.code());
-                        Toast.makeText(getContext(), "Login successful", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onFailure(Call<LoginResponse> call, Throwable t) {
-                        Log.e("Error", "onFailure: " + t.toString());
-                        Toast.makeText(getContext(), "Login Failed", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                if(!CheckNetwork.isNetworkConnected(getContext()))
+                    Toast.makeText(getContext(),"Check your network properly",Toast.LENGTH_SHORT).show();
+                else
+                    login();
             }
         });
 
@@ -119,4 +103,39 @@ public class LoginFragment extends Fragment {
 
         }
     };
+
+    private void login(){
+        Keyboard.closeKeyboard(getView(),getContext());
+
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("Logging in...");
+        progressDialog.show();
+
+        authApi = RetrofitClientInstance.getAuthRetrofitInstance().create(AuthApi.class);
+
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("f", "login_user")
+                .addFormDataPart("celestaid", login_celesta_id_editext.getText().toString().trim())
+                .addFormDataPart("password", login_password_edittext.getText().toString().trim())
+                .build();
+
+        Call<LoginResponse> call = authApi.login(requestBody);
+
+        call.enqueue(new Callback<LoginResponse>() {
+            @Override
+            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                progressDialog.dismiss();
+                Log.e("success", "onResponse: " + response.code());
+                Toast.makeText(getContext(), "Login successful", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<LoginResponse> call, Throwable t) {
+                progressDialog.dismiss();
+                Log.e("Error", "onFailure: " + t.toString());
+                Toast.makeText(getContext(), "Login Failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 }
