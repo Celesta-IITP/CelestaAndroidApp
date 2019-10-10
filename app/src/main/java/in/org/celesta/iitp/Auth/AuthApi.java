@@ -12,4 +12,7 @@ public interface AuthApi {
 
     @POST("mob_functions.php")
     Call<RegisterResponse> register(@Body RequestBody body);
+
+    @POST("mob_functions.php")
+    Call<ResendActivationResponse> resend_activation(@Body RequestBody body);
 }

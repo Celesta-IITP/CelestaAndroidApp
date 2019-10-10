@@ -29,7 +29,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginFragment extends Fragment {
-    private TextView register_textview;
+    private TextView register_textview,resend_activation_textview;
     private EditText login_celesta_id_editext, login_password_edittext;
     private Button login_button;
     private AuthApi authApi;
@@ -44,6 +44,7 @@ public class LoginFragment extends Fragment {
         login_celesta_id_editext = rootView.findViewById(R.id.login_celesta_Id_edittext);
         login_password_edittext = rootView.findViewById(R.id.login_password_edittext);
         login_button = rootView.findViewById(R.id.login_button);
+        resend_activation_textview=rootView.findViewById(R.id.resend_activation_email_textview);
         return rootView;
     }
 
@@ -54,6 +55,13 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 loadFragment(new RegisterFragment());
+            }
+        });
+
+        resend_activation_textview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loadFragment(new ResendActivationFragment());
             }
         });
 
