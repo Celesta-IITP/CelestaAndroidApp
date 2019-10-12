@@ -2,6 +2,7 @@ package in.org.celesta.iitp.Auth;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -18,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.preference.PreferenceManager;
 
 import java.util.List;
 
@@ -38,6 +40,7 @@ public class LoginFragment extends Fragment {
     private Button login_button;
     private AuthApi authApi;
     private ProgressDialog progressDialog;
+    private SharedPreferences.Editor sharedPreferenceEditor;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -140,13 +143,15 @@ public class LoginFragment extends Fragment {
                 progressDialog.dismiss();
                 Log.e("success", "onResponse: " + response.code());
                 if (response.body().getStatus() == 202) {
+                    Log.e("success", "access_token: "+ response.body().getAccess_token() );
+                    storeDatas(response.body().getCelestaid(), response.body().getAccess_token(), response.body().getFirst_name(), response.body().getQrcode());
                     Toast.makeText(getContext(), "Login successful", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getContext(), MainActivity.class);
                     startActivity(intent);
                     getActivity().finish();
                 } else if (response.body().getStatus() == 403) {
                     List<String> message = response.body().getMessage();
-                    Toast.makeText(getContext(), message.get(0) , Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), message.get(0), Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -158,4 +163,15 @@ public class LoginFragment extends Fragment {
             }
         });
     }
+
+    private void storeDatas(String celestaid, String access_token, String first_name, String qrCode) {
+        sharedPreferenceEditor = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
+        sharedPreferenceEditor.putBoolean("login_status", true);
+        sharedPreferenceEditor.putString("celestaid", celestaid);
+        sharedPreferenceEditor.putString("access_token", access_token);
+        sharedPreferenceEditor.putString("first_name", first_name);
+        sharedPreferenceEditor.putString("qrcode", qrCode);
+        sharedPreferenceEditor.apply();
+    }
+
 }

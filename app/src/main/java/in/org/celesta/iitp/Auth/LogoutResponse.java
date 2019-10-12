@@ -4,13 +4,12 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class RegisterResponse {
+public class LogoutResponse{
 
     @SerializedName("status")
     private Integer status;
     @SerializedName("message")
     private List<String> message;
-
 
     public Integer getStatus() {
         return status;
