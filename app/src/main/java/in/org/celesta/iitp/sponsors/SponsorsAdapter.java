@@ -46,7 +46,7 @@ public class SponsorsAdapter extends RecyclerView.Adapter<SponsorsAdapter.ViewHo
 
             Glide.with(context)
                     .load(current.getImage())
-                    .thumbnail(Glide.with(context).load(R.raw.gif_abc))
+                    .thumbnail(Glide.with(context).load(R.raw.load))
                     .into(holder.image);
 
             holder.root.setOnClickListener(v -> {
