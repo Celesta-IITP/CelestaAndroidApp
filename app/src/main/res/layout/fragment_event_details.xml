@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            app:cardBackgroundColor="@color/card_background"
+            app:cardBackgroundColor="@color/event_detail_card_background"
             app:cardCornerRadius="8dp">
 
             <LinearLayout
@@ -49,7 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            app:cardBackgroundColor="@color/card_background"
+            app:cardBackgroundColor="@color/event_detail_card_background"
             app:cardCornerRadius="8dp">
 
             <TextView
@@ -68,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            app:cardBackgroundColor="@color/card_background"
+            app:cardBackgroundColor="@color/event_detail_card_background"
             app:cardCornerRadius="8dp">
 
             <LinearLayout
@@ -134,7 +134,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            app:cardBackgroundColor="@color/card_background"
+            app:cardBackgroundColor="@color/event_detail_card_background"
             app:cardCornerRadius="8dp">
 
             <LinearLayout
@@ -171,7 +171,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            app:cardBackgroundColor="@color/card_background"
+            app:cardBackgroundColor="@color/event_detail_card_background"
             app:cardCornerRadius="8dp">
 
             <LinearLayout
@@ -210,7 +210,7 @@
             android:layout_gravity="center"
             android:padding="16dp"
             android:text="Register"
-            app:backgroundTint="@color/card_background" />
+            app:backgroundTint="@color/event_detail_card_background" />
 
     </LinearLayout>
 

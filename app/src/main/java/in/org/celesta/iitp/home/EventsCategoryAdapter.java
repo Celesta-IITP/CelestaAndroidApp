@@ -21,11 +21,9 @@ public class EventsCategoryAdapter extends RecyclerView.Adapter<EventsCategoryAd
 
     private Context context;
     private List<String> categoryList;
-//    private OnEventSelectedListener callback;
 
     public EventsCategoryAdapter(Context context) {
         this.context = context;
-//        this.callback = listener;
     }
 
     @NonNull

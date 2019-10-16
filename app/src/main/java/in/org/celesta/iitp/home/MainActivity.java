@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements EventsRecyclerAda
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setBackgroundDrawableResource(R.drawable.img1);
+        getWindow().setBackgroundDrawableResource(R.drawable.background_image_2);
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -46,6 +46,11 @@ public class MainActivity extends AppCompatActivity implements EventsRecyclerAda
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+//        AnimationDrawable drawable = (AnimationDrawable) getResources().getDrawable(R.drawable.background_animation);
+
+//        getWindow().setBackgroundDrawable(drawable);
+//        drawable.start();
 
     }
 
