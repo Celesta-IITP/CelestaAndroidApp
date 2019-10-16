@@ -22,57 +22,32 @@
         android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="8dp"
-        android:hint="Celesta ID"
+        android:hint="Email"
         android:textColorHint="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/login_celesta_Id_edittext"
+            android:id="@+id/resend_activation_email_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             android:maxLines="1"
             android:padding="8dp"
             android:textColor="@color/white"
             android:theme="@style/AppTheme.Edittext" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
-        android:hint="Password"
-        android:textColorHint="@color/white"
-        app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@color/white">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/login_password_edittext"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPassword"
-            android:maxLines="1"
-            android:padding="8dp"
-            android:textColor="@color/white"
-            android:theme="@style/AppTheme.Edittext" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/login_button"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/resend_activation_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
+        android:background="@drawable/rounded_button"
         android:padding="8dp"
-        android:text="Login"
+        android:text="Resend Activation Link"
         android:textColor="@color/white" />
 
     <LinearLayout
@@ -92,7 +67,7 @@
             android:textSize="16sp" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/register_textview"
+            android:id="@+id/resend_activation_register_textview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
@@ -103,35 +78,4 @@
             android:textSize="16sp" />
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:layout_marginTop="8dp">
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:layout_weight="1"
-            android:gravity="right"
-            android:text="Email Not Verified?"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/resend_activation_email_textview"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:layout_weight="1"
-            android:gravity="left"
-            android:text="Resend Activation Link"
-            android:textColor="@color/colorAccent"
-            android:textSize="16sp" />
-
-    </LinearLayout>
-
 </LinearLayout>
