@@ -2,14 +2,7 @@ package in.org.celesta.iitp.Auth;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,6 +12,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.util.List;
 
@@ -133,16 +131,10 @@ public class RegisterFragment extends Fragment {
             public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
                 progressDialog.dismiss();
                 Log.e("success", "onResponse: " + response.code());
-                if (response.body().getStatus() == 200) {
+                if (response.isSuccessful()) {
                     Toast.makeText(getContext(), "Registration successful.Check your email for activation link", Toast.LENGTH_LONG).show();
-                    final Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            loadFragment(new LoginFragment());
-                        }
-                    }, 2000);
-                } else if (response.body().getStatus() == 400) {
+                    new Handler().postDelayed(() -> loadFragment(new LoginFragment()), 2000);
+                } else if (response.code() == 400) {
                     List<String> messages = response.body().getMessage();
                     String err = "";
                     for (String temp : messages) {
