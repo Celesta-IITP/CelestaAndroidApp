@@ -87,7 +87,7 @@ public class GalleryFragment extends Fragment implements GalleryAdapter.OnImageS
 
     private void updateData() {
 
-        OtherRoutes service = RetrofitClientInstance.getRetrofitInstance().create(OtherRoutes.class);
+        OtherRoutes service = RetrofitClientInstance.getGalleryRetrofitInstance().create(OtherRoutes.class);
 
         Call<Gallery> call = service.getImages();
 
@@ -101,14 +101,11 @@ public class GalleryFragment extends Fragment implements GalleryAdapter.OnImageS
                     if (gallery != null && gallery.getImage() != null) {
                         new DeleteImagesTask(dao).execute();
 
-                        for (Image image : gallery.getImage()) {
+                        for (Image image : gallery.getImage())
                             new InsertImageTask(dao).execute(image);
-                            Log.e("data", image.getNormal());
-                        }
 
                         populateData();
-                    } else                             Log.e("data", "hhh");
-
+                    }
 
                 } else {
                     Log.e(getClass().getSimpleName(), "no data");
@@ -119,7 +116,7 @@ public class GalleryFragment extends Fragment implements GalleryAdapter.OnImageS
 
             @Override
             public void onFailure(@NonNull Call<Gallery> call, @NonNull Throwable t) {
-                Log.e(getClass().getSimpleName(), "f");
+                Log.e(getClass().getSimpleName(), "f, load failed");
                 if (swipeRefreshLayout != null) swipeRefreshLayout.setRefreshing(false);
             }
         });
