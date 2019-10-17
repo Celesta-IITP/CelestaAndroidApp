@@ -13,17 +13,27 @@ public class EventsRepository {
 
     private EventsDao eventsDao;
     private LiveData<List<EventItem>> allEvents;
+    private LiveData<List<EventItem>> allExhibitions;
+    private LiveData<List<EventItem>> allSchoolEvents;
     private LiveData<List<String>> allClubs;
 
     EventsRepository(Application application) {
         AppDatabase db = AppDatabase.getDatabase(application);
         eventsDao = db.eventsDao();
         allEvents = eventsDao.loadAllEvents();
+        allExhibitions = eventsDao.loadAllExhibitions();
+        allSchoolEvents = eventsDao.loadAllSchoolEvents();
         allClubs = eventsDao.loadAllClubs();
     }
 
     LiveData<List<EventItem>> loadAllEvents() {
         return allEvents;
+    }
+    LiveData<List<EventItem>> loadAllExhibitions() {
+        return allExhibitions;
+    }
+    LiveData<List<EventItem>> loadAllSchoolEvents() {
+        return allSchoolEvents;
     }
 
     LiveData<List<String>> loadAllClubs() {

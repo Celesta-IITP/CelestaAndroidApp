@@ -8,7 +8,7 @@ import retrofit2.http.GET;
 
 public interface EventsRoutes {
 
-    @GET("events_api.php")
+    @GET("backend/admin/functions/events_api.php")
     Call<List<EventItem>> getAllEvents();
 
 }

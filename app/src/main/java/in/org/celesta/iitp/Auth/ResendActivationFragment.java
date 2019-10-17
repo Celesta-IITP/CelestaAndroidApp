@@ -2,12 +2,6 @@ package in.org.celesta.iitp.Auth;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +11,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.JsonArray;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.util.List;
 
@@ -91,7 +88,7 @@ public class ResendActivationFragment extends Fragment {
         progressDialog.setMessage("Resending link in email...");
         progressDialog.show();
 
-        authApi = RetrofitClientInstance.getAuthRetrofitInstance().create(AuthApi.class);
+        authApi = RetrofitClientInstance.getRetrofitInstance().create(AuthApi.class);
 
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)

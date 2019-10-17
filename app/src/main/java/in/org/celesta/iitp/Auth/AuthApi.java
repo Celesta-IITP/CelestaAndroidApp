@@ -7,15 +7,15 @@ import retrofit2.http.POST;
 
 public interface AuthApi {
 
-    @POST("mob_functions.php")
+    @POST("backend/user/functions/mob_functions.php")
     Call<LoginResponse> login(@Body RequestBody body);
 
-    @POST("mob_functions.php")
+    @POST("backend/user/functions/mob_functions.php")
     Call<LogoutResponse> logout(@Body RequestBody body);
 
-    @POST("mob_functions.php")
+    @POST("backend/user/functions/mob_functions.php")
     Call<RegisterResponse> register(@Body RequestBody body);
 
-    @POST("mob_functions.php")
+    @POST("backend/user/functions/mob_functions.php")
     Call<ResendActivationResponse> resend_activation(@Body RequestBody body);
 }

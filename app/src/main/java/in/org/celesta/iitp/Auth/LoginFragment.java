@@ -126,7 +126,7 @@ public class LoginFragment extends Fragment {
         progressDialog.setMessage("Logging in...");
         progressDialog.show();
 
-        authApi = RetrofitClientInstance.getAuthRetrofitInstance().create(AuthApi.class);
+        authApi = RetrofitClientInstance.getRetrofitInstance().create(AuthApi.class);
 
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)

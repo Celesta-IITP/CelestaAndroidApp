@@ -49,8 +49,8 @@ public class EventsRecyclerAdapter extends RecyclerView.Adapter<EventsRecyclerAd
                 holder.venue.setText(current.getEvVenue());
             Glide.with(context)
                     .load(current.getEvPosterUrl())
+                    .thumbnail(Glide.with(context).load(R.raw.load))
                     .centerCrop()
-                    .placeholder(R.drawable.events_icon_2)
                     .into(holder.imageView);
 
             holder.time.setText(String.format("%s  -  %s", current.getEvStartTime(), current.getEvEndTime()));
@@ -104,7 +104,7 @@ public class EventsRecyclerAdapter extends RecyclerView.Adapter<EventsRecyclerAd
         }
     }
 
-    void setEventItemList(List<EventItem> feeds) {
+    public void setEventItemList(List<EventItem> feeds) {
         eventItemList = feeds;
         notifyDataSetChanged();
     }
