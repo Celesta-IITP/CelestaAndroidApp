@@ -41,7 +41,7 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.FeedView
             final Image current = imageList.get(position);
 
             Glide.with(context)
-                    .load(current.getNormal())
+                    .load(current.getReduced())
                     .thumbnail(Glide.with(context).load(R.raw.load))
                     .centerCrop()
                     .into(holder.imageView);

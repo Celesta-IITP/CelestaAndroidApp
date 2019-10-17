@@ -87,7 +87,7 @@ public class GalleryFragment extends Fragment implements GalleryAdapter.OnImageS
 
     private void updateData() {
 
-        OtherRoutes service = RetrofitClientInstance.getGalleryRetrofitInstance().create(OtherRoutes.class);
+        OtherRoutes service = RetrofitClientInstance.getRetrofitInstance().create(OtherRoutes.class);
 
         Call<Gallery> call = service.getImages();
 

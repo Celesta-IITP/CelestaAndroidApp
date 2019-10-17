@@ -59,21 +59,13 @@ public class RegisterFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        login_textview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                loadFragment(new LoginFragment());
-            }
-        });
+        login_textview.setOnClickListener(view12 -> loadFragment(new LoginFragment()));
 
-        register_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!CheckNetwork.isNetworkConnected(getContext()))
-                    Toast.makeText(getContext(), "Check your network properly", Toast.LENGTH_SHORT).show();
-                else
-                    register();
-            }
+        register_button.setOnClickListener(view1 -> {
+            if (!CheckNetwork.isNetworkConnected(getContext()))
+                Toast.makeText(getContext(), "Check your network properly", Toast.LENGTH_SHORT).show();
+            else
+                register();
         });
     }
 
@@ -108,7 +100,7 @@ public class RegisterFragment extends Fragment {
         progressDialog.setMessage("Registering...");
         progressDialog.show();
 
-        authApi = RetrofitClientInstance.getAuthRetrofitInstance().create(AuthApi.class);
+        authApi = RetrofitClientInstance.getRetrofitInstance().create(AuthApi.class);
 
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
