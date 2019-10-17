@@ -49,7 +49,7 @@ public class EventsCategoryAdapter extends RecyclerView.Adapter<EventsCategoryAd
             holder.rootLayout.setOnClickListener(v -> {
                 Bundle b = new Bundle();
                 b.putString("data", current);
-                Navigation.findNavController(v).navigate(R.id.action_nav_events_cat_to_eventsFragment, b);
+                    Navigation.findNavController(v).navigate(R.id.nav_events, b);
             });
 
 

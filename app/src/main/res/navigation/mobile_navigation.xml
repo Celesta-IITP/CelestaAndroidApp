@@ -24,8 +24,21 @@
     <fragment
         android:id="@+id/nav_pronite"
         android:label="Pronite"
-        android:name="in.org.celesta.iitp.home.EventCategoryFragment"
-        tools:layout="@layout/fragment_event_category" />
+        android:name="in.org.celesta.iitp.special.SpecialCategoryFragment"
+        tools:layout="@layout/fragment_special_category" />
+
+    <fragment
+        android:id="@+id/nav_special_cat"
+        android:label="Special Events"
+        android:name="in.org.celesta.iitp.special.SpecialCategoryFragment"
+        tools:layout="@layout/fragment_special_category" />
+
+    <fragment
+        android:id="@+id/nav_special_events"
+        android:label="Special Events"
+        android:name="in.org.celesta.iitp.special.SpecialEventsFragment"
+        tools:layout="@layout/fragment_events" />
+
 
     <fragment
         android:id="@+id/nav_gallery"

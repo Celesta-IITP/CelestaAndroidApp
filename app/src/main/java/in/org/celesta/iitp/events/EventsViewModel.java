@@ -12,17 +12,27 @@ public class EventsViewModel extends AndroidViewModel {
 
     private EventsRepository eventsRepository;
     private LiveData<List<EventItem>> allEvents;
+    private LiveData<List<EventItem>> allExhibitions;
+    private LiveData<List<EventItem>> allSchoolEvents;
     private LiveData<List<String>> allClubs;
 
     public EventsViewModel(@NonNull Application application) {
         super(application);
         eventsRepository = new EventsRepository(application);
         allEvents = eventsRepository.loadAllEvents();
+        allExhibitions = eventsRepository.loadAllExhibitions();
+        allSchoolEvents = eventsRepository.loadAllSchoolEvents();
         allClubs = eventsRepository.loadAllClubs();
     }
 
     LiveData<List<EventItem>> loadAllEvents() {
         return allEvents;
+    }
+    public LiveData<List<EventItem>> loadAllExhibitions() {
+        return allExhibitions;
+    }
+    public LiveData<List<EventItem>> loadAllSchoolEvents() {
+        return allSchoolEvents;
     }
 
     public LiveData<List<String>> loadAllClubs() {

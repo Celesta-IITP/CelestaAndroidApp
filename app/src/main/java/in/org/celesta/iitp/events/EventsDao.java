@@ -15,6 +15,12 @@ public interface EventsDao {
     @Query("SELECT * FROM events WHERE evCategory = 'Events' ORDER BY evStartTime ASC")
     LiveData<List<EventItem>> loadAllEvents();
 
+    @Query("SELECT * FROM events WHERE evCategory = 'Exhibitions' ORDER BY evStartTime ASC")
+    LiveData<List<EventItem>> loadAllExhibitions();
+
+    @Query("SELECT * FROM events WHERE evCategory = 'Schoolevents' ORDER BY evStartTime ASC")
+    LiveData<List<EventItem>> loadAllSchoolEvents();
+
     @Query("SELECT evClub FROM events WHERE evCategory = 'Events'")
     LiveData<List<String>> loadAllClubs();
 
