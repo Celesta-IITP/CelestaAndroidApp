@@ -1,8 +1,7 @@
 package in.org.celesta.iitp.Auth;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
-import android.content.SharedPreferences;
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -18,13 +17,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.preference.PreferenceManager;
 
 import java.util.List;
 
 import in.org.celesta.iitp.R;
-import in.org.celesta.iitp.home.MainActivity;
 import in.org.celesta.iitp.network.RetrofitClientInstance;
 import in.org.celesta.iitp.utils.CheckNetwork;
 import in.org.celesta.iitp.utils.Keyboard;
@@ -35,143 +32,136 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginFragment extends Fragment {
-    private TextView register_textview, resend_activation_textview;
-    private EditText login_celesta_id_editext, login_password_edittext;
-    private Button login_button;
-    private AuthApi authApi;
+
+    private EditText celestaIdInput, passwordInput;
+    private Button loginButton;
     private ProgressDialog progressDialog;
-    private SharedPreferences.Editor sharedPreferenceEditor;
+    private Context context;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_login, container, false);
-        register_textview = rootView.findViewById(R.id.register_textview);
-        login_celesta_id_editext = rootView.findViewById(R.id.login_celesta_Id_edittext);
-        login_password_edittext = rootView.findViewById(R.id.login_password_edittext);
-        login_button = rootView.findViewById(R.id.login_button);
-        resend_activation_textview = rootView.findViewById(R.id.resend_activation_email_textview);
-        return rootView;
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getContext() != null)
+            this.context = getContext();
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_login, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        register_textview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                loadFragment(new RegisterFragment());
-            }
+
+        TextView registerTextView = view.findViewById(R.id.register_textview);
+        registerTextView.setOnClickListener(view1 -> loadFragment(new RegisterFragment()));
+
+        TextView resendActivationTextView = view.findViewById(R.id.resend_activation_email_textview);
+        resendActivationTextView.setOnClickListener(view12 -> loadFragment(new ResendActivationFragment()));
+
+        celestaIdInput = view.findViewById(R.id.login_celesta_Id_edittext);
+        passwordInput = view.findViewById(R.id.login_password_edittext);
+        loginButton = view.findViewById(R.id.login_button);
+
+        loginButton.setOnClickListener(view13 -> {
+            if (!CheckNetwork.isNetworkConnected(context))
+                Toast.makeText(getContext(), "Check your internet connection", Toast.LENGTH_LONG).show();
+            else login();
         });
 
-        resend_activation_textview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                loadFragment(new ResendActivationFragment());
-            }
-        });
-
-        login_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!CheckNetwork.isNetworkConnected(getContext()))
-                    Toast.makeText(getContext(), "Check your network properly", Toast.LENGTH_SHORT).show();
-                else
-                    login();
-            }
-        });
-
-        login_celesta_id_editext.addTextChangedListener(loginTextWatcher);
-        login_password_edittext.addTextChangedListener(loginTextWatcher);
+        celestaIdInput.addTextChangedListener(loginTextWatcher);
+        passwordInput.addTextChangedListener(loginTextWatcher);
     }
 
-    private boolean loadFragment(Fragment fragment) {
-
-        //replacing the fragment
-        if (fragment != null) {
-            FragmentTransaction ft = getFragmentManager().beginTransaction();
-            ft.replace(R.id.fragment_auth_container, fragment);
-            ft.addToBackStack(fragment.getTag());
-            ft.commit();
-            return true;
+    private void loadFragment(Fragment fragment) {
+        if (fragment != null && getActivity() != null) {
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_auth_container, fragment)
+                    .addToBackStack(fragment.getTag())
+                    .commit();
         }
-        return false;
     }
 
     private TextWatcher loginTextWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
         }
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            String celestaIdInput = login_celesta_id_editext.getText().toString().trim();
-            String passwordInput = login_password_edittext.getText().toString().trim();
+            String celestaIdInput = LoginFragment.this.celestaIdInput.getText().toString().trim();
+            String passwordInput = LoginFragment.this.passwordInput.getText().toString().trim();
 
-            login_button.setEnabled(!celestaIdInput.isEmpty() && !passwordInput.isEmpty());
+            loginButton.setEnabled(!celestaIdInput.isEmpty() && !passwordInput.isEmpty());
         }
 
         @Override
         public void afterTextChanged(Editable s) {
-
         }
     };
 
     private void login() {
-        Keyboard.closeKeyboard(getView(), getContext());
+        Keyboard.closeKeyboard(getView(), context);
 
-        progressDialog = new ProgressDialog(getContext());
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setCancelable(false);
         progressDialog.setMessage("Logging in...");
         progressDialog.show();
 
-        authApi = RetrofitClientInstance.getRetrofitInstance().create(AuthApi.class);
+        AuthApi authApi = RetrofitClientInstance.getRetrofitInstance().create(AuthApi.class);
 
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("f", "login_user")
-                .addFormDataPart("celestaid", login_celesta_id_editext.getText().toString().trim())
-                .addFormDataPart("password", login_password_edittext.getText().toString().trim())
+                .addFormDataPart("celestaid", celestaIdInput.getText().toString().trim())
+                .addFormDataPart("password", passwordInput.getText().toString().trim())
                 .build();
 
         Call<LoginResponse> call = authApi.login(requestBody);
 
         call.enqueue(new Callback<LoginResponse>() {
             @Override
-            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                progressDialog.dismiss();
-                Log.e("success", "onResponse: " + response.code());
-                if (response.body().getStatus() == 202) {
-                    Log.e("success", "access_token: "+ response.body().getAccess_token() );
-                    storeDatas(response.body().getCelestaid(), response.body().getAccess_token(), response.body().getFirst_name(), response.body().getQrcode());
-                    Toast.makeText(getContext(), "Login successful", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getContext(), MainActivity.class);
-                    startActivity(intent);
-                    getActivity().finish();
-                } else if (response.body().getStatus() == 403) {
-                    List<String> message = response.body().getMessage();
-                    Toast.makeText(getContext(), message.get(0), Toast.LENGTH_LONG).show();
-                }
+            public void onResponse(@NonNull Call<LoginResponse> call, @NonNull Response<LoginResponse> response) {
+                if (progressDialog != null) progressDialog.dismiss();
+
+                if (response.isSuccessful() && response.body() != null) {
+
+                    LoginResponse loginResponse = response.body();
+
+                    if (loginResponse.getStatus() == 202) {
+                        Log.e("success", "access_token: " + loginResponse.getAccessToken());
+                        storeData(loginResponse);
+                        Toast.makeText(getContext(), "Login successful", Toast.LENGTH_SHORT).show();
+
+                        if (getActivity() != null)
+                            getActivity().finish();
+
+                    } else if (response.body().getStatus() == 403) {
+                        List<String> message = loginResponse.getMessage();
+                        Toast.makeText(getContext(), message.get(0), Toast.LENGTH_LONG).show();
+                    }
+
+                } else Toast.makeText(getContext(), "Something went wrong!!!", Toast.LENGTH_LONG).show();
             }
 
             @Override
-            public void onFailure(Call<LoginResponse> call, Throwable t) {
-                progressDialog.dismiss();
-                Log.e("Error", "onFailure: " + t.toString());
-                Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+            public void onFailure(@NonNull Call<LoginResponse> call, @NonNull Throwable t) {
+                if (progressDialog != null) progressDialog.dismiss();
+                Log.e("Error", "onFailure: " + t.getMessage());
+                Toast.makeText(getContext(), "Something went wrong!!!", Toast.LENGTH_LONG).show();
             }
         });
     }
 
-    private void storeDatas(String celestaid, String access_token, String first_name, String qrCode) {
-        sharedPreferenceEditor = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
-        sharedPreferenceEditor.putBoolean("login_status", true);
-        sharedPreferenceEditor.putString("celestaid", celestaid);
-        sharedPreferenceEditor.putString("access_token", access_token);
-        sharedPreferenceEditor.putString("first_name", first_name);
-        sharedPreferenceEditor.putString("qrcode", qrCode);
-        sharedPreferenceEditor.apply();
+    private void storeData(LoginResponse response) {
+        PreferenceManager.getDefaultSharedPreferences(context).edit()
+                .putBoolean("login_status", true)
+                .putString("celesta_id", response.getCelestaId())
+                .putString("access_token", response.getAccessToken())
+                .putString("first_name", response.getFirstName())
+                .putString("qr_code", response.getQrCode())
+                .apply();
     }
 
 }

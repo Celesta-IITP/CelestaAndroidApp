@@ -18,7 +18,7 @@ public class LoginRegisterActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        getWindow().setBackgroundDrawableResource(R.drawable.img1);
+        getWindow().setBackgroundDrawableResource(R.drawable.background_image_2);
         setContentView(R.layout.activity_login_signup);
         if (!sharedPreferences.getBoolean("login_status", false))
             loadFragment(new LoginFragment());

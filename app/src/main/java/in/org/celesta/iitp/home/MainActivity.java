@@ -2,6 +2,8 @@ package in.org.celesta.iitp.home;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -11,6 +13,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.preference.PreferenceManager;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -22,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements EventsRecyclerAda
 
     private AppBarConfiguration mAppBarConfiguration;
     private NavController navController;
+    private MenuItem navAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,22 +40,18 @@ public class MainActivity extends AppCompatActivity implements EventsRecyclerAda
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
+        Menu menu = navigationView.getMenu();
+        navAccount = menu.findItem(R.id.nav_account);
+
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_events_cat, R.id.nav_ongoing, R.id.nav_pronite, R.id.nav_workshops,
-                R.id.nav_lectures, R.id.nav_gallery, R.id.nav_team, R.id.nav_sponsors,
-                R.id.nav_maps, R.id.nav_about, R.id.nav_login, R.id.nav_account)
+                R.id.nav_home, R.id.nav_events_cat, R.id.nav_ongoing, R.id.nav_pronite, R.id.nav_special_cat,
+                R.id.nav_gallery, R.id.nav_team, R.id.nav_sponsors, R.id.nav_maps, R.id.nav_about, R.id.nav_account)
                 .setDrawerLayout(drawer)
                 .build();
 
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
-//        AnimationDrawable drawable = (AnimationDrawable) getResources().getDrawable(R.drawable.background_animation);
-
-//        getWindow().setBackgroundDrawable(drawable);
-//        drawable.start();
-
     }
 
     private void handleIntent(Intent appLinkIntent) {
@@ -65,7 +65,6 @@ public class MainActivity extends AppCompatActivity implements EventsRecyclerAda
 
                 Bundle bundle = new Bundle();
                 bundle.putString("time", time);
-
 
             }
         }
@@ -99,5 +98,14 @@ public class MainActivity extends AppCompatActivity implements EventsRecyclerAda
         fragment.setArguments(b);
         fragment.setRetainInstance(true);
         fragment.show(getSupportFragmentManager(), fragment.getTag());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("login_status", false))
+            navAccount.setTitle("Profile");
+        else navAccount.setTitle("Login/Register");
+
     }
 }
