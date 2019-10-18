@@ -11,13 +11,13 @@ public class LoginResponse {
     @SerializedName("message")
     private List<String> message;
     @SerializedName("celestaid")
-    private String celestaid="";
+    private String celestaId ="";
     @SerializedName("access_token")
-    private String access_token="";
+    private String accessToken ="";
     @SerializedName("first_name")
-    private String first_name="";
-    @SerializedName("qrcode")
-    private String qrcode="";
+    private String firstName ="";
+    @SerializedName("qr_code")
+    private String qrCode ="";
 
     public Integer getStatus() {
         return status;
@@ -35,35 +35,35 @@ public class LoginResponse {
         this.message = message;
     }
 
-    public String getCelestaid() {
-        return celestaid;
+    public String getCelestaId() {
+        return celestaId;
     }
 
-    public void setCelestaid(String celestaid) {
-        this.celestaid = celestaid;
+    public void setCelestaId(String celestaId) {
+        this.celestaId = celestaId;
     }
 
-    public String getAccess_token() {
-        return access_token;
+    public String getAccessToken() {
+        return accessToken;
     }
 
-    public void setAccess_token(String access_token) {
-        this.access_token = access_token;
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getQrcode() {
-        return qrcode;
+    public String getQrCode() {
+        return qrCode;
     }
 
-    public void setQrcode(String qrcode) {
-        this.qrcode = qrcode;
+    public void setQrCode(String qrCode) {
+        this.qrCode = qrCode;
     }
 }

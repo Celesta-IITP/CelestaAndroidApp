@@ -11,7 +11,6 @@ public class RegisterResponse {
     @SerializedName("message")
     private List<String> message;
 
-
     public Integer getStatus() {
         return status;
     }

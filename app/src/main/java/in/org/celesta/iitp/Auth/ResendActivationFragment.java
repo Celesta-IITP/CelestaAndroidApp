@@ -1,6 +1,7 @@
 package in.org.celesta.iitp.Auth;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,9 +15,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
-import java.util.List;
 
 import in.org.celesta.iitp.R;
 import in.org.celesta.iitp.network.RetrofitClientInstance;
@@ -29,66 +27,56 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ResendActivationFragment extends Fragment {
-    TextView register_textview;
-    EditText resend_activation_edittext;
-    Button resend_activation_button;
-    private AuthApi authApi;
-    ProgressDialog progressDialog;
+    private EditText emailInput;
+    private ProgressDialog progressDialog;
+    private Context context;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View rootview = inflater.inflate(R.layout.fragment_resend_activation, container, false);
-        register_textview = rootview.findViewById(R.id.resend_activation_register_textview);
-        resend_activation_edittext = rootview.findViewById(R.id.resend_activation_email_edittext);
-        resend_activation_button = rootview.findViewById(R.id.resend_activation_button);
-        return rootview;
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getContext() != null)
+            this.context = getContext();
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_resend_activation, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        register_textview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                loadFragment(new RegisterFragment());
-            }
-        });
 
-        resend_activation_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!CheckNetwork.isNetworkConnected(getContext()))
-                    Toast.makeText(getContext(), "Check your network properly", Toast.LENGTH_SHORT).show();
-                else
-                    resend_activation();
-            }
+        emailInput = view.findViewById(R.id.resend_activation_email_edittext);
+
+        TextView registerTextView = view.findViewById(R.id.resend_activation_register_textview);
+        registerTextView.setOnClickListener(view1 -> loadFragment(new RegisterFragment()));
+
+        Button resendActivationButton = view.findViewById(R.id.resend_activation_button);
+        resendActivationButton.setOnClickListener(view12 -> {
+            if (!CheckNetwork.isNetworkConnected(context))
+                Toast.makeText(context, "Check your internet connection...", Toast.LENGTH_LONG).show();
+            else resend_activation();
         });
     }
 
-    private boolean loadFragment(Fragment fragment) {
-
-        //replacing the fragment
-        if (fragment != null) {
-            FragmentTransaction ft = getFragmentManager().beginTransaction();
-            ft.replace(R.id.fragment_auth_container, fragment);
-            ft.addToBackStack(fragment.getTag());
-            ft.commit();
-            return true;
+    private void loadFragment(Fragment fragment) {
+        if (fragment != null && getActivity() != null) {
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_auth_container, fragment)
+                    .commit();
         }
-        return false;
     }
 
     private void resend_activation() {
-        Keyboard.closeKeyboard(getView(), getContext());
-        String email = resend_activation_edittext.getText().toString().trim();
+        Keyboard.closeKeyboard(getView(), context);
+        String email = emailInput.getText().toString().trim();
 
-        progressDialog = new ProgressDialog(getContext());
+        progressDialog = new ProgressDialog(context);
         progressDialog.setMessage("Resending link in email...");
         progressDialog.show();
 
-        authApi = RetrofitClientInstance.getRetrofitInstance().create(AuthApi.class);
+        AuthApi authApi = RetrofitClientInstance.getRetrofitInstance().create(AuthApi.class);
 
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
@@ -100,29 +88,34 @@ public class ResendActivationFragment extends Fragment {
 
         call.enqueue(new Callback<ResendActivationResponse>() {
             @Override
-            public void onResponse(Call<ResendActivationResponse> call, Response<ResendActivationResponse> response) {
-                progressDialog.dismiss();
-                Log.e("success", "onResponse: " + response.body().getStatus());
-                if (response.body().getStatus() == 404) {
-                    Toast.makeText(getContext(), "Email not found. Register again", Toast.LENGTH_LONG).show();
-                } else if (response.body().getStatus() == 200) {
-                    Toast.makeText(getContext(), "Check your email for activation link", Toast.LENGTH_LONG).show();
-                    loadFragment(new LoginFragment());
-                } else if (response.body().getStatus() == 208) {
-                    Toast.makeText(getContext(), "Account already activated. Login again", Toast.LENGTH_LONG).show();
-                    loadFragment(new LoginFragment());
+            public void onResponse(@NonNull Call<ResendActivationResponse> call, @NonNull Response<ResendActivationResponse> response) {
+                if (progressDialog != null) progressDialog.dismiss();
+                if (response.isSuccessful() && response.body() != null) {
+
+                    ResendActivationResponse activationResponse = response.body();
+
+                    if (activationResponse.getStatus() == 404) {
+                        Toast.makeText(context, "Email not found! Please register again.", Toast.LENGTH_LONG).show();
+                    } else if (activationResponse.getStatus() == 200) {
+                        Toast.makeText(context, "Check your email for activation link...", Toast.LENGTH_LONG).show();
+                        loadFragment(new LoginFragment());
+                    } else if (activationResponse.getStatus() == 208) {
+                        Toast.makeText(context, "Account already activated! Login again.", Toast.LENGTH_LONG).show();
+                        loadFragment(new LoginFragment());
+                    } else {
+                        Toast.makeText(context, "Something went wrong!!! " + activationResponse.getMessage().get(0), Toast.LENGTH_LONG).show();
+                    }
+                    for (String temp : activationResponse.getMessage())
+                        Log.e("messages", "onResponse: " + temp);
                 } else
-                    Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_LONG).show();
-                List<String> messages=response.body().getMessage();
-                for(String temp : messages)
-                    Log.e("messages", "onResponse: "+temp );
+                    Toast.makeText(context, "Something went wrong!!!", Toast.LENGTH_LONG).show();
             }
 
             @Override
-            public void onFailure(Call<ResendActivationResponse> call, Throwable t) {
-                progressDialog.dismiss();
-                Log.e("failed", "onFailure: " + t.toString());
-                Toast.makeText(getContext(), "Could not resend email verification", Toast.LENGTH_LONG).show();
+            public void onFailure(@NonNull Call<ResendActivationResponse> call, @NonNull Throwable t) {
+                if (progressDialog != null) progressDialog.dismiss();
+                Log.e("failed", "onFailure: " + t.getMessage());
+                Toast.makeText(context, "Could not resend email verification!!!", Toast.LENGTH_LONG).show();
             }
         });
     }
