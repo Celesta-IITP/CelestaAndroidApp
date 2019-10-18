@@ -2,6 +2,7 @@ package in.org.celesta.iitp.Auth;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -16,7 +17,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import java.util.List;
 
@@ -31,87 +31,114 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RegisterFragment extends Fragment {
-    TextView login_textview;
-    Button register_button;
-    EditText first_name_edittext, last_name_edittext, phone_edittext, email_edittext, college_edittext, password_editttext, confirm_password_edittext, referral_edittext, gender_edittext;
-    private AuthApi authApi;
-    ProgressDialog progressDialog;
+
+    private EditText firstNameInput, lastNameInput, phoneInput, emailInput, collegeInput, passwordInput, confirmPasswordInput, referralInput, genderInput;
+    private ProgressDialog progressDialog;
+    private Context context;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_register, container, false);
-        login_textview = rootView.findViewById(R.id.login_textview);
-        register_button = rootView.findViewById(R.id.register_button);
-        first_name_edittext = rootView.findViewById(R.id.register_first_name_edittext);
-        last_name_edittext = rootView.findViewById(R.id.register_last_name_edittext);
-        phone_edittext = rootView.findViewById(R.id.register_phone_edittext);
-        email_edittext = rootView.findViewById(R.id.register_email_edittext);
-        college_edittext = rootView.findViewById(R.id.register_school_college_edittext);
-        password_editttext = rootView.findViewById(R.id.register_password_edittext);
-        confirm_password_edittext = rootView.findViewById(R.id.register_confirm_password_edittext);
-        referral_edittext = rootView.findViewById(R.id.register_referral_edittext);
-        gender_edittext = rootView.findViewById(R.id.register_gender_edittext);
-        return rootView;
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getContext() != null)
+            this.context = getContext();
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_register, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        login_textview.setOnClickListener(view12 -> loadFragment(new LoginFragment()));
 
-        register_button.setOnClickListener(view1 -> {
-            if (!CheckNetwork.isNetworkConnected(getContext()))
-                Toast.makeText(getContext(), "Check your network properly", Toast.LENGTH_SHORT).show();
-            else
-                register();
+        firstNameInput = view.findViewById(R.id.register_first_name_edittext);
+        lastNameInput = view.findViewById(R.id.register_last_name_edittext);
+        phoneInput = view.findViewById(R.id.register_phone_edittext);
+        emailInput = view.findViewById(R.id.register_email_edittext);
+        collegeInput = view.findViewById(R.id.register_school_college_edittext);
+        passwordInput = view.findViewById(R.id.register_password_edittext);
+        confirmPasswordInput = view.findViewById(R.id.register_confirm_password_edittext);
+        referralInput = view.findViewById(R.id.register_referral_edittext);
+        genderInput = view.findViewById(R.id.register_gender_edittext);
+
+        TextView loginTextView = view.findViewById(R.id.login_textview);
+        loginTextView.setOnClickListener(view12 -> loadFragment(new LoginFragment()));
+
+        Button registerButton = view.findViewById(R.id.register_button);
+        registerButton.setOnClickListener(view1 -> {
+            if (!CheckNetwork.isNetworkConnected(context))
+                Toast.makeText(getContext(), "Check your internet connection!!!", Toast.LENGTH_LONG).show();
+            else register();
         });
     }
 
-    private boolean loadFragment(Fragment fragment) {
-
-        //replacing the fragment
-        if (fragment != null) {
-            FragmentTransaction ft = getFragmentManager().beginTransaction();
-            ft.replace(R.id.fragment_auth_container, fragment);
-            ft.commit();
-            return true;
+    private void loadFragment(Fragment fragment) {
+        if (fragment != null && getActivity() != null) {
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_auth_container, fragment)
+                    .commit();
         }
-        return false;
     }
 
     private void register() {
-        String first_name, last_name, phone, email, college, password, confirm_password, referral, gender;
-        first_name = first_name_edittext.getText().toString().trim();
-        last_name = last_name_edittext.getText().toString().trim();
-        phone = phone_edittext.getText().toString().trim();
-        email = email_edittext.getText().toString().trim();
-        college = college_edittext.getText().toString().trim();
-        password = password_editttext.getText().toString().trim();
-        confirm_password = confirm_password_edittext.getText().toString().trim();
-        referral = confirm_password_edittext.getText().toString().trim();
-        if (referral.length() == 0) referral = "CLST1504";
-        gender = gender_edittext.getText().toString().toLowerCase().trim();
+        String firstName, lastName, phone, email, college, password, confirmPassword, referral, gender;
+        firstName = firstNameInput.getText().toString().trim();
+        lastName = lastNameInput.getText().toString().trim();
+        phone = phoneInput.getText().toString().trim();
+        email = emailInput.getText().toString().trim();
+        college = collegeInput.getText().toString().trim();
+        password = passwordInput.getText().toString().trim();
+        confirmPassword = confirmPasswordInput.getText().toString().trim();
+        gender = genderInput.getText().toString().toLowerCase().trim();
 
-        Keyboard.closeKeyboard(getView(), getContext());
+        if (password.isEmpty() || confirmPassword.isEmpty() || !password.equals(confirmPassword)) {
+            confirmPasswordInput.setError("Passwords don't match!!!");
+            return;
+        }
 
-        progressDialog = new ProgressDialog(getContext());
+        if (!("m".equals(gender) || "f".equals(gender))) {
+            genderInput.setError("Enter a valid gender!!!");
+            return;
+        }
+
+        if (phone.isEmpty()) {
+            phoneInput.setError("Enter a valid phone number!!!");
+            return;
+        }
+
+        if (firstName.length() < 3) {
+            firstNameInput.setError("Enter a valid name!!!");
+            return;
+        }
+
+        if (lastName.isEmpty()) {
+            lastNameInput.setError("Enter a valid name!!!");
+            return;
+        }
+
+        referral = referralInput.getText().toString().trim();
+        if (referral.isEmpty()) referral = "CLST1504";
+
+        Keyboard.closeKeyboard(getView(), context);
+
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setCancelable(false);
         progressDialog.setMessage("Registering...");
         progressDialog.show();
 
-        authApi = RetrofitClientInstance.getRetrofitInstance().create(AuthApi.class);
+        AuthApi authApi = RetrofitClientInstance.getRetrofitInstance().create(AuthApi.class);
 
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("f", "register_user")
-                .addFormDataPart("first_name", first_name)
-                .addFormDataPart("last_name", last_name)
+                .addFormDataPart("first_name", firstName)
+                .addFormDataPart("last_name", lastName)
                 .addFormDataPart("phone", phone)
                 .addFormDataPart("college", college)
                 .addFormDataPart("email", email)
                 .addFormDataPart("password", password)
-                .addFormDataPart("confirm_password", confirm_password)
+                .addFormDataPart("confirm_password", confirmPassword)
                 .addFormDataPart("gender", gender)
                 .addFormDataPart("referral_id", referral)
                 .build();
@@ -120,33 +147,36 @@ public class RegisterFragment extends Fragment {
 
         call.enqueue(new Callback<RegisterResponse>() {
             @Override
-            public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
-                progressDialog.dismiss();
-                Log.e("success", "onResponse: " + response.code());
-                if (response.isSuccessful()) {
-                    Toast.makeText(getContext(), "Registration successful.Check your email for activation link", Toast.LENGTH_LONG).show();
-                    new Handler().postDelayed(() -> loadFragment(new LoginFragment()), 2000);
-                } else if (response.code() == 400) {
-                    List<String> messages = response.body().getMessage();
-                    String err = "";
-                    for (String temp : messages) {
-                        err = err.concat(temp + "\n");
-                        Log.e("messages", "onResponse: " + temp);
+            public void onResponse(@NonNull Call<RegisterResponse> call, @NonNull Response<RegisterResponse> response) {
+                if (progressDialog != null) progressDialog.dismiss();
+                if (response.isSuccessful() && response.body() != null) {
+
+                    RegisterResponse registerResponse = response.body();
+
+                    if (registerResponse.getStatus() == 200) {
+                        Toast.makeText(getContext(), "Registration successful.Check your email for activation link", Toast.LENGTH_LONG).show();
+                        new Handler().postDelayed(() -> loadFragment(new LoginFragment()), 1000);
+                    } else if (registerResponse.getStatus() == 400) {
+                        List<String> messages = registerResponse.getMessage();
+
+                        StringBuilder err = new StringBuilder();
+                        for (String temp : messages) err = err.append(temp).append("\n");
+                        Log.e("messages", "onResponse: err= " + err.toString());
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                        builder.setMessage(err.toString());
+                        builder.setTitle("Alert!!!");
+                        builder.show();
                     }
-                    Log.e("messages", "onResponse: err= " + err);
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                    builder.setMessage(err);
-                    builder.setTitle("Error:");
-                    builder.setCancelable(true);
-                    builder.create().show();
-                }
+                } else
+                    Toast.makeText(getContext(), "Something went wrong!!!", Toast.LENGTH_LONG).show();
             }
 
             @Override
-            public void onFailure(Call<RegisterResponse> call, Throwable t) {
+            public void onFailure(@NonNull Call<RegisterResponse> call, @NonNull Throwable t) {
                 progressDialog.dismiss();
-                Log.e("Error", "onFailure: " + t.toString());
-                Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                Log.e("Error", "onFailure: " + t.getMessage());
+                Toast.makeText(getContext(), "Something went wrong!!!", Toast.LENGTH_LONG).show();
             }
         });
     }

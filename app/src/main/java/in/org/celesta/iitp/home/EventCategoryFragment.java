@@ -85,7 +85,6 @@ public class EventCategoryFragment extends Fragment {
 
         observeAll();
 
-
         super.onViewCreated(view, savedInstanceState);
     }
 

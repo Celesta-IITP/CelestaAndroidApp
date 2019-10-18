@@ -66,7 +66,6 @@ public class ProfileFragment extends Fragment {
             else logout();
         });
 
-//        if (!CheckNetwork.isNetworkConnected(context))
         showOfflineProfile();
     }
 

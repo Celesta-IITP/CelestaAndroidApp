@@ -69,7 +69,6 @@ public class EventsFragment extends Fragment {
         if (getActivity() != null)
             ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(club + " Events");
 
-
         swipeRefreshLayout = view.findViewById(R.id.swipe_refresh_events);
         swipeRefreshLayout.setOnRefreshListener(this::updateData);
 

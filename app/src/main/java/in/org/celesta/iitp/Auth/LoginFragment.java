@@ -78,7 +78,6 @@ public class LoginFragment extends Fragment {
         if (fragment != null && getActivity() != null) {
             getActivity().getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_auth_container, fragment)
-                    .addToBackStack(fragment.getTag())
                     .commit();
         }
     }
