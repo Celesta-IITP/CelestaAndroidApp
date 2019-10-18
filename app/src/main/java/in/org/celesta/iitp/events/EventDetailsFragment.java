@@ -1,40 +1,58 @@
 package in.org.celesta.iitp.events;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.preference.PreferenceManager;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
+import java.util.List;
+
+import in.org.celesta.iitp.Auth.LogoutResponse;
 import in.org.celesta.iitp.R;
+import in.org.celesta.iitp.network.EventsRoutes;
+import in.org.celesta.iitp.network.RetrofitClientInstance;
 import in.org.celesta.iitp.utils.ImageViewerActivity;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class EventDetailsFragment extends BottomSheetDialogFragment {
 
     public EventDetailsFragment() {
     }
 
-    private EventsViewModel viewModel;
     private EventItem current;
     private Context context;
     private int[] color;
+    private SharedPreferences preferences;
+    private ProgressDialog progressDialog;
 
     @Override
     public int getTheme() {
@@ -51,7 +69,7 @@ public class EventDetailsFragment extends BottomSheetDialogFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        viewModel = ViewModelProviders.of(this).get(EventsViewModel.class);
+        EventsViewModel viewModel = ViewModelProviders.of(this).get(EventsViewModel.class);
 
         if (getContext() != null)
             this.context = getContext();
@@ -63,6 +81,12 @@ public class EventDetailsFragment extends BottomSheetDialogFragment {
             current = viewModel.getEventById(id);
             if (current == null) this.dismiss();
         } else this.dismiss();
+
+        preferences = PreferenceManager.getDefaultSharedPreferences(context);
+
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setCancelable(false);
+        progressDialog.setIndeterminate(true);
     }
 
     @Override
@@ -176,6 +200,144 @@ public class EventDetailsFragment extends BottomSheetDialogFragment {
             register.setText(String.format("Register (₹ %s)", current.getEvAmount()));
         }
 
+        register.setOnClickListener(view15 -> {
+            if (preferences.getBoolean("login_status", false)) {
+                if ("0".equals(current.getIsTeamEvent())) {
+                    registerSoloEvent();
+                } else {
+                    showAlertDialog();
+                }
+            }
+        });
+
         super.onViewCreated(view, savedInstanceState);
+    }
+
+    private void registerSoloEvent() {
+
+        progressDialog.setMessage("Registering...");
+        if (progressDialog != null) progressDialog.show();
+
+        EventsRoutes api = RetrofitClientInstance.getRetrofitInstance().create(EventsRoutes.class);
+
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("celestaid", preferences.getString("celesta_id", ""))
+                .addFormDataPart("eventid", current.getEvId())
+                .addFormDataPart("access_token", preferences.getString("access_token", ""))
+                .build();
+
+        Call<LogoutResponse> call = api.registerSoloEvent(requestBody);
+        call.enqueue(new Callback<LogoutResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<LogoutResponse> call, @NonNull Response<LogoutResponse> response) {
+                if (progressDialog != null) progressDialog.dismiss();
+
+                if (response.isSuccessful() && response.body() != null) {
+
+                    LogoutResponse registerResponse = response.body();
+
+                    List<String> message = registerResponse.getMessage();
+                    if (message != null && message.size() > 0)
+                        Toast.makeText(context, message.get(0), Toast.LENGTH_LONG).show();
+
+                } else Toast.makeText(context, "Something went wrong!!!", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<LogoutResponse> call, @NonNull Throwable t) {
+                if (progressDialog != null) progressDialog.dismiss();
+                Log.e("Error", "onFailure: " + t.getMessage());
+                Toast.makeText(context, "Something went wrong!!!", Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
+
+    private void showAlertDialog() {
+        final View dialogView = getLayoutInflater().inflate(R.layout.dialog_register_team_event, null);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setView(dialogView);
+        builder.setCancelable(false);
+        builder.setNegativeButton("Cancel", (dialog, id) -> {
+            if (dialog != null) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+
+        TextView teamCaptain = dialogView.findViewById(R.id.team_captain_celesta_id);
+        teamCaptain.setText(preferences.getString("celesta_id", ""));
+
+        Button registerButton = dialogView.findViewById(R.id.register_team_event);
+        registerButton.setOnClickListener(view -> {
+            EditText celestaId1 = dialogView.findViewById(R.id.input_celesta_id_1);
+            EditText celestaId2 = dialogView.findViewById(R.id.input_celesta_id_2);
+            EditText celestaId3 = dialogView.findViewById(R.id.input_celesta_id_3);
+            EditText celestaId4 = dialogView.findViewById(R.id.input_celesta_id_4);
+            EditText celestaId5 = dialogView.findViewById(R.id.input_celesta_id_5);
+            EditText teamName = dialogView.findViewById(R.id.input_team_name);
+
+            if (teamName.getText().toString().isEmpty()) {
+                teamName.setError("Enter a valid team name!");
+                return;
+            }
+
+            registerTeamEvent(teamName.getText().toString(), celestaId1.getText().toString(), celestaId2.getText().toString(),
+                    celestaId3.getText().toString(), celestaId4.getText().toString(), celestaId5.getText().toString(), alertDialog);
+        });
+
+        alertDialog.show();
+    }
+
+    private void registerTeamEvent(String teamName, String c1, String c2, String c3, String c4, String c5, AlertDialog alertDialog) {
+
+        progressDialog.setMessage("Registering...");
+        if (progressDialog != null) progressDialog.show();
+
+        EventsRoutes api = RetrofitClientInstance.getRetrofitInstance().create(EventsRoutes.class);
+
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("celestaid", preferences.getString("celesta_id", ""))
+                .addFormDataPart("eventid", current.getEvId())
+                .addFormDataPart("access_token", preferences.getString("access_token", ""))
+                .addFormDataPart("team_name", teamName)
+                .addFormDataPart("member1", c1)
+                .addFormDataPart("member2", c2)
+                .addFormDataPart("member3", c3)
+                .addFormDataPart("member4", c4)
+                .addFormDataPart("member5", c5)
+                .build();
+
+        Call<LogoutResponse> call = api.registerTeamEvent(requestBody);
+        call.enqueue(new Callback<LogoutResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<LogoutResponse> call, @NonNull Response<LogoutResponse> response) {
+                if (progressDialog != null) progressDialog.dismiss();
+
+                if (response.isSuccessful() && response.body() != null) {
+
+                    LogoutResponse registerResponse = response.body();
+
+                    if (registerResponse.getStatus() == 202)
+                        if (alertDialog != null) alertDialog.dismiss();
+
+                    List<String> message = registerResponse.getMessage();
+                    if (message != null && message.size() > 0)
+                        Toast.makeText(context, message.get(0), Toast.LENGTH_LONG).show();
+
+                } else Toast.makeText(context, "Something went wrong!!!", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<LogoutResponse> call, @NonNull Throwable t) {
+                if (progressDialog != null) progressDialog.dismiss();
+                Log.e("Error", "onFailure: " + t.getMessage());
+                Toast.makeText(context, "Something went wrong!!!", Toast.LENGTH_LONG).show();
+            }
+        });
+
     }
 }
