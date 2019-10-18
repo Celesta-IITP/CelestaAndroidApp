@@ -131,24 +131,24 @@ public class LoginFragment extends Fragment {
                     if (loginResponse.getStatus() == 202) {
                         Log.e("success", "access_token: " + loginResponse.getAccessToken());
                         storeData(loginResponse);
-                        Toast.makeText(getContext(), "Login successful", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Login successful", Toast.LENGTH_SHORT).show();
 
                         if (getActivity() != null)
                             getActivity().finish();
 
-                    } else if (response.body().getStatus() == 403) {
+                    } else if (loginResponse.getStatus() == 403) {
                         List<String> message = loginResponse.getMessage();
-                        Toast.makeText(getContext(), message.get(0), Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, message.get(0), Toast.LENGTH_LONG).show();
                     }
 
-                } else Toast.makeText(getContext(), "Something went wrong!!!", Toast.LENGTH_LONG).show();
+                } else Toast.makeText(context, "Something went wrong!!!", Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onFailure(@NonNull Call<LoginResponse> call, @NonNull Throwable t) {
                 if (progressDialog != null) progressDialog.dismiss();
                 Log.e("Error", "onFailure: " + t.getMessage());
-                Toast.makeText(getContext(), "Something went wrong!!!", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Something went wrong!!!", Toast.LENGTH_LONG).show();
             }
         });
     }
