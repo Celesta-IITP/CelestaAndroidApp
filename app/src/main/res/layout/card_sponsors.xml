@@ -19,12 +19,13 @@
             android:id="@+id/image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop" />
+            android:src="@drawable/bihartourism"/>
 
         <ImageView
             android:id="@+id/image1"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_below="@id/image1"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:background="@color/navigation_background" />
 
@@ -33,9 +34,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/image1"
-            android:layout_alignBottom="@id/image1"
             android:gravity="center"
-            tools:text="Sponsor name"
+            tools:text="Associate Sponsor"
             android:textColor="@android:color/white"
             android:textSize="16sp"
             android:textStyle="bold" />
