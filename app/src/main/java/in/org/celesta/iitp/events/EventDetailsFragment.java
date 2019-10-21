@@ -32,6 +32,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.List;
 
+import in.org.celesta.iitp.Auth.LoginRegisterActivity;
 import in.org.celesta.iitp.Auth.LogoutResponse;
 import in.org.celesta.iitp.R;
 import in.org.celesta.iitp.network.EventsRoutes;
@@ -207,6 +208,10 @@ public class EventDetailsFragment extends BottomSheetDialogFragment {
                 } else {
                     showAlertDialog();
                 }
+            } else {
+                Toast.makeText(context, "You need to login first...", Toast.LENGTH_LONG).show();
+                Intent i = new Intent(context, LoginRegisterActivity.class);
+                startActivity(i);
             }
         });
 
