@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements EventsRecyclerAda
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setBackgroundDrawableResource(R.drawable.background_image_2);
+        getWindow().setBackgroundDrawableResource(R.drawable.back2);
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
