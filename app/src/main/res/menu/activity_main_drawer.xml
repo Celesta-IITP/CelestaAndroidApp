@@ -63,10 +63,6 @@
             android:icon="@drawable/ic_login"
             android:title="Login/Register" />
 
-        <item
-            android:id="@+id/contactUs"
-            android:icon="@drawable/ic_call_black_24dp"
-            android:title="Contact Us" />
     </group>
 
 </menu>

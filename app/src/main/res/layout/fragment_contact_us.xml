@@ -1,278 +1,486 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ContactUs.ContactFragment">
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
-        android:src="@drawable/background_image_2" />
-
-
-    <TextView
-        android:id="@+id/contact"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="18dp"
-        android:layout_marginTop="35dp"
-        android:text="Need Help?"
-        android:textColor="@color/white"
-        android:textDirection="firstStrong"
-        android:textSize="26sp" />
-
-
-    <TextView
-        android:id="@+id/intro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/contact"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="8dp"
-        android:text="Contact Us!"
-        android:textColor="@color/white"
-        android:textSize="34sp"
-        android:textStyle="bold" />
+    tools:context=".contact.ContactFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardBackgroundColor="@color/event_detail_card_background"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp"
+            app:contentPadding="4dp">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <View
-                    android:id="@+id/view"
-                    android:layout_width="match_parent"
-                    android:layout_height="6dp"
-                    android:layout_marginTop="136dp"
-                    android:outlineAmbientShadowColor="@color/white"
-                    android:tint="@android:color/white" />
+                android:layout_margin="8dp"
+                android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/name1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="Connect with us"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/view"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginTop="21dp"
-                    android:fontFamily="sans-serif-medium"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/connect_facebook"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        app:cardBackgroundColor="@color/event_detail_card_background"
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="20dp"
+                        app:contentPadding="6dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/facebook"
+                            android:tint="@color/white" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/connect_instagram"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        app:cardBackgroundColor="@color/event_detail_card_background"
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="20dp"
+                        app:contentPadding="6dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_instagram"
+                            android:tint="@color/white" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/connect_twitter"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        app:cardBackgroundColor="@color/event_detail_card_background"
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="20dp"
+                        app:contentPadding="6dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_twitter"
+                            android:tint="@color/white" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/connect_youtube"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        app:cardBackgroundColor="@color/event_detail_card_background"
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="20dp"
+                        app:contentPadding="6dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_youtube"
+                            android:tint="@color/white" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/connect_linkedin"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        app:cardBackgroundColor="@color/event_detail_card_background"
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="20dp"
+                        app:contentPadding="6dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_linkedin"
+                            android:tint="@color/white" />
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+
+        <TextView
+            android:id="@+id/contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="35dp"
+            android:text="Need Help?"
+            android:textColor="@color/white"
+            android:textDirection="firstStrong"
+            android:textSize="26sp" />
+
+        <TextView
+            android:id="@+id/intro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Contact Us !"
+            android:textColor="@color/white"
+            android:textSize="34sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="8dp"
+            android:background="@android:color/white" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardBackgroundColor="@color/event_detail_card_background"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp"
+            app:contentPadding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
                     android:text="Aman Deep"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/por1"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/name1"
-                    android:layout_marginStart="18dp"
-                    android:fontFamily="sans-serif-medium"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
                     android:text="(Coordinator-Media And Public Relations)"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textColor="@color/medBlue"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/cn1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/por1"
-                    android:layout_marginStart="18dp"
-                    android:text="Contact Number : "
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-
-                <ImageButton
-                    android:id="@+id/b1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/por1"
-                    android:layout_toEndOf="@id/num1"
-                    android:onClick="onClick"
-                    android:src="@drawable/ic_call_black_24dp"
-                    android:tint="@android:color/white" />
-
-                <TextView
-                    android:id="@+id/num1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/por1"
-                    android:layout_toEndOf="@id/cn1"
-                    android:text="9931059201"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/name2"
+                <LinearLayout
                     android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="8dp"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        app:cardBackgroundColor="@color/event_detail_card_background"
+                        app:cardCornerRadius="20dp"
+                        app:contentPadding="6dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_local_phone_black_24dp"
+                            android:tint="@color/white" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="16dp"
+                        android:autoLink="phone"
+                        android:gravity="center_vertical"
+                        android:text="+91 9931059201"
+                        android:textColorLink="@color/white"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardBackgroundColor="@color/event_detail_card_background"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp"
+            app:contentPadding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/cn1"
-                    android:layout_marginStart="18dp"
-                    android:fontFamily="sans-serif-medium"
+                    android:layout_margin="8dp"
                     android:text="Priyansh Singh Rao"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/por2"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/name2"
-                    android:layout_marginStart="18dp"
-                    android:fontFamily="sans-serif-medium"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
                     android:text="(Coordinator-Media And Public Relations)"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textColor="@color/medBlue"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/cn2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/por2"
-                    android:layout_marginStart="18dp"
-                    android:text="Contact Number : "
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/num2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/por2"
-                    android:layout_marginEnd="22dp"
-                    android:layout_toEndOf="@id/cn2"
-                    android:text="8058501770"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-
-                <ImageButton
-                    android:id="@+id/b2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/por2"
-                    android:layout_toEndOf="@id/num1"
-                    android:onClick="onClick"
-                    android:src="@drawable/ic_call_black_24dp"
-                    android:tint="@android:color/white" />
-
-
-                <TextView
-                    android:id="@+id/name3"
+                <LinearLayout
                     android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="8dp"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        app:cardBackgroundColor="@color/event_detail_card_background"
+                        app:cardCornerRadius="20dp"
+                        app:contentPadding="6dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_local_phone_black_24dp"
+                            android:tint="@color/white" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="16dp"
+                        android:autoLink="phone"
+                        android:gravity="center_vertical"
+                        android:text="+91 8058501770"
+                        android:textColorLink="@color/white"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardBackgroundColor="@color/event_detail_card_background"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp"
+            app:contentPadding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/cn2"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginTop="11dp"
-                    android:fontFamily="sans-serif-medium"
+                    android:layout_margin="8dp"
                     android:text="Roushan Kumar"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/por3"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/name3"
-                    android:layout_marginStart="18dp"
-                    android:fontFamily="sans-serif-medium"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
                     android:text="(Coordinator-Media And Public Relations)"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textColor="@color/medBlue"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/cn3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/por3"
-                    android:layout_marginStart="18dp"
-                    android:text="Contact Number : "
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-
-
-                <ImageButton
-                    android:id="@+id/b3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/por3"
-                    android:layout_toEndOf="@id/num1"
-                    android:onClick="onClick"
-                    android:src="@drawable/ic_call_black_24dp"
-                    android:tint="@android:color/white" />
-
-                <TextView
-                    android:id="@+id/num3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/por3"
-                    android:layout_marginEnd="22dp"
-                    android:layout_toEndOf="@id/cn3"
-                    android:text="9610098566"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/bus"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/cn3"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginTop="33dp"
-                    android:layout_marginEnd="22dp"
-                    android:text="Bus Route and Schedule"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-
-                <ImageButton
-                    android:id="@+id/b4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/cn3"
-                    android:layout_marginTop="25dp"
-                    android:layout_toEndOf="@id/bus"
-                    android:onClick="onClick"
-                    android:src="@drawable/ic_access_time"
-                    android:tint="@android:color/white" />
-
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="8dp"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        app:cardBackgroundColor="@color/event_detail_card_background"
+                        app:cardCornerRadius="20dp"
+                        app:contentPadding="6dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_local_phone_black_24dp"
+                            android:tint="@color/white" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/num1"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="16dp"
+                        android:autoLink="phone"
+                        android:gravity="center_vertical"
+                        android:text="+91 9610098566"
+                        android:textColorLink="@color/white"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardBackgroundColor="@color/event_detail_card_background"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp"
+            app:contentPadding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/bus"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginTop="158dp"
-                    android:layout_weight="0"
+                    android:layout_margin="8dp"
                     android:text="Don't know where we are?"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/gd"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/bus"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginTop="178dp"
-                    android:layout_weight="0"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
                     android:text="No worries! Get Directions"
+                    android:textColor="@color/medBlue"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="8dp"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        app:cardBackgroundColor="@color/event_detail_card_background"
+                        app:cardCornerRadius="20dp"
+                        app:contentPadding="6dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_location"
+                            android:tint="@color/white" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="16dp"
+                        android:autoLink="web"
+                        android:gravity="center_vertical"
+                        android:text="https://maps.app.goo.gl/fZMAwtkMHcwbR28t8"
+                        android:textColorLink="@color/white"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/bus_schedule"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardBackgroundColor="@color/event_detail_card_background"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp"
+            app:contentPadding="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Bus Schedule"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
-            </RelativeLayout>
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:tint="@color/white"
+                    android:src="@drawable/ic_keyboard_arrow_right_black_24dp" />
 
-        </LinearLayout>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
 
     </LinearLayout>
-
-
-</RelativeLayout>
+</ScrollView>

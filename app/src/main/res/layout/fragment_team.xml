@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,10 +23,10 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/parth"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/perth3"
-                    android:padding="8dp"/>
+                    android:padding="8dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -37,39 +37,40 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:text="Parth Kulkarni"
                         android:textColor="@color/white"
-                        android:gravity="center_vertical"
-                        android:textSize="20sp"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:text="Fest Convenor"
-                        android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="20sp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:text="73030 69559"
-                        android:autoLink="phone"
-                        android:textColor="@color/silver"
                         android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:text="Fest Convenor"
+                        android:textColor="@color/silver"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:autoLink="phone"
+                        android:gravity="center_vertical"
+                        android:text="73030 69559"
+                        android:textColor="@color/silver"
+                        android:textSize="16sp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -88,10 +89,10 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/rakshit"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/rakshit_circle2"
-                    android:padding="8dp"/>
+                    android:padding="8dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -102,39 +103,40 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:text="Rakshit Maheshwari"
                         android:textColor="@color/white"
-                        android:gravity="center_vertical"
-                        android:textSize="20sp"/>
+                        android:textSize="20sp" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:text="Fest Coordinator"
                         android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:text="99395 12017"
                         android:autoLink="phone"
-                        android:textColor="@color/silver"
                         android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:text="99395 12017"
+                        android:textColor="@color/silver"
+                        android:textSize="16sp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -152,10 +154,10 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/priyansh"
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:src="@drawable/psr_c"
-                    android:padding="8dp"/>
+                    android:padding="8dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -166,39 +168,40 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1.5"
+                        android:gravity="center_vertical"
                         android:text="Priyansh Singh Rao"
                         android:textColor="@color/white"
-                        android:gravity="center_vertical"
-                        android:textSize="20sp"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="2"
-                        android:text="Coordinator - Media and Public Relations"
-                        android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="20sp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:autoLink="phone"
+                        android:layout_weight="2"
+                        android:gravity="center_vertical"
+                        android:text="Coordinator - Media and Public Relations"
+                        android:textColor="@color/silver"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:autoLink="phone"
+                        android:gravity="center_vertical"
                         android:text="80585 01770"
                         android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -218,8 +221,8 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:src="@drawable/rakshit_circle2"
-                    android:padding="8dp"/>
+                    android:padding="8dp"
+                    android:id="@+id/roushan" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -230,39 +233,40 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:text="Roushan Kumar"
                         android:textColor="@color/white"
-                        android:gravity="center_vertical"
-                        android:textSize="20sp"/>
+                        android:textSize="20sp" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="2"
+                        android:gravity="center_vertical"
                         android:text="Coordinator - Media and Public Relations"
                         android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:text="xxxxx xxxxxx"
                         android:autoLink="phone"
-                        android:textColor="@color/silver"
                         android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:text="96100 98566"
+                        android:textColor="@color/silver"
+                        android:textSize="16sp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -282,8 +286,8 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:src="@drawable/aman_deep_c"
-                    android:padding="8dp"/>
+                    android:padding="8dp"
+                    android:id="@+id/aman" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -294,39 +298,40 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1.5"
+                        android:gravity="center_vertical"
                         android:text="Aman Deep"
                         android:textColor="@color/white"
-                        android:gravity="center_vertical"
-                        android:textSize="20sp"/>
+                        android:textSize="20sp" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="2"
+                        android:gravity="center_vertical"
                         android:text="Coordinator - Media and Public Relations"
                         android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:text="99310 59201"
                         android:autoLink="phone"
-                        android:textColor="@color/silver"
                         android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:text="99310 59201"
+                        android:textColor="@color/silver"
+                        android:textSize="16sp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -344,10 +349,10 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/piyush"
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:padding="8dp"
-                    android:id="@+id/piyush"/>
+                    android:padding="8dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -358,39 +363,40 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1.5"
+                        android:gravity="center_vertical"
                         android:text="Piyush Tiwari"
                         android:textColor="@color/white"
-                        android:gravity="center_vertical"
-                        android:textSize="20sp"/>
+                        android:textSize="20sp" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="2"
+                        android:gravity="center_vertical"
                         android:text="Coordinator - Events and Operations"
                         android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:autoLink="phone"
+                        android:gravity="center_vertical"
                         android:text="98349 43057"
                         android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -408,10 +414,10 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/mohit"
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:padding="8dp"
-                    android:id="@+id/mohit"/>
+                    android:padding="8dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -422,39 +428,40 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:text="Mohit Kishore"
                         android:textColor="@color/white"
-                        android:gravity="center_vertical"
-                        android:textSize="20sp"/>
+                        android:textSize="20sp" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="2"
+                        android:gravity="center_vertical"
                         android:text="Coordinator - Events and Operations"
                         android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:text="95705 66557"
                         android:autoLink="phone"
-                        android:textColor="@color/silver"
                         android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:text="95705 66557"
+                        android:textColor="@color/silver"
+                        android:textSize="16sp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -472,10 +479,10 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/vatsal"
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:padding="8dp"
-                    android:id="@+id/vatsal"/>
+                    android:padding="8dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -486,39 +493,40 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1.5"
+                        android:gravity="center_vertical"
                         android:text="Vatsal Singhal"
                         android:textColor="@color/white"
-                        android:gravity="center_vertical"
-                        android:textSize="20sp"/>
+                        android:textSize="20sp" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="2"
+                        android:gravity="center_vertical"
                         android:text="Coordinator - Development Team"
                         android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:autoLink="phone"
+                        android:gravity="center_vertical"
                         android:text="85859 92062"
                         android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -536,10 +544,10 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/deepanjan"
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:padding="8dp"
-                    android:id="@+id/deepanjan"/>
+                    android:padding="8dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -550,39 +558,40 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1.5"
+                        android:gravity="center_vertical"
                         android:text="Deepanjan Datta"
                         android:textColor="@color/white"
-                        android:gravity="center_vertical"
-                        android:textSize="20sp"/>
+                        android:textSize="20sp" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="2"
+                        android:gravity="center_vertical"
                         android:text="Coordinator - Development Team"
                         android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:text="70441 70063"
                         android:autoLink="phone"
-                        android:textColor="@color/silver"
                         android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:text="70441 70063"
+                        android:textColor="@color/silver"
+                        android:textSize="16sp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -600,10 +609,10 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/srikar"
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:padding="8dp"
-                    android:id="@+id/srikar"/>
+                    android:padding="8dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -614,39 +623,40 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1.5"
+                        android:gravity="center_vertical"
                         android:text="Srikar Nayak"
                         android:textColor="@color/white"
-                        android:gravity="center_vertical"
-                        android:textSize="20sp"/>
+                        android:textSize="20sp" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="2"
+                        android:gravity="center_vertical"
                         android:text="Coordinator - Creatives And Design"
                         android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:layout_width="match_parent"
-                        android:autoLink="phone"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:autoLink="phone"
+                        android:gravity="center_vertical"
                         android:text="96666 63764"
                         android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -664,10 +674,10 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/shubham"
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:padding="8dp"
-                    android:id="@+id/shubham"/>
+                    android:padding="8dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -678,39 +688,40 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:text="Shubham Mondal"
                         android:textColor="@color/white"
-                        android:gravity="center_vertical"
-                        android:textSize="20sp"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="2"
-                        android:text="Coordinator - Creatives And Design"
-                        android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="20sp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:autoLink="phone"
+                        android:layout_weight="2"
+                        android:gravity="center_vertical"
+                        android:text="Coordinator - Creatives And Design"
+                        android:textColor="@color/silver"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:autoLink="phone"
+                        android:gravity="center_vertical"
                         android:text="89676 54843"
                         android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -728,10 +739,10 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/raghu"
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:padding="8dp"
-                    android:id="@+id/raghu"/>
+                    android:padding="8dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -742,39 +753,40 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1.5"
+                        android:gravity="center_vertical"
                         android:text="Raghu Vamsi"
                         android:textColor="@color/white"
-                        android:gravity="center_vertical"
-                        android:textSize="20sp"/>
+                        android:textSize="20sp" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="2"
+                        android:gravity="center_vertical"
                         android:text="Coordinator - Creatives And Design"
                         android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:autoLink="phone"
                         android:layout_weight="1"
+                        android:autoLink="phone"
+                        android:gravity="center_vertical"
                         android:text="97054 71944"
                         android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -792,10 +804,10 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/prateek"
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:padding="8dp"
-                    android:id="@+id/prateek"/>
+                    android:padding="8dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -806,39 +818,40 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:text="Prateek Rai"
                         android:textColor="@color/white"
-                        android:gravity="center_vertical"
-                        android:textSize="20sp"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="2"
-                        android:text="Coordinator - Management And Planning"
-                        android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="20sp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:autoLink="phone"
+                        android:layout_weight="2"
+                        android:gravity="center_vertical"
+                        android:text="Coordinator - Management And Planning"
+                        android:textColor="@color/silver"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:autoLink="phone"
+                        android:gravity="center_vertical"
                         android:text="72229 98383"
                         android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -856,10 +869,10 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/yashwanth"
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:padding="8dp"
-                    android:id="@+id/yashwanth"/>
+                    android:padding="8dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -870,39 +883,40 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1.5"
+                        android:gravity="center_vertical"
                         android:text="Yashwanth Chowdhary"
                         android:textColor="@color/white"
-                        android:gravity="center_vertical"
-                        android:textSize="20sp"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="2"
-                        android:text="Coordinator - Management And Planning"
-                        android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="20sp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:autoLink="phone"
+                        android:layout_weight="2"
+                        android:gravity="center_vertical"
+                        android:text="Coordinator - Management And Planning"
+                        android:textColor="@color/silver"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:autoLink="phone"
+                        android:gravity="center_vertical"
                         android:text="91829 94302"
                         android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -920,10 +934,10 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/rama"
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:padding="8dp"
-                    android:id="@+id/rama"/>
+                    android:padding="8dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -934,39 +948,40 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:text="Rama Krishna"
                         android:textColor="@color/white"
-                        android:gravity="center_vertical"
-                        android:textSize="20sp"/>
+                        android:textSize="20sp" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="2"
+                        android:gravity="center_vertical"
                         android:text="Coordinator - Management And Planning"
                         android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:autoLink="phone"
+                        android:gravity="center_vertical"
                         android:text="89852 65942"
                         android:textColor="@color/silver"
-                        android:autoLink="phone"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -984,10 +999,10 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/pranshu"
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:padding="8dp"
-                    android:id="@+id/pranshu"/>
+                    android:padding="8dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -998,39 +1013,40 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:text="Pranshu Chandani"
                         android:textColor="@color/white"
-                        android:gravity="center_vertical"
-                        android:textSize="20sp"/>
+                        android:textSize="20sp" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:text="Coordinator - Hospitality"
                         android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:autoLink="phone"
+                        android:gravity="center_vertical"
                         android:text="87918 38088"
                         android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -1048,10 +1064,10 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/vineet"
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:padding="8dp"
-                    android:id="@+id/vineet"/>
+                    android:padding="8dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -1062,39 +1078,40 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:text="Vineet Mishra"
                         android:textColor="@color/white"
-                        android:gravity="center_vertical"
-                        android:textSize="20sp"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:text="Coordinator - Hospitality"
-                        android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="20sp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:autoLink="phone"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="Coordinator - Hospitality"
+                        android:textColor="@color/silver"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:autoLink="phone"
+                        android:gravity="center_vertical"
                         android:text="73551 54998"
                         android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -1112,10 +1129,10 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/nikhil"
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:padding="8dp"
-                    android:id="@+id/nikhil"/>
+                    android:padding="8dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -1126,39 +1143,40 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:text="Nikhil Bommera"
                         android:textColor="@color/white"
-                        android:gravity="center_vertical"
-                        android:textSize="20sp"/>
+                        android:textSize="20sp" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:text="Coordinator - Hospitality"
                         android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:autoLink="phone"
+                        android:gravity="center_vertical"
                         android:text="62055 59807"
                         android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -1176,10 +1194,10 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/manoj"
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:padding="8dp"
-                    android:id="@+id/manoj"/>
+                    android:padding="8dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -1190,39 +1208,40 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:text="Manoj Kumar"
                         android:textColor="@color/white"
-                        android:gravity="center_vertical"
-                        android:textSize="20sp"/>
+                        android:textSize="20sp" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1.5"
+                        android:gravity="center_vertical"
                         android:text="Coordinator - Registrations And Security"
                         android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:autoLink="phone"
                         android:layout_weight="1"
+                        android:autoLink="phone"
+                        android:gravity="center_vertical"
                         android:text="83288 64643"
                         android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -1240,10 +1259,10 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/aditya"
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:padding="8dp"
-                    android:id="@+id/aditya"/>
+                    android:padding="8dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -1254,39 +1273,40 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
                         android:text="Aditya Ranjan"
                         android:textColor="@color/white"
-                        android:gravity="center_vertical"
-                        android:textSize="20sp"/>
+                        android:textSize="20sp" />
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1.5"
+                        android:gravity="center_vertical"
                         android:text="Coordinator - Registrations And Security"
                         android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:autoLink="phone"
+                        android:gravity="center_vertical"
                         android:text="82715 72990"
                         android:textColor="@color/silver"
-                        android:gravity="center_vertical"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
-                        android:background="@color/white"/>
+                        android:background="@color/white" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
