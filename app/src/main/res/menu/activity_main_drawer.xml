@@ -8,6 +8,7 @@
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home"
             android:title="Home" />
+
         <item
             android:id="@+id/nav_theme"
             android:icon="@drawable/ic_theme_black_24dp"
@@ -16,43 +17,56 @@
             android:id="@+id/nav_events_cat"
             android:icon="@drawable/events_icon_2"
             android:title="Events" />
+
         <item
             android:id="@+id/nav_ongoing"
             android:icon="@drawable/ic_ongoing"
             android:title="Ongoing Events" />
+
         <item
             android:id="@+id/nav_pronite"
             android:icon="@drawable/ic_pronite"
             android:title="Pronite" />
+
         <item
             android:id="@+id/nav_special_cat"
             android:icon="@drawable/events_special"
             android:title="Special Events" />
+
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_gallery"
             android:title="Gallery" />
+
         <item
             android:id="@+id/nav_team"
             android:icon="@drawable/ic_team"
             android:title="Team" />
+
         <item
             android:id="@+id/nav_sponsors"
             android:icon="@drawable/ic_sponsor"
             android:title="Sponsors" />
+
         <item
             android:id="@+id/nav_maps"
             android:icon="@drawable/ic_map"
             android:title="Maps" />
+
         <item
             android:id="@+id/nav_developers"
             android:icon="@drawable/developer_android"
             android:title="Developers" />
+
         <item
             android:id="@+id/nav_account"
             android:icon="@drawable/ic_login"
             android:title="Login/Register" />
 
+        <item
+            android:id="@+id/contactUs"
+            android:icon="@drawable/ic_call_black_24dp"
+            android:title="Contact Us" />
     </group>
 
 </menu>

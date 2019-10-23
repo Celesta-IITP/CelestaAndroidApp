@@ -1,15 +1,6 @@
 package in.org.celesta.iitp.home;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.os.Handler;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -24,7 +15,6 @@ import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.messaging.FirebaseMessaging;
 
-import in.org.celesta.iitp.Auth.LoginRegisterActivity;
 import in.org.celesta.iitp.R;
 import in.org.celesta.iitp.events.EventDetailsFragment;
 import in.org.celesta.iitp.events.EventsRecyclerAdapter;
@@ -40,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements EventsRecyclerAda
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setBackgroundDrawableResource(R.drawable.background_image_2);
+        getWindow().setBackgroundDrawableResource(R.drawable.back2);
         setContentView(R.layout.activity_main);
 
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -84,6 +74,12 @@ public class MainActivity extends AppCompatActivity implements EventsRecyclerAda
         }
     }
 
+
+    public void onClick (View view) {
+        Intent intent = new Intent(this, ContactFragment.class);
+        startActivity(intent);
+
+    }
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
