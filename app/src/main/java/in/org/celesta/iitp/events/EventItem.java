@@ -1,5 +1,6 @@
 package in.org.celesta.iitp.events;
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -7,6 +8,7 @@ import androidx.room.PrimaryKey;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+@Keep
 @Entity(tableName = "events")
 public class EventItem {
 
@@ -194,6 +196,8 @@ public class EventItem {
     }
 
     public String getMapUrl() {
+        if (mapUrl == null || mapUrl.isEmpty())
+            return "https://www.google.com/maps/d/viewer?mid=1NVE_tnItehFaMbEWddjL786SKtuCtq4X";
         return mapUrl;
     }
 

@@ -13,7 +13,6 @@ import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
-import androidx.palette.graphics.Palette;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -76,22 +75,17 @@ public class FcmService extends FirebaseMessagingService {
         intent.setPackage(getPackageName());
         intent.setData(Uri.parse(data));
 
-        intent.putExtra("link", link);
-        intent.putExtra("title", title);
-        intent.putExtra("body", body);
-        intent.putExtra("image", image);
-
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, getString(R.string.default_notification_channel_id))
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.mipmap.celesta_icon_round)
                 .setContentTitle(title)
                 .setContentText(body)
                 .setAutoCancel(true)
                 .setContentIntent(pendingIntent)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setPriority(NotificationCompat.PRIORITY_MAX)
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setCategory(NotificationCompat.CATEGORY_EVENT);
 
@@ -100,16 +94,7 @@ public class FcmService extends FirebaseMessagingService {
         } else {
             notificationBuilder.setStyle(new NotificationCompat.BigPictureStyle().bigPicture(image));
             notificationBuilder.setLargeIcon(image);
-            notificationBuilder.setColorized(true);
-
-            Palette palette = Palette.from(image).generate();
-            Palette.Swatch swatch = palette.getDominantSwatch();
-            if (swatch != null) {
-                notificationBuilder.setColor(swatch.getRgb());
-            }
         }
-
-        Log.e("notificationid", String.valueOf(notificationId));
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
         notificationManager.notify(notificationId, notificationBuilder.build());

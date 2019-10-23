@@ -1,7 +1,6 @@
 package in.org.celesta.iitp.sponsors;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,13 +8,11 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import in.org.celesta.iitp.R;
-import in.org.celesta.iitp.network.RetrofitClientInstance;
 
 public class SponsorsFragment extends Fragment {
 
@@ -23,31 +20,24 @@ public class SponsorsFragment extends Fragment {
     }
 
     private SponsorsAdapter adapter;
-    private RecyclerView recyclerView;
-    private View emptyView;
-    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_sponsors, container, false);
 
-        swipeRefreshLayout = view.findViewById(R.id.swipe_refresh_sponsors);
-        swipeRefreshLayout.setOnRefreshListener(this::updateData);
-
-        recyclerView = view.findViewById(R.id.recycler_sponsors);
+        RecyclerView recyclerView = view.findViewById(R.id.recycler_sponsors);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
         adapter = new SponsorsAdapter(getContext());
         recyclerView.setAdapter(adapter);
 
-        swipeRefreshLayout.setRefreshing(true);
-        updateData();
+        populateData();
 
         return view;
     }
 
-    private void updateData() {
+    private void populateData() {
 
         List<SponsorItem> sponsorItems = new ArrayList<>();
         sponsorItems.add(new SponsorItem("Associate Sponsor", "http://www.celesta.org.in/assets/images/sponsors/bihartourism.jpg", "http://www.bihartourism.gov.in/"));
@@ -77,15 +67,10 @@ public class SponsorsFragment extends Fragment {
         sponsorItems.add(new SponsorItem("Gifting Partner", "http://www.celesta.org.in/assets/images/sponsors/thesouledstore.png", "https://www.thesouledstore.com/"));
         sponsorItems.add(new SponsorItem("Online Learning Partner", "http://www.celesta.org.in/assets/images/sponsors/learncodeonline.png","https://learncodeonline.in/" ));
         sponsorItems.add(new SponsorItem("Official Savings Partner", "http://www.celesta.org.in/assets/images/sponsors/grabon.png", "https://www.grabon.in/"));
-        sponsorItems.add(new SponsorItem());
-
-
-
-
 
         adapter.setSponsorItemList(sponsorItems);
 
-      swipeRefreshLayout.setRefreshing(false);
+//      swipeRefreshLayout.setRefreshing(false);
       //  String token = PreferenceManager.getDefaultSharedPreferences(getContext()).getString(USER_TOKEN, "0");
   //      Log.e("token", token);
 //

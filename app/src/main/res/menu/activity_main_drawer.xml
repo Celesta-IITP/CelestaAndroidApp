@@ -9,6 +9,10 @@
             android:icon="@drawable/ic_home"
             android:title="Home" />
         <item
+            android:id="@+id/nav_theme"
+            android:icon="@drawable/ic_theme_black_24dp"
+            android:title="Theme" />
+        <item
             android:id="@+id/nav_events_cat"
             android:icon="@drawable/events_icon_2"
             android:title="Events" />
@@ -22,7 +26,7 @@
             android:title="Pronite" />
         <item
             android:id="@+id/nav_special_cat"
-            android:icon="@drawable/ic_pronite"
+            android:icon="@drawable/events_special"
             android:title="Special Events" />
         <item
             android:id="@+id/nav_gallery"
@@ -41,9 +45,9 @@
             android:icon="@drawable/ic_map"
             android:title="Maps" />
         <item
-            android:id="@+id/nav_about"
-            android:icon="@drawable/ic_info"
-            android:title="About" />
+            android:id="@+id/nav_developers"
+            android:icon="@drawable/developer_android"
+            android:title="Developers" />
         <item
             android:id="@+id/nav_account"
             android:icon="@drawable/ic_login"

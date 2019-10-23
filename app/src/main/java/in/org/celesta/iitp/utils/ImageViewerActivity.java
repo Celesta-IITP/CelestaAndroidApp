@@ -19,11 +19,14 @@ public class ImageViewerActivity extends AppCompatActivity {
 
         final ImageView image = findViewById(R.id.image);
 
-        if (getIntent().hasExtra("image_url")) {
+        if (getIntent().hasExtra("image_url") && getIntent().hasExtra("image_reduced")) {
+            String url = getIntent().getStringExtra("image_url");
+            Glide.with(this)
+                    .load(url)
+                    .thumbnail(Glide.with(this).load(getIntent().getStringExtra("image_reduced")))
+                    .into(image);
 
-            if (getIntent().hasExtra("transition"))
-                image.setTransitionName(getIntent().getStringExtra("transition"));
-
+        } else if (getIntent().hasExtra("image_url")) {
             String url = getIntent().getStringExtra("image_url");
             Glide.with(this)
                     .load(url)

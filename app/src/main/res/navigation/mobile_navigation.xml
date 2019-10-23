@@ -24,8 +24,8 @@
     <fragment
         android:id="@+id/nav_pronite"
         android:label="Pronite"
-        android:name="in.org.celesta.iitp.special.SpecialCategoryFragment"
-        tools:layout="@layout/fragment_special_category" />
+        android:name="in.org.celesta.iitp.pronite.ProniteFragment"
+        tools:layout="@layout/fragment_pronite" />
 
     <fragment
         android:id="@+id/nav_special_cat"
@@ -74,9 +74,26 @@
         android:label="Events"
         tools:layout="@layout/fragment_events" />
 
+    <fragment
+        android:id="@+id/nav_developers"
+        android:name="in.org.celesta.iitp.about.AboutFragment"
+        android:label="Developers"
+        tools:layout="@layout/fragment_about" />
+
+<!--    <fragment-->
+<!--        android:id="@+id/option_contact"-->
+<!--        android:name="in.org.celesta.iitp."-->
+<!--        android:label="Contact"-->
+<!--        tools:layout="@layout/fragment_about" />-->
+
     <activity
         android:id="@+id/nav_maps"
         app:action="android.intent.action.VIEW"
         app:data="https://www.google.com/maps/d/viewer?mid=1NVE_tnItehFaMbEWddjL786SKtuCtq4X" />
+
+    <activity
+        android:id="@+id/nav_theme"
+        app:action="android.intent.action.VIEW"
+        app:data="https://www.youtube.com/watch?v=0zq9wqsYZCw" />
 
 </navigation>

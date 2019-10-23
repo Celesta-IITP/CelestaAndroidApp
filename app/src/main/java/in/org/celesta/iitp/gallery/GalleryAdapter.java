@@ -46,7 +46,9 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.FeedView
                     .centerCrop()
                     .into(holder.imageView);
 
-            callback.onEventSelected(current.getReduced(), current.getNormal());
+            holder.imageView.setOnClickListener(view -> {
+                callback.onEventSelected(current.getReduced(), current.getNormal());
+            });
         }
     }
 

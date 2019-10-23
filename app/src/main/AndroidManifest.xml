@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="in.org.celesta.iitp">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,12 +12,12 @@
         android:roundIcon="@mipmap/celesta_icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-
-        <activity android:name=".Auth.LoginRegisterActivity"
+        <activity
+            android:name=".Auth.LoginRegisterActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".home.MainActivity"
             android:screenOrientation="portrait"
@@ -28,15 +28,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".utils.ImageViewerActivity"
+        <activity
+            android:name=".utils.ImageViewerActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.FullScreen"/>
+            android:theme="@style/AppTheme.FullScreen" />
 
-        <service android:name=".notification.FcmService"
+        <service
+            android:name=".notification.FcmService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
+
             <meta-data
                 android:name="com.google.firebase.messaging.default_notification_color"
                 android:resource="@color/colorAccent" />

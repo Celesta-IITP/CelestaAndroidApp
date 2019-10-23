@@ -1,9 +1,12 @@
 package in.org.celesta.iitp.Auth;
 
+import androidx.annotation.Keep;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+@Keep
 public class LoginResponse {
 
     @SerializedName("status")
@@ -16,7 +19,7 @@ public class LoginResponse {
     private String accessToken ="";
     @SerializedName("first_name")
     private String firstName ="";
-    @SerializedName("qr_code")
+    @SerializedName("qrcode")
     private String qrCode ="";
 
     public Integer getStatus() {
