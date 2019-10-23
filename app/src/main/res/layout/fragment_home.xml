@@ -6,13 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".home.HomeFragment">
 
+    <ImageButton
+        android:id="@+id/main_contact_us"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="24dp"
+        android:src="@drawable/ic_call_black_24dp"
+        android:tint="@android:color/white"
+        app:layout_constraintEnd_toEndOf="@id/main_grid" />
+
     <ImageView
+        android:id="@+id/main_logo_iv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:id="@+id/main_logo_iv"
         android:padding="8dp"
         android:src="@drawable/logo_alt"
         android:tint="@color/colorAccent"
@@ -86,11 +96,11 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
+            android:id="@+id/main_event_ll"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_row="0"
             android:layout_rowWeight="1"
-            android:id="@+id/main_event_ll"
             android:layout_column="0"
             android:layout_columnWeight="1"
             android:orientation="vertical"
@@ -115,12 +125,12 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/main_pronite_ll"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_row="0"
             android:layout_rowWeight="1"
             android:layout_column="1"
-            android:id="@+id/main_pronite_ll"
             android:layout_columnWeight="1"
             android:orientation="vertical"
             android:padding="24dp">
@@ -154,10 +164,10 @@
             android:padding="24dp">
 
             <ImageView
+                android:id="@+id/main_gallery_ll"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:id="@+id/main_gallery_ll"
                 android:padding="16dp"
                 android:src="@drawable/ic_gallery"
                 android:tint="@android:color/white" />
@@ -173,12 +183,12 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/main_special_ll"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_row="1"
             android:layout_rowWeight="1"
             android:layout_column="0"
-            android:id="@+id/main_special_ll"
             android:layout_columnWeight="1"
             android:orientation="vertical"
             android:padding="24dp">
@@ -201,12 +211,12 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/main_team_ll"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_row="1"
             android:layout_rowWeight="1"
             android:layout_column="1"
-            android:id="@+id/main_team_ll"
             android:layout_columnWeight="1"
             android:orientation="vertical"
             android:padding="24dp">
@@ -230,11 +240,11 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/main_sponsor_ll"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_row="1"
             android:layout_rowWeight="1"
-            android:id="@+id/main_sponsor_ll"
             android:layout_column="2"
             android:layout_columnWeight="1"
             android:orientation="vertical"

@@ -70,7 +70,7 @@ public class SponsorsAdapter extends RecyclerView.Adapter<SponsorsAdapter.ViewHo
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        
+
         View root;
         TextView name;
         ImageView image;

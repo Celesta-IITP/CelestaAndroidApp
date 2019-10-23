@@ -1,9 +1,11 @@
 package in.org.celesta.iitp.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
@@ -12,6 +14,7 @@ import androidx.navigation.Navigation;
 import java.util.HashMap;
 import java.util.Map;
 
+import in.org.celesta.iitp.ContactUs.ContactFragment;
 import in.org.celesta.iitp.R;
 
 public class HomeFragment extends Fragment {
@@ -31,6 +34,7 @@ public class HomeFragment extends Fragment {
         map.put(R.id.main_special_ll, R.id.nav_special_cat);
         map.put(R.id.main_team_ll, R.id.nav_team);
         map.put(R.id.main_sponsor_ll, R.id.nav_sponsors);
+        map.put(R.id.main_contact_us, R.id.contactUs);
 
         for (final Map.Entry<Integer, Integer> pair : map.entrySet()) {
             View mainView = view.findViewById(pair.getKey());

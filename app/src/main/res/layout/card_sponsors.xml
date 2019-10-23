@@ -5,11 +5,11 @@
     android:id="@+id/cv_sponsors"
     android:layout_width="match_parent"
     android:layout_height="150dp"
-    app:strokeColor="@color/navigation_background"
-    app:strokeWidth="1dp"
-    app:cardBackgroundColor="@color/transparent"
     android:layout_margin="8dp"
-    app:cardCornerRadius="8dp">
+    app:cardBackgroundColor="@color/transparent"
+    app:cardCornerRadius="8dp"
+    app:strokeColor="@color/navigation_background"
+    app:strokeWidth="1dp">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -29,14 +29,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/image"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:gravity="center_horizontal"
-            android:layout_alignParentBottom="true"
-            tools:text="Associate Sponsor"
             android:textColor="@android:color/white"
             android:textSize="16sp"
             android:textStyle="bold"
-             />
+            tools:text="Associate Sponsor" />
 
     </RelativeLayout>
 
