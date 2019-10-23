@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -24,9 +24,11 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
+            android:gravity="center"
+            android:layout_marginBottom="24dp"
             android:textColor="@color/medBlue"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            tools:text="clst1111" />
 
         <TextView
             android:id="@+id/profile_first_name"
@@ -34,15 +36,38 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginStart="16dp"
+            android:lineSpacingExtra="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:textColor="@color/white"
-            android:textSize="24sp" />
+            android:autoLink="all"
+            android:textSize="22sp"
+            tools:text="Hello, ABCD" />
+
+        <TextView
+            android:id="@+id/profile_loading_events"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:text="Loading registered events....." />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_profile_events"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:padding="8dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/profile_logout_button"
-            android:layout_width="match_parent"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_margin="16dp"
             android:background="@drawable/rounded_button"
             android:text="Logout"
@@ -50,4 +75,4 @@
 
     </LinearLayout>
 
-</ScrollView>
+</androidx.core.widget.NestedScrollView>

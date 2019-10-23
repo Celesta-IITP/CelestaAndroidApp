@@ -1,6 +1,8 @@
 package in.org.celesta.iitp.gallery;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.transition.TransitionInflater;
@@ -13,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -24,6 +27,7 @@ import in.org.celesta.iitp.R;
 import in.org.celesta.iitp.database.AppDatabase;
 import in.org.celesta.iitp.network.OtherRoutes;
 import in.org.celesta.iitp.network.RetrofitClientInstance;
+import in.org.celesta.iitp.utils.ImageViewerActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,6 +41,7 @@ public class GalleryFragment extends Fragment implements GalleryAdapter.OnImageS
     private Context context;
     private GalleryAdapter adapter;
     private GalleryDao dao;
+    private SharedPreferences preferences;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,6 +55,7 @@ public class GalleryFragment extends Fragment implements GalleryAdapter.OnImageS
         setEnterTransition(TransitionInflater.from(context).inflateTransition(android.R.transition.fade));
 
         dao = AppDatabase.getDatabase(context).galleryDao();
+        preferences = PreferenceManager.getDefaultSharedPreferences(context);
     }
 
     @Override
@@ -62,6 +68,11 @@ public class GalleryFragment extends Fragment implements GalleryAdapter.OnImageS
 
         swipeRefreshLayout = view.findViewById(R.id.swipe_refresh_gallery);
         swipeRefreshLayout.setOnRefreshListener(this::updateData);
+
+        if (preferences.getLong("last_gallery_update_time", 0) < System.currentTimeMillis() - 10 * 60 * 1000) {
+            swipeRefreshLayout.setRefreshing(true);
+            updateData();
+        }
 
         RecyclerView recyclerView = view.findViewById(R.id.recycler_gallery);
         recyclerView.setLayoutManager(new GridLayoutManager(context, 2));
@@ -105,6 +116,8 @@ public class GalleryFragment extends Fragment implements GalleryAdapter.OnImageS
                             new InsertImageTask(dao).execute(image);
 
                         populateData();
+
+                        preferences.edit().putLong("last_gallery_update_time", System.currentTimeMillis()).apply();
                     }
 
                 } else {
@@ -125,7 +138,10 @@ public class GalleryFragment extends Fragment implements GalleryAdapter.OnImageS
 
     @Override
     public void onEventSelected(String reduced, String url) {
-
+        Intent i = new Intent(context, ImageViewerActivity.class);
+        i.putExtra("image_url", url);
+        i.putExtra("image_reduced", reduced);
+        startActivity(i);
     }
 
 

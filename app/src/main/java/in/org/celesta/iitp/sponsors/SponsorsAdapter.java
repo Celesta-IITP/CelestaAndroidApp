@@ -2,7 +2,7 @@ package in.org.celesta.iitp.sponsors;
 
 
 import android.content.Context;
-import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +32,6 @@ public class SponsorsAdapter extends RecyclerView.Adapter<SponsorsAdapter.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_sponsors, parent, false);
-
         return new ViewHolder(view);
     }
 
@@ -48,6 +47,8 @@ public class SponsorsAdapter extends RecyclerView.Adapter<SponsorsAdapter.ViewHo
                     .load(current.getImage())
                     .thumbnail(Glide.with(context).load(R.raw.load))
                     .into(holder.image);
+
+            Log.e("image", current.getImage());
 
             holder.root.setOnClickListener(v -> {
 
@@ -85,6 +86,6 @@ public class SponsorsAdapter extends RecyclerView.Adapter<SponsorsAdapter.ViewHo
 
     void setSponsorItemList(List<SponsorItem> sponsors) {
         sponsorItemList = sponsors;
-        (new Handler()).postDelayed(this::notifyDataSetChanged, 200);
+        notifyDataSetChanged();
     }
 }

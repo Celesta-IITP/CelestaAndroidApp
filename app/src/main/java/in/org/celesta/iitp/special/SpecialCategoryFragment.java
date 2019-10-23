@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -75,11 +74,13 @@ public class SpecialCategoryFragment extends Fragment implements View.OnClickLis
         MaterialCardView exhibitions = view.findViewById(R.id.card_exhibitions);
         MaterialCardView guestLectures = view.findViewById(R.id.card_lectures);
         MaterialCardView workshops = view.findViewById(R.id.card_workshops);
+        MaterialCardView ozone = view.findViewById(R.id.card_ozone);
 
         schoolEvents.setOnClickListener(this);
         exhibitions.setOnClickListener(this);
         guestLectures.setOnClickListener(this);
         workshops.setOnClickListener(this);
+        ozone.setOnClickListener(this);
 
 
         super.onViewCreated(view, savedInstanceState);
@@ -140,10 +141,13 @@ public class SpecialCategoryFragment extends Fragment implements View.OnClickLis
                 b.putString("data", "Exhibitions");
                 break;
             case R.id.card_lectures:
-                Toast.makeText(context, "Coming soon...", Toast.LENGTH_SHORT).show();
+                b.putString("data", "Guesttalks");
                 break;
             case R.id.card_workshops:
-                Toast.makeText(context, "Coming soon...", Toast.LENGTH_SHORT).show();
+                b.putString("data", "Workshops");
+                break;
+            case R.id.card_ozone:
+                b.putString("data", "Ozone");
                 break;
 
         }

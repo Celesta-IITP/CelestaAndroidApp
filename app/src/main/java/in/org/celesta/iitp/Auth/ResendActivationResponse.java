@@ -1,9 +1,12 @@
 package in.org.celesta.iitp.Auth;
 
+import androidx.annotation.Keep;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+@Keep
 public class ResendActivationResponse {
     @SerializedName("status")
     private Integer status;

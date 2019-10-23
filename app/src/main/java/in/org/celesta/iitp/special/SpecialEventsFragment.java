@@ -24,7 +24,6 @@ import java.util.List;
 import in.org.celesta.iitp.R;
 import in.org.celesta.iitp.events.EventItem;
 import in.org.celesta.iitp.events.EventsRecyclerAdapter;
-import in.org.celesta.iitp.events.EventsViewModel;
 import in.org.celesta.iitp.network.EventsRoutes;
 import in.org.celesta.iitp.network.RetrofitClientInstance;
 import retrofit2.Call;
@@ -37,7 +36,7 @@ public class SpecialEventsFragment extends Fragment {
 
     private String type;
     private EventsRecyclerAdapter adapter;
-    private EventsViewModel viewModel;
+    private SpecialViewModel viewModel;
     private SwipeRefreshLayout swipeRefreshLayout;
     private Context context;
 
@@ -50,7 +49,8 @@ public class SpecialEventsFragment extends Fragment {
         if (getArguments() != null) {
             type = getArguments().getString(ARG_PARAM1);
         }
-        viewModel = ViewModelProviders.of(this).get(EventsViewModel.class);
+
+        viewModel = ViewModelProviders.of(this).get(SpecialViewModel.class);
 
         if (getContext() != null)
             this.context = getContext();
@@ -87,14 +87,31 @@ public class SpecialEventsFragment extends Fragment {
     }
 
     private void observeAll() {
-        if ("Exhibitions".equals(type))
+        if ("Exhibitions".equals(type)) {
             viewModel.loadAllExhibitions().observe(this, eventItems -> {
                 adapter.setEventItemList(eventItems);
             });
-        else if ("Schoolevents".equals(type))
+        }
+        else if ("Schoolevents".equals(type)) {
             viewModel.loadAllSchoolEvents().observe(this, eventItems -> {
                 adapter.setEventItemList(eventItems);
             });
+        }
+        else if ("Ozone".equals(type)) {
+            viewModel.loadAllOzoneEvents().observe(this, eventItems -> {
+                adapter.setEventItemList(eventItems);
+            });
+        }
+        else if ("Workshops".equals(type)) {
+            viewModel.loadAllWorkshops().observe(this, eventItems -> {
+                adapter.setEventItemList(eventItems);
+            });
+        }
+        else if ("Guesttalks".equals(type)) {
+            viewModel.loadAllGuestLectures().observe(this, eventItems -> {
+                adapter.setEventItemList(eventItems);
+            });
+        }
 
     }
 

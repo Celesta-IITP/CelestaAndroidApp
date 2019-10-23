@@ -3,10 +3,15 @@ package in.org.celesta.iitp.home;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -20,6 +25,12 @@ import in.org.celesta.iitp.R;
 public class HomeFragment extends Fragment {
 
     public HomeFragment() {
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -46,4 +57,24 @@ public class HomeFragment extends Fragment {
 
         return view;
     }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        if (getActivity() != null)
+            getActivity().getMenuInflater().inflate(R.menu.menu_home, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int id = item.getItemId();
+        if (id == R.id.action_contact) {
+            NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+//            navController.navigate(R.id.nav);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 }

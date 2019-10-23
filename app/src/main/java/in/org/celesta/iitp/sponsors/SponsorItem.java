@@ -1,5 +1,8 @@
 package in.org.celesta.iitp.sponsors;
 
+import androidx.annotation.Keep;
+
+@Keep
 public class SponsorItem {
 
     private String website;

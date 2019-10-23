@@ -18,4 +18,7 @@ public interface AuthApi {
 
     @POST("backend/user/functions/mob_functions.php")
     Call<ResendActivationResponse> resend_activation(@Body RequestBody body);
+
+    @POST("backend/user/functions/mob_functions.php")
+    Call<ProfileResponse> getProfile(@Body RequestBody body);
 }

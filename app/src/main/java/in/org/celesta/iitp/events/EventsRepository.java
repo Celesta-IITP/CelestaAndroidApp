@@ -15,28 +15,43 @@ public class EventsRepository {
     private LiveData<List<EventItem>> allEvents;
     private LiveData<List<EventItem>> allExhibitions;
     private LiveData<List<EventItem>> allSchoolEvents;
+    private LiveData<List<EventItem>> allOzoneEvents;
+    private LiveData<List<EventItem>> allLectures;
+    private LiveData<List<EventItem>> allWorkshops;
     private LiveData<List<String>> allClubs;
 
-    EventsRepository(Application application) {
+    public EventsRepository(Application application) {
         AppDatabase db = AppDatabase.getDatabase(application);
         eventsDao = db.eventsDao();
         allEvents = eventsDao.loadAllEvents();
         allExhibitions = eventsDao.loadAllExhibitions();
         allSchoolEvents = eventsDao.loadAllSchoolEvents();
+        allOzoneEvents = eventsDao.loadOzoneEvents();
+        allLectures = eventsDao.loadGuestTalks();
+        allWorkshops = eventsDao.loadWorkshops();
         allClubs = eventsDao.loadAllClubs();
     }
 
-    LiveData<List<EventItem>> loadAllEvents() {
+    public LiveData<List<EventItem>> loadAllEvents() {
         return allEvents;
     }
-    LiveData<List<EventItem>> loadAllExhibitions() {
+    public LiveData<List<EventItem>> loadAllExhibitions() {
         return allExhibitions;
     }
-    LiveData<List<EventItem>> loadAllSchoolEvents() {
+    public LiveData<List<EventItem>> loadAllSchoolEvents() {
         return allSchoolEvents;
     }
+    public LiveData<List<EventItem>> loadAllOzoneEvents() {
+        return allOzoneEvents;
+    }
+    public LiveData<List<EventItem>> loadAllWorkshops() {
+        return allWorkshops;
+    }
+    public LiveData<List<EventItem>> loadAllLectures() {
+        return allLectures;
+    }
 
-    LiveData<List<String>> loadAllClubs() {
+    public LiveData<List<String>> loadAllClubs() {
         return allClubs;
     }
 
