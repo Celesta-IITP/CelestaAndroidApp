@@ -6,16 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".home.HomeFragment">
 
-    <ImageButton
-        android:id="@+id/main_contact_us"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="24dp"
-        android:src="@drawable/ic_call_black_24dp"
-        android:tint="@android:color/white"
-        app:layout_constraintEnd_toEndOf="@id/main_grid" />
-
     <ImageView
         android:id="@+id/main_logo_iv"
         android:layout_width="match_parent"

@@ -80,20 +80,16 @@
         android:label="Developers"
         tools:layout="@layout/fragment_about" />
 
-<!--    <fragment-->
-<!--        android:id="@+id/option_contact"-->
-<!--        android:name="in.org.celesta.iitp."-->
-<!--        android:label="Contact"-->
-<!--        tools:layout="@layout/fragment_about" />-->
+    <fragment
+        android:id="@+id/option_contact"
+        android:name="in.org.celesta.iitp.contact.ContactFragment"
+        android:label="Contact"
+        tools:layout="@layout/fragment_contact_us" />
 
     <activity
         android:id="@+id/nav_maps"
         app:action="android.intent.action.VIEW"
         app:data="https://www.google.com/maps/d/viewer?mid=1NVE_tnItehFaMbEWddjL786SKtuCtq4X" />
-    <activity
-        android:id="@+id/contactUs"
-        android:label="fragment_contact_us"
-        tools:layout="@layout/fragment_contact_us" />
 
     <activity
         android:id="@+id/nav_theme"
