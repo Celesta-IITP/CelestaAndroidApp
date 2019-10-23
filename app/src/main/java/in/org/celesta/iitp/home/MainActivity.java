@@ -1,9 +1,11 @@
 package in.org.celesta.iitp.home;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -17,6 +19,7 @@ import androidx.preference.PreferenceManager;
 
 import com.google.android.material.navigation.NavigationView;
 
+import in.org.celesta.iitp.ContactUs.ContactFragment;
 import in.org.celesta.iitp.R;
 import in.org.celesta.iitp.events.EventDetailsFragment;
 import in.org.celesta.iitp.events.EventsRecyclerAdapter;
@@ -45,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements EventsRecyclerAda
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_events_cat, R.id.nav_ongoing, R.id.nav_pronite, R.id.nav_special_cat,
-                R.id.nav_gallery, R.id.nav_team, R.id.nav_sponsors, R.id.nav_maps, R.id.nav_about, R.id.nav_account)
+                R.id.nav_gallery, R.id.nav_team, R.id.nav_sponsors, R.id.nav_maps, R.id.nav_about, R.id.nav_account, R.id.contactUs)
                 .setDrawerLayout(drawer)
                 .build();
 
@@ -70,6 +73,12 @@ public class MainActivity extends AppCompatActivity implements EventsRecyclerAda
         }
     }
 
+
+    public void onClick (View view) {
+        Intent intent = new Intent(this, ContactFragment.class);
+        startActivity(intent);
+
+    }
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

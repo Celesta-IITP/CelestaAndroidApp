@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ContactUs.ContactFragment">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background_image_2" />
+
+
+    <TextView
+        android:id="@+id/contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="35dp"
+        android:text="Need Help?"
+        android:textColor="@color/white"
+        android:textDirection="firstStrong"
+        android:textSize="26sp" />
+
+
+    <TextView
+        android:id="@+id/intro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/contact"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="8dp"
+        android:text="Contact Us!"
+        android:textColor="@color/white"
+        android:textSize="34sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="match_parent"
+                    android:layout_height="6dp"
+                    android:layout_marginTop="136dp"
+                    android:outlineAmbientShadowColor="@color/white"
+                    android:tint="@android:color/white" />
+
+                <TextView
+                    android:id="@+id/name1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/view"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="21dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Aman Deep"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/por1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/name1"
+                    android:layout_marginStart="18dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="(Coordinator-Media And Public Relations)"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/cn1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/por1"
+                    android:layout_marginStart="18dp"
+                    android:text="Contact Number : "
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <ImageButton
+                    android:id="@+id/b1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/por1"
+                    android:layout_toEndOf="@id/num1"
+                    android:onClick="onClick"
+                    android:src="@drawable/ic_call_black_24dp"
+                    android:tint="@android:color/white" />
+
+                <TextView
+                    android:id="@+id/num1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/por1"
+                    android:layout_toEndOf="@id/cn1"
+                    android:text="9931059201"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/name2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cn1"
+                    android:layout_marginStart="18dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Priyansh Singh Rao"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/por2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/name2"
+                    android:layout_marginStart="18dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="(Coordinator-Media And Public Relations)"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/cn2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/por2"
+                    android:layout_marginStart="18dp"
+                    android:text="Contact Number : "
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/num2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/por2"
+                    android:layout_marginEnd="22dp"
+                    android:layout_toEndOf="@id/cn2"
+                    android:text="8058501770"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <ImageButton
+                    android:id="@+id/b2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/por2"
+                    android:layout_toEndOf="@id/num1"
+                    android:onClick="onClick"
+                    android:src="@drawable/ic_call_black_24dp"
+                    android:tint="@android:color/white" />
+
+
+                <TextView
+                    android:id="@+id/name3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cn2"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="11dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Roushan Kumar"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/por3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/name3"
+                    android:layout_marginStart="18dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="(Coordinator-Media And Public Relations)"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/cn3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/por3"
+                    android:layout_marginStart="18dp"
+                    android:text="Contact Number : "
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+
+                <ImageButton
+                    android:id="@+id/b3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/por3"
+                    android:layout_toEndOf="@id/num1"
+                    android:onClick="onClick"
+                    android:src="@drawable/ic_call_black_24dp"
+                    android:tint="@android:color/white" />
+
+                <TextView
+                    android:id="@+id/num3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/por3"
+                    android:layout_marginEnd="22dp"
+                    android:layout_toEndOf="@id/cn3"
+                    android:text="9610098566"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/bus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cn3"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="33dp"
+                    android:layout_marginEnd="22dp"
+                    android:text="Bus Route and Schedule"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <ImageButton
+                    android:id="@+id/b4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cn3"
+                    android:layout_marginTop="25dp"
+                    android:layout_toEndOf="@id/bus"
+                    android:onClick="onClick"
+                    android:src="@drawable/ic_access_time"
+                    android:tint="@android:color/white" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/bus"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="158dp"
+                    android:layout_weight="0"
+                    android:text="Don't know where we are?"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/gd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/bus"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="178dp"
+                    android:layout_weight="0"
+                    android:text="No worries! Get Directions"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

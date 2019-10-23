@@ -4,7 +4,7 @@
     package="in.org.celesta.iitp">
 
     <uses-permission android:name="android.permission.INTERNET"/>
-
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/celesta_icon_round"
@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+
 
         <activity android:name=".Auth.LoginRegisterActivity"
             android:screenOrientation="portrait"
@@ -23,14 +24,24 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
+                <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".utils.ImageViewerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.FullScreen"/>
+
+        <activity android:name=".ContactUs.ContactFragment"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.FullScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
 
         <service android:name=".notification.FcmService"
             android:exported="false">
