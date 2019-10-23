@@ -30,8 +30,8 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/perth3"
-                android:padding="8dp"/>
+                android:padding="8dp"
+                android:id="@+id/parth"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -97,8 +97,8 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/rakshit_circle2"
-                android:padding="8dp"/>
+                android:padding="8dp"
+                android:id="@+id/rakshit"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -161,8 +161,8 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="100dp"
                 android:layout_height="110dp"
-                android:src="@drawable/psr_c"
-                android:padding="8dp"/>
+                android:padding="8dp"
+                android:id="@+id/priyansh"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -225,8 +225,8 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="100dp"
                 android:layout_height="110dp"
-                android:src="@drawable/rakshit_circle2"
-                android:padding="8dp"/>
+                android:padding="8dp"
+                android:id="@+id/roushan"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -260,7 +260,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:text="xxxxx xxxxxx"
+                    android:text="96100 98566"
                     android:autoLink="phone"
                     android:textColor="@color/silver"
                     android:gravity="center_vertical"
@@ -289,8 +289,8 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="100dp"
                 android:layout_height="110dp"
-                android:src="@drawable/aman_deep_c"
-                android:padding="8dp"/>
+                android:padding="8dp"
+                android:id="@+id/aman"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -353,8 +353,8 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:src="@drawable/piytwr_c"
-                    android:padding="8dp"/>
+                    android:padding="8dp"
+                    android:id="@+id/piyush"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -389,7 +389,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:autoLink="phone"
-                        android:text="xxxxx xxxxx"
+                        android:text="98349 43057"
                         android:textColor="@color/silver"
                         android:gravity="center_vertical"
                         android:textSize="16sp"/>
@@ -417,8 +417,8 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:src="@drawable/mohit_c"
-                    android:padding="8dp"/>
+                    android:padding="8dp"
+                    android:id="@+id/mohit"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -481,8 +481,8 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:src="@drawable/vatsal_c"
-                    android:padding="8dp"/>
+                    android:padding="8dp"
+                    android:id="@+id/vatsal"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -545,8 +545,8 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:src="@drawable/deepanjan_c"
-                    android:padding="8dp"/>
+                    android:padding="8dp"
+                    android:id="@+id/deepanjan"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -609,8 +609,8 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:src="@drawable/srikar_c"
-                    android:padding="8dp"/>
+                    android:padding="8dp"
+                    android:id="@+id/srikar"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -673,8 +673,8 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:src="@drawable/shubham_c"
-                    android:padding="8dp"/>
+                    android:padding="8dp"
+                    android:id="@+id/shubham"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -737,8 +737,8 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:src="@drawable/rakshit_circle2"
-                    android:padding="8dp"/>
+                    android:padding="8dp"
+                    android:id="@+id/raghu"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -773,7 +773,7 @@
                         android:layout_height="0dp"
                         android:autoLink="phone"
                         android:layout_weight="1"
-                        android:text="xxxxx xxxxxx"
+                        android:text="97054 71944"
                         android:textColor="@color/silver"
                         android:gravity="center_vertical"
                         android:textSize="16sp"/>
@@ -801,8 +801,8 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:src="@drawable/prai_c"
-                    android:padding="8dp"/>
+                    android:padding="8dp"
+                    android:id="@+id/prateek"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -837,7 +837,7 @@
                         android:layout_height="0dp"
                         android:autoLink="phone"
                         android:layout_weight="1"
-                        android:text="xxxxx xxxxxx"
+                        android:text="72229 98383"
                         android:textColor="@color/silver"
                         android:gravity="center_vertical"
                         android:textSize="16sp"/>
@@ -865,8 +865,8 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:src="@drawable/yashwanth_c"
-                    android:padding="8dp"/>
+                    android:padding="8dp"
+                    android:id="@+id/yashwanth"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -929,8 +929,8 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:src="@drawable/rama_c"
-                    android:padding="8dp"/>
+                    android:padding="8dp"
+                    android:id="@+id/rama"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -993,8 +993,8 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:src="@drawable/pranshu_c"
-                    android:padding="8dp"/>
+                    android:padding="8dp"
+                    android:id="@+id/pranshu"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -1029,7 +1029,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:autoLink="phone"
-                        android:text="xxxxx xxxxx"
+                        android:text="87918 38088"
                         android:textColor="@color/silver"
                         android:gravity="center_vertical"
                         android:textSize="16sp"/>
@@ -1057,8 +1057,8 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:src="@drawable/vineet_c"
-                    android:padding="8dp"/>
+                    android:padding="8dp"
+                    android:id="@+id/vineet"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -1093,7 +1093,7 @@
                         android:layout_height="0dp"
                         android:autoLink="phone"
                         android:layout_weight="1"
-                        android:text="xxxxx xxxxx"
+                        android:text="73551 54998"
                         android:textColor="@color/silver"
                         android:gravity="center_vertical"
                         android:textSize="16sp"/>
@@ -1121,8 +1121,8 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:src="@drawable/nikhil_c"
-                    android:padding="8dp"/>
+                    android:padding="8dp"
+                    android:id="@+id/nikhil"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -1185,8 +1185,8 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:src="@drawable/manoj_c"
-                    android:padding="8dp"/>
+                    android:padding="8dp"
+                    android:id="@+id/manoj"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -1249,8 +1249,8 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="100dp"
                     android:layout_height="110dp"
-                    android:src="@drawable/aditya_ranjan_c"
-                    android:padding="8dp"/>
+                    android:padding="8dp"
+                    android:id="@+id/aditya"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
