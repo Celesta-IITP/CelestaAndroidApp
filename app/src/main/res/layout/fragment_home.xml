@@ -4,18 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home.MainActivity"
-    tools:showIn="@layout/activity_main">
+    tools:context=".home.HomeFragment">
 
     <ImageView
+        android:id="@+id/main_logo_iv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:id="@+id/main_logo_iv"
         android:padding="8dp"
-        android:src="@drawable/logo_alt"
+        android:src="@drawable/celesta_logo_long"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
@@ -86,11 +85,11 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
+            android:id="@+id/main_event_ll"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_row="0"
             android:layout_rowWeight="1"
-            android:id="@+id/main_event_ll"
             android:layout_column="0"
             android:layout_columnWeight="1"
             android:orientation="vertical"
@@ -115,12 +114,12 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/main_pronite_ll"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_row="0"
             android:layout_rowWeight="1"
             android:layout_column="1"
-            android:id="@+id/main_pronite_ll"
             android:layout_columnWeight="1"
             android:orientation="vertical"
             android:padding="24dp">
@@ -154,12 +153,12 @@
             android:padding="24dp">
 
             <ImageView
+                android:id="@+id/main_gallery_ll"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:id="@+id/main_gallery_ll"
                 android:padding="16dp"
-                android:src="@drawable/ic_image_white_24dp"
+                android:src="@drawable/ic_gallery"
                 android:tint="@android:color/white" />
 
             <TextView
@@ -173,12 +172,12 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/main_special_ll"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_row="1"
             android:layout_rowWeight="1"
             android:layout_column="0"
-            android:id="@+id/main_schedule_ll"
             android:layout_columnWeight="1"
             android:orientation="vertical"
             android:padding="24dp">
@@ -188,25 +187,26 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:padding="16dp"
-                android:src="@drawable/ic_schedule_white_24dp" />
+                android:tint="@color/white"
+                android:src="@drawable/events_special" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal|bottom"
-                android:text="Schedule"
+                android:text="Special"
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/main_team_ll"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_row="1"
             android:layout_rowWeight="1"
             android:layout_column="1"
-            android:id="@+id/main_team_ll"
             android:layout_columnWeight="1"
             android:orientation="vertical"
             android:padding="24dp">
@@ -216,7 +216,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:padding="16dp"
-                android:src="@drawable/ic_team_white_24dp"
+                android:src="@drawable/ic_team"
                 android:tint="@android:color/white" />
 
             <TextView
@@ -230,11 +230,11 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/main_sponsor_ll"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_row="1"
             android:layout_rowWeight="1"
-            android:id="@+id/main_sponsor_ll"
             android:layout_column="2"
             android:layout_columnWeight="1"
             android:orientation="vertical"
@@ -245,7 +245,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:padding="16dp"
-                android:src="@drawable/ic_attach_money_white_24dp"
+                android:src="@drawable/ic_sponsor"
                 android:tint="@android:color/white" />
 
             <TextView

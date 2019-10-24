@@ -1,61 +1,101 @@
 package in.org.celesta.iitp.home;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
+import androidx.preference.PreferenceManager;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.messaging.FirebaseMessaging;
 
+import in.org.celesta.iitp.Auth.LoginRegisterActivity;
+import in.org.celesta.iitp.contact.ContactFragment;
 import in.org.celesta.iitp.R;
-import in.org.celesta.iitp.events.EventsActivity;
+import in.org.celesta.iitp.events.EventDetailsFragment;
+import in.org.celesta.iitp.events.EventsRecyclerAdapter;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, HomeFragment.OnItemSelectedListener, EventCategoryFragment.OnEventCategorySelectedListener {
+public class MainActivity extends AppCompatActivity implements EventsRecyclerAdapter.OnEventSelectedListener {
 
-    FrameLayout frameLayout;
+    private AppBarConfiguration mAppBarConfiguration;
+    private NavController navController;
+    private MenuItem navAccount;
+    private SharedPreferences prefs;
+    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setBackgroundDrawableResource(R.drawable.back2);
         setContentView(R.layout.activity_main);
+
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
-        getWindow().setNavigationBarColor(getResources().getColor(android.R.color.transparent));
-        getWindow().setBackgroundDrawableResource(R.drawable.img1);
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
+        navigationView = findViewById(R.id.nav_view);
 
-//        startActivity(new Intent(this, AccountActivity.class));
+        Menu menu = navigationView.getMenu();
+        navAccount = menu.findItem(R.id.nav_account);
 
-        frameLayout = findViewById(R.id.main_frame_layout);
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_home, R.id.nav_events_cat, R.id.nav_ongoing, R.id.nav_pronite, R.id.nav_special_cat,
+                R.id.nav_gallery, R.id.nav_team, R.id.nav_sponsors, R.id.nav_maps, R.id.nav_developers, R.id.nav_account)
+                .setDrawerLayout(drawer)
+                .build();
 
-        setBaseFragment();
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navController);
 
+        FirebaseMessaging.getInstance().subscribeToTopic("all");
     }
 
-    private void setBaseFragment() {
-        if (findViewById(R.id.main_frame_layout) != null) {
-            HomeFragment firstFragment = new HomeFragment();
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.main_frame_layout, firstFragment).commit();
+    private void handleIntent(Intent appLinkIntent) {
+        String appLinkAction = appLinkIntent.getAction();
+        String appLinkData = appLinkIntent.getDataString();
+
+        if (Intent.ACTION_VIEW.equals(appLinkAction) && appLinkData != null) {
+
+            if (appLinkData.contains("/notification/")) {
+                String time = appLinkData.substring(appLinkData.lastIndexOf("/") + 1);
+
+                Bundle bundle = new Bundle();
+                bundle.putString("time", time);
+
+            }
         }
+    }
+
+
+    public void onClick (View view) {
+        Intent intent = new Intent(this, ContactFragment.class);
+        startActivity(intent);
+
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+                || super.onSupportNavigateUp();
     }
 
     @Override
@@ -68,49 +108,49 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
+
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
+    public void onEventSelected(String id, int[] color) {
+        Bundle b = new Bundle();
+        b.putString("data", id);
+        b.putIntArray("color", color);
 
-        if (id == R.id.nav_home) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        EventDetailsFragment fragment = new EventDetailsFragment();
+        fragment.setArguments(b);
+        fragment.setRetainInstance(true);
+        fragment.show(getSupportFragmentManager(), fragment.getTag());
+    }
 
-        } else if (id == R.id.nav_slideshow) {
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("login_status", false))
+            navAccount.setTitle("Profile");
+        else navAccount.setTitle("Login/Register");
+    }
 
-        } else if (id == R.id.nav_tools) {
+    @Override
+    protected void onStart() {
+        super.onStart();
+        new Handler().postDelayed(this::populateHeaderView, 200);
+    }
 
-        } else if (id == R.id.nav_share) {
+    private void populateHeaderView() {
 
-        } else if (id == R.id.nav_send) {
+        View v = navigationView.getHeaderView(0);
 
+        if (v != null) {
+            String name = prefs.getString("first_name", "");
+            ((TextView) v.findViewById(R.id.name)).setText(name.isEmpty() ? "Celesta IITP" : name);
+            String id = prefs.getString("celesta_id", "");
+            ((TextView) v.findViewById(R.id.celesta_id)).setText(id.isEmpty() ? "Guest User" : id);
+            ImageView profileImage = v.findViewById(R.id.image);
+            Glide.with(this)
+                    .load(prefs.getString("qr_code", ""))
+                    .centerCrop()
+                    .placeholder(R.mipmap.celesta_icon_round)
+                    .into(profileImage);
+            profileImage.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, LoginRegisterActivity.class)));
         }
-
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
-
-    @Override
-    public void onItemSelected(Fragment newFragment) {
-
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.main_frame_layout, newFragment);
-        fragmentTransaction.addToBackStack(newFragment.getTag());
-        fragmentTransaction.commit();
-
-//        Animator animator = ViewAnimationUtils.createCircularReveal(frameLayout, 500, 800, 0, 1500f);
-//        animator.setInterpolator(new AccelerateDecelerateInterpolator());
-//        animator.setDuration(800);
-//        animator.start();
-    }
-
-    @Override
-    public void onEventCategorySelected(int category) {
-        Intent intent = new Intent(MainActivity.this, EventsActivity.class);
-        intent.putExtra("category", category);
-        startActivity(intent);
     }
 }

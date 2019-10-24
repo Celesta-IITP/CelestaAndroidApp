@@ -10,7 +10,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -20,12 +23,11 @@ public class EventsRecyclerAdapter extends RecyclerView.Adapter<EventsRecyclerAd
 
     private Context context;
     private List<EventItem> eventItemList;
-    final private OnFeedSelectedListener callback;
+    private OnEventSelectedListener callback;
 
-
-    public EventsRecyclerAdapter(Context context, OnFeedSelectedListener listener){
+    public EventsRecyclerAdapter(Context context, OnEventSelectedListener listener) {
         this.context = context;
-        callback = listener;
+        this.callback = listener;
     }
 
     @NonNull
@@ -39,41 +41,39 @@ public class EventsRecyclerAdapter extends RecyclerView.Adapter<EventsRecyclerAd
     @Override
     public void onBindViewHolder(@NonNull final FeedViewHolder holder, int position) {
 
-//        if (eventItemList != null) {
-//            final EventItem current = eventItemList.get(position);
-//
-//            holder.title.setText(current.getEventName());
-//            holder.venue.setText(current.getEventVenue());
-//            Glide.with(context)
-//                    .load(current.getEventImageUrl())
-//                    .centerCrop()
-//                    .placeholder(R.drawable.baseline_dashboard_24)
-//                    .into(holder.imageView);
-//            holder.imageView.setTransitionName("transition" + position);
-//
-//            if(current.isInterested()){
-//                holder.availableIndicator.setBackgroundResource(R.color.red_dark2);
-//            } else {
-//                if (current.getEventDate() < (System.currentTimeMillis() - 3600000))
-//                    holder.availableIndicator.setBackgroundResource(R.color.dark_gray);
-//                else holder.availableIndicator.setBackgroundResource(R.color.light_green);
-//            }
-//
-//            Date date = new Date(current.getEventDate());
-//            SimpleDateFormat format = new SimpleDateFormat("dd MMM YYYY, hh:mm a");
-//            holder.time.setText(format.format(date));
-//
-//            holder.rootLayout.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    callback.onFeedSelected(current.getId(), holder.imageView, holder.getAdapterPosition());
-//                }
-//            });
+        if (eventItemList != null) {
+            final EventItem current = eventItemList.get(position);
+
+            holder.title.setText(current.getEvName());
+            if (current.getEvVenue() != null)
+                holder.venue.setText(current.getEvVenue());
+            Glide.with(context)
+                    .load(current.getEvPosterUrl())
+                    .thumbnail(Glide.with(context).load(R.raw.load))
+                    .centerCrop()
+                    .into(holder.imageView);
+
+            holder.time.setText(String.format("%s  -  %s", current.getEvStartTime(), current.getEvEndTime()));
+            holder.venue.setText(current.getEvDate() == null ? "" : current.getEvDate());
+
+            holder.rootLayout.setOnClickListener(v -> {
+                Palette palette = Palette.from(holder.imageView.getDrawingCache()).generate();
+                Palette.Swatch swatch = palette.getDominantSwatch();
+
+                int[] color = {0,0,0};
+                if (swatch != null) {
+                    color[0] = swatch.getRgb();
+                    color[1] = swatch.getTitleTextColor();
+                    color[2] = swatch.getBodyTextColor();
+                }
+
+                callback.onEventSelected(current.getId(), color);
+            });
 
 
-//        } else {
-//            holder.title.setText("Loading ...");
-//        }
+        } else {
+            holder.title.setText("Loading ...");
+        }
     }
 
     @Override
@@ -100,15 +100,16 @@ public class EventsRecyclerAdapter extends RecyclerView.Adapter<EventsRecyclerAd
             venue = itemView.findViewById(R.id.item_venue_text);
             rootLayout = itemView.findViewById(R.id.item_root_layout);
             imageView = itemView.findViewById(R.id.item_event_image);
+            imageView.setDrawingCacheEnabled(true);
         }
     }
 
-    void setEventItemList(List<EventItem> feeds){
+    public void setEventItemList(List<EventItem> feeds) {
         eventItemList = feeds;
         notifyDataSetChanged();
     }
 
-    public interface OnFeedSelectedListener {
-        void onFeedSelected(String id, View view, int position);
+    public interface OnEventSelectedListener {
+        void onEventSelected(String id, int[] color);
     }
 }

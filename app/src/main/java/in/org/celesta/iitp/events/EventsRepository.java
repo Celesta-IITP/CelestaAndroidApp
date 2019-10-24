@@ -13,22 +13,53 @@ public class EventsRepository {
 
     private EventsDao eventsDao;
     private LiveData<List<EventItem>> allEvents;
+    private LiveData<List<EventItem>> allExhibitions;
+    private LiveData<List<EventItem>> allSchoolEvents;
+    private LiveData<List<EventItem>> allOzoneEvents;
+    private LiveData<List<EventItem>> allLectures;
+    private LiveData<List<EventItem>> allWorkshops;
+    private LiveData<List<String>> allClubs;
 
-    EventsRepository(Application application) {
+    public EventsRepository(Application application) {
         AppDatabase db = AppDatabase.getDatabase(application);
         eventsDao = db.eventsDao();
         allEvents = eventsDao.loadAllEvents();
+        allExhibitions = eventsDao.loadAllExhibitions();
+        allSchoolEvents = eventsDao.loadAllSchoolEvents();
+        allOzoneEvents = eventsDao.loadOzoneEvents();
+        allLectures = eventsDao.loadGuestTalks();
+        allWorkshops = eventsDao.loadWorkshops();
+        allClubs = eventsDao.loadAllClubs();
     }
 
-    LiveData<List<EventItem>> loadAllEvents() {
+    public LiveData<List<EventItem>> loadAllEvents() {
         return allEvents;
+    }
+    public LiveData<List<EventItem>> loadAllExhibitions() {
+        return allExhibitions;
+    }
+    public LiveData<List<EventItem>> loadAllSchoolEvents() {
+        return allSchoolEvents;
+    }
+    public LiveData<List<EventItem>> loadAllOzoneEvents() {
+        return allOzoneEvents;
+    }
+    public LiveData<List<EventItem>> loadAllWorkshops() {
+        return allWorkshops;
+    }
+    public LiveData<List<EventItem>> loadAllLectures() {
+        return allLectures;
+    }
+
+    public LiveData<List<String>> loadAllClubs() {
+        return allClubs;
     }
 
     public void insert(EventItem eventItem) {
         new insertAsyncTask(eventsDao).execute(eventItem);
     }
 
-    EventItem loadEventById(String id) {
+    public EventItem loadEventById(String id) {
         getEventById task = new getEventById(eventsDao);
         try {
             return task.execute(id).get();
@@ -36,6 +67,11 @@ public class EventsRepository {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void deleteEvents() {
+        deleteEventsTask task = new deleteEventsTask(eventsDao);
+        task.execute();
     }
 
     private static class insertAsyncTask extends AsyncTask<EventItem, Void, Void> {
@@ -62,6 +98,20 @@ public class EventsRepository {
         @Override
         protected EventItem doInBackground(String... params) {
             return mAsyncTaskDao.loadEventById(params[0]);
+        }
+    }
+
+    private static class deleteEventsTask extends AsyncTask<Void, Void, Void> {
+        private EventsDao mAsyncTaskDao;
+
+        deleteEventsTask(EventsDao dao) {
+            mAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            mAsyncTaskDao.deleteAllEvents();
+            return null;
         }
     }
 

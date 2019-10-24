@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#EEEEEE</color>
-    <color name="colorAccent">@android:color/holo_orange_light</color>
+    <color name="colorAccent">#738485</color>
 
     <color name="darkGray">#888888</color>
-    <!---->
-    <color name="darkBlue">#217093</color>
     <color name="medBlue">#4eb8dd</color>
+    <color name="silver">#C0C0C0</color>
 
-    <color name="event_card_background">#551B5F7E</color>
-    <color name="transparent">00000000</color>
+    <color name="event_card_background">#55738485</color>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="navigation_background">#aa646B6D</color>
+    <color name="event_detail_card_background">#661E263F</color>
 
 </resources>
