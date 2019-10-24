@@ -52,8 +52,8 @@ public class SponsorsFragment extends Fragment {
         sponsorItems.add(new SponsorItem("Food Partner", "http://www.celesta.org.in/assets/images/sponsors/jainfoodstall.jpeg", "https://www.justdial.com/Patna/Jain-Restaurants"));
         sponsorItems.add(new SponsorItem("Food Partner", "http://www.celesta.org.in/assets/images/sponsors/chicken.jpeg", "https://broaster.com/"));
         sponsorItems.add(new SponsorItem("Training Partner", "http://www.celesta.org.in/assets/images/sponsors/certstore.png", "https://in.linkedin.com/company/cert-store-solution"));
-        sponsorItems.add(new SponsorItem("Implementation Partner", "http://www.celesta.org.in/assets/images/sponsors/youthindiafoundation.png", "https://youngindia.foundation/"));
-        sponsorItems.add(new SponsorItem("Implementation Partner", "http://www.celesta.org.in/assets/images/sponsors/techprolabz.jpeg", "http://www.techprolabz.com/"));
+        sponsorItems.add(new SponsorItem("Implementation Partner", "http://www.celesta.org.in/assets/images/sponsors/youthindiafoundation.png", "https://www.facebook.com/youngindiafdn/"));
+        sponsorItems.add(new SponsorItem("Implementation Partner", "https://celesta.org.in/assets/images/sponsors/techprolabz.png", "http://www.techprolabz.com/"));
         sponsorItems.add(new SponsorItem("Web&SMS Partner", "http://www.celesta.org.in/assets/images/sponsors/asap.png", "https://www.asapservices.co.in/services.html"));
         sponsorItems.add(new SponsorItem("Merchandise Partner", "http://www.celesta.org.in/assets/images/sponsors/awestruck.jpeg", "https://www.getawestruck.com/"));
         sponsorItems.add(new SponsorItem("Workshop Partner", "http://www.celesta.org.in/assets/images/sponsors/whataftercollege.png", "https://whataftercollege.com/"));

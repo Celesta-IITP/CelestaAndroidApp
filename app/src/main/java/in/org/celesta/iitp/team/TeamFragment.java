@@ -1,110 +1,62 @@
 package in.org.celesta.iitp.team;
 
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import in.org.celesta.iitp.R;
 
 public class TeamFragment extends Fragment {
-    private ImageView parth, rakshit, priyansh, roushan, aman, piyush, mohit_kishore, vatsal, deepanjan, srikar, raghu, shubham, prateek;
-    private ImageView yashwanth, rama, pranshu, vineet, nikhil, manoj, aditya;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View rootview = inflater.inflate(R.layout.fragment_team, container, false);
-        parth = rootview.findViewById(R.id.parth);
-        rakshit = rootview.findViewById(R.id.rakshit);
-        priyansh = rootview.findViewById(R.id.priyansh);
-        roushan = rootview.findViewById(R.id.roushan);
-        aman = rootview.findViewById(R.id.aman);
-        piyush = rootview.findViewById(R.id.piyush);
-        mohit_kishore = rootview.findViewById(R.id.mohit);
-        vatsal = rootview.findViewById(R.id.vatsal);
-        deepanjan = rootview.findViewById(R.id.deepanjan);
-        srikar = rootview.findViewById(R.id.srikar);
-        raghu = rootview.findViewById(R.id.raghu);
-        shubham = rootview.findViewById(R.id.shubham);
-        prateek = rootview.findViewById(R.id.prateek);
-        yashwanth = rootview.findViewById(R.id.yashwanth);
-        rama = rootview.findViewById(R.id.rama);
-        pranshu = rootview.findViewById(R.id.pranshu);
-        vineet = rootview.findViewById(R.id.vineet);
-        nikhil = rootview.findViewById(R.id.nikhil);
-        manoj = rootview.findViewById(R.id.manoj);
-        aditya = rootview.findViewById(R.id.aditya);
-        setImages();
-        return rootview;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_team, container, false);
     }
 
-    public static int calculateInSampleSize(
-            BitmapFactory.Options options, int reqWidth, int reqHeight) {
-        // Raw height and width of image
-        final int height = options.outHeight;
-        final int width = options.outWidth;
-        int inSampleSize = 1;
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-        if (height > reqHeight || width > reqWidth) {
+        RecyclerView recyclerView = view.findViewById(R.id.recycler_team);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-            final int halfHeight = height / 2;
-            final int halfWidth = width / 2;
+        TeamRecyclerAdapter adapter = new TeamRecyclerAdapter(getContext());
+        recyclerView.setAdapter(adapter);
 
-            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
-            // height and width larger than the requested height and width.
-            while ((halfHeight / inSampleSize) >= reqHeight
-                    && (halfWidth / inSampleSize) >= reqWidth) {
-                inSampleSize *= 2;
-            }
-        }
+        List<TeamItem> allMembers = new ArrayList<>();
 
-        return inSampleSize;
-    }
+        allMembers.add(new TeamItem("Rakshit Maheshwari", "Overall Fest Coordinator", "9939512017", "", R.drawable.rakshit_circle2));
+        allMembers.add(new TeamItem("Priyansh Singh Rao", "Coordinator - Media and Public Relations", "8058501770", "", R.drawable.psr_c1));
+        allMembers.add(new TeamItem("Roushan Kumar", "Coordinator - Marketing and Sponsorship", "9610098566", "", R.drawable.roushan_c));
+        allMembers.add(new TeamItem("Aman Deep", "Coordinator - Media and Public Relations", "9931059201", "", R.drawable.aman_deep_c));
+        allMembers.add(new TeamItem("Piyush Tiwari", "Coordinator - Events and Operations", "9834943057", "", R.drawable.piytwr_c1));
+        allMembers.add(new TeamItem("Mohit Kishore", "Coordinator - Events and Operations", "9570566557", "", R.drawable.mohit_c1));
+        allMembers.add(new TeamItem("Vatsal Singhal", "Coordinator - Development Team", "8585992062", "", R.drawable.vatsal_c1));
+        allMembers.add(new TeamItem("Deepanjan Datta", "Coordinator - Development Team", "7044170063", "", R.drawable.deepanjan_c1));
+        allMembers.add(new TeamItem("Srikar Nayak", "Coordinator - Creatives And Design", "9666663764", "", R.drawable.srikar_c1));
+        allMembers.add(new TeamItem("Shubham Mondal", "Coordinator - Creatives And Design", "8967654843", "", R.drawable.shubham_c1));
+        allMembers.add(new TeamItem("Raghu Vamsi", "Coordinator - Creatives And Design", "9705471944", "", R.drawable.raghu_c));
+        allMembers.add(new TeamItem("Prateek Rai", "Coordinator - Management And Planning", "7222998383", "", R.drawable.prai_c));
+        allMembers.add(new TeamItem("Yashwanth Chowdhary", "Coordinator - Management And Planning", "9182994302", "", R.drawable.yashwanth_c1));
+        allMembers.add(new TeamItem("Rama Krishna", "Coordinator - Management And Planning", "8985265942", "", R.drawable.rama_c1));
+        allMembers.add(new TeamItem("Pranshu Chandani", "Coordinator - Hospitality", "8791838088", "", R.drawable.pranshu_c1));
+//        allMembers.add(new TeamItem("Vineet Mishra", "Coordinator - Hospitality", "7355154998", "", R.drawable.vineet_c1));
+        allMembers.add(new TeamItem("Nikhil Bommera", "Coordinator - Hospitality", "6205559807", "", R.drawable.nikhil_c1));
+        allMembers.add(new TeamItem("Manoj Kumar", "Coordinator - Registrations And Security", "8328864643", "", R.drawable.manoj_c1));
+        allMembers.add(new TeamItem("Aditya Ranjan", "Coordinator - Registrations And Security", "8271572990", "", R.drawable.aditya_ranjan_c1));
 
-    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
-                                                         int reqWidth, int reqHeight) {
+        adapter.setTeamItemList(allMembers);
 
-        // First decode with inJustDecodeBounds=true to check dimensions
-        final BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inJustDecodeBounds = true;
-        BitmapFactory.decodeResource(res, resId, options);
-
-        // Calculate inSampleSize
-        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
-
-        // Decode bitmap with inSampleSize set
-        options.inJustDecodeBounds = false;
-        return BitmapFactory.decodeResource(res, resId, options);
-    }
-
-    void setImages() {
-        parth.setImageBitmap(decodeSampledBitmapFromResource(getResources(), R.drawable.perth3, 120, 120));
-        rakshit.setImageBitmap(decodeSampledBitmapFromResource(getResources(), R.drawable.rakshit_circle2, 120, 120));
-        priyansh.setImageBitmap(decodeSampledBitmapFromResource(getResources(), R.drawable.psr_c1, 120, 120));
-        roushan.setImageBitmap(decodeSampledBitmapFromResource(getResources(), R.drawable.roushan_c, 120, 120));
-        aman.setImageBitmap(decodeSampledBitmapFromResource(getResources(), R.drawable.aman_deep_c, 120, 120));
-        piyush.setImageBitmap(decodeSampledBitmapFromResource(getResources(), R.drawable.piytwr_c1, 120, 120));
-        mohit_kishore.setImageBitmap(decodeSampledBitmapFromResource(getResources(), R.drawable.mohit_c1, 120, 120));
-        vatsal.setImageBitmap(decodeSampledBitmapFromResource(getResources(), R.drawable.vatsal_c1, 120, 120));
-        deepanjan.setImageBitmap(decodeSampledBitmapFromResource(getResources(), R.drawable.deepanjan_c1, 120, 120));
-        srikar.setImageBitmap(decodeSampledBitmapFromResource(getResources(), R.drawable.srikar_c1, 120, 120));
-        shubham.setImageBitmap(decodeSampledBitmapFromResource(getResources(), R.drawable.shubham_c1, 120, 120));
-        raghu.setImageBitmap(decodeSampledBitmapFromResource(getResources(), R.drawable.raghu_c, 120, 120));
-        prateek.setImageBitmap(decodeSampledBitmapFromResource(getResources(), R.drawable.prai_c, 120, 120));
-        yashwanth.setImageBitmap(decodeSampledBitmapFromResource(getResources(), R.drawable.yashwanth_c1, 120, 120));
-        rama.setImageBitmap(decodeSampledBitmapFromResource(getResources(), R.drawable.rama_c1, 120, 120));
-        pranshu.setImageBitmap(decodeSampledBitmapFromResource(getResources(), R.drawable.pranshu_c1, 120, 120));
-        vineet.setImageBitmap(decodeSampledBitmapFromResource(getResources(), R.drawable.vineet_c1, 120, 120));
-        nikhil.setImageBitmap(decodeSampledBitmapFromResource(getResources(), R.drawable.nikhil_c1, 120, 120));
-        manoj.setImageBitmap(decodeSampledBitmapFromResource(getResources(), R.drawable.manoj_c1, 120, 120));
-        aditya.setImageBitmap(decodeSampledBitmapFromResource(getResources(), R.drawable.aditya_ranjan_c1, 120, 120));
+        super.onViewCreated(view, savedInstanceState);
     }
 
 }
