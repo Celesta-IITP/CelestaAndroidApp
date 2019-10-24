@@ -22,8 +22,7 @@ public class SponsorsFragment extends Fragment {
     private SponsorsAdapter adapter;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_sponsors, container, false);
 
         RecyclerView recyclerView = view.findViewById(R.id.recycler_sponsors);
