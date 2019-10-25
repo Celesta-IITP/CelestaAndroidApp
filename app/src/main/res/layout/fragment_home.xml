@@ -11,11 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:padding="8dp"
-        android:src="@drawable/celesta_logo_long"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:src="@drawable/celesta_logo_long_2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/main_grid"/>
 
     <LinearLayout
         android:layout_width="match_parent"
