@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +19,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
+
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -63,6 +66,9 @@ public class LoginFragment extends Fragment {
         celestaIdInput = view.findViewById(R.id.login_celesta_Id_edittext);
         passwordInput = view.findViewById(R.id.login_password_edittext);
         loginButton = view.findViewById(R.id.login_button);
+
+        ImageView imageView = view.findViewById(R.id.login_image);
+        Glide.with(requireContext()).load(R.drawable.celesta_logo_long_2).into(imageView);
 
         loginButton.setOnClickListener(view13 -> {
             if (!CheckNetwork.isNetworkConnected(context))

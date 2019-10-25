@@ -9,13 +9,12 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:padding="8dp"
-        android:src="@drawable/celesta_logo_long"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/resend_image" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -39,7 +38,7 @@
             android:theme="@style/AppTheme.Edittext" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/resend_activation_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,7 +46,6 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
-        android:background="@drawable/rounded_button"
         android:padding="8dp"
         android:text="Resend Activation Link"
         android:textColor="@color/white" />

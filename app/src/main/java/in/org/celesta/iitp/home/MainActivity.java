@@ -25,7 +25,6 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import in.org.celesta.iitp.Auth.LoginRegisterActivity;
-import in.org.celesta.iitp.contact.ContactFragment;
 import in.org.celesta.iitp.R;
 import in.org.celesta.iitp.events.EventDetailsFragment;
 import in.org.celesta.iitp.events.EventsRecyclerAdapter;
@@ -33,7 +32,6 @@ import in.org.celesta.iitp.events.EventsRecyclerAdapter;
 public class MainActivity extends AppCompatActivity implements EventsRecyclerAdapter.OnEventSelectedListener {
 
     private AppBarConfiguration mAppBarConfiguration;
-    private NavController navController;
     private MenuItem navAccount;
     private SharedPreferences prefs;
     private NavigationView navigationView;
@@ -41,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements EventsRecyclerAda
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setBackgroundDrawableResource(R.drawable.back2);
+        getWindow().setBackgroundDrawableResource(R.drawable.back);
         setContentView(R.layout.activity_main);
 
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -62,35 +60,29 @@ public class MainActivity extends AppCompatActivity implements EventsRecyclerAda
                 .setDrawerLayout(drawer)
                 .build();
 
-        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
         FirebaseMessaging.getInstance().subscribeToTopic("all");
     }
 
-    private void handleIntent(Intent appLinkIntent) {
-        String appLinkAction = appLinkIntent.getAction();
-        String appLinkData = appLinkIntent.getDataString();
-
-        if (Intent.ACTION_VIEW.equals(appLinkAction) && appLinkData != null) {
-
-            if (appLinkData.contains("/notification/")) {
-                String time = appLinkData.substring(appLinkData.lastIndexOf("/") + 1);
-
-                Bundle bundle = new Bundle();
-                bundle.putString("time", time);
-
-            }
-        }
-    }
-
-
-    public void onClick (View view) {
-        Intent intent = new Intent(this, ContactFragment.class);
-        startActivity(intent);
-
-    }
+//    private void handleIntent(Intent appLinkIntent) {
+//        String appLinkAction = appLinkIntent.getAction();
+//        String appLinkData = appLinkIntent.getDataString();
+//
+//        if (Intent.ACTION_VIEW.equals(appLinkAction) && appLinkData != null) {
+//
+//            if (appLinkData.contains("/notification/")) {
+//                String time = appLinkData.substring(appLinkData.lastIndexOf("/") + 1);
+//
+//                Bundle bundle = new Bundle();
+//                bundle.putString("time", time);
+//
+//            }
+//        }
+//    }
+//
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -107,7 +99,6 @@ public class MainActivity extends AppCompatActivity implements EventsRecyclerAda
             super.onBackPressed();
         }
     }
-
 
     @Override
     public void onEventSelected(String id, int[] color) {
