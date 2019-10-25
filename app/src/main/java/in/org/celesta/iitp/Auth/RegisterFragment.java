@@ -38,7 +38,6 @@ public class RegisterFragment extends Fragment {
     private EditText firstNameInput, lastNameInput, phoneInput, emailInput, collegeInput, passwordInput, confirmPasswordInput, referralInput, genderInput;
     private ProgressDialog progressDialog;
     private Context context;
-    private ImageView imageView;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -69,8 +68,8 @@ public class RegisterFragment extends Fragment {
         TextView loginTextView = view.findViewById(R.id.login_textview);
         loginTextView.setOnClickListener(view12 -> loadFragment(new LoginFragment()));
 
-        imageView=view.findViewById( R.id.register_image );
-        Glide.with( getContext() ).load( R.drawable.celesta_logo_long_2 ).into( imageView );
+        ImageView imageView = view.findViewById(R.id.register_image);
+        Glide.with(getContext()).load(R.drawable.celesta_logo_long_2).into(imageView);
 
         Button registerButton = view.findViewById(R.id.register_button);
         registerButton.setOnClickListener(view1 -> {
