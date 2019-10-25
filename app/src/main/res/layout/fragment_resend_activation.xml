@@ -9,11 +9,12 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:padding="8dp"
+        android:id="@+id/resend_image"
         android:src="@drawable/celesta_logo_long_2" />
 
     <com.google.android.material.textfield.TextInputLayout
