@@ -24,8 +24,6 @@ import in.org.celesta.iitp.R;
 
 public class HomeFragment extends Fragment {
 
-    private ImageView imageView;
-
     public HomeFragment() {
     }
 
@@ -38,8 +36,9 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        imageView=view.findViewById( R.id.main_logo_iv );
-        Glide.with( requireContext() ).load( R.drawable.celesta_logo_long_2 ).into( imageView );
+
+        ImageView imageView = view.findViewById(R.id.main_logo_iv);
+        Glide.with(requireContext()).load(R.drawable.celesta_logo_long_2).into(imageView);
 
         Map<Integer, Integer> map = new HashMap<>();
 
@@ -53,8 +52,10 @@ public class HomeFragment extends Fragment {
         for (final Map.Entry<Integer, Integer> pair : map.entrySet()) {
             View mainView = view.findViewById(pair.getKey());
             mainView.setOnClickListener(v -> {
-                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-                navController.navigate(pair.getValue());
+                if (getActivity() != null) {
+                    NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+                    navController.navigate(pair.getValue());
+                }
             });
         }
 

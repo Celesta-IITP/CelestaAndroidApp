@@ -14,13 +14,12 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="150dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:padding="8dp"
-            android:id="@+id/register_image"
-            android:src="@drawable/celesta_logo_long_2" />
+            android:id="@+id/register_image" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
