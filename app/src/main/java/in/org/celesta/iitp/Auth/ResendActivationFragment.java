@@ -33,7 +33,6 @@ public class ResendActivationFragment extends Fragment {
     private EditText emailInput;
     private ProgressDialog progressDialog;
     private Context context;
-    private ImageView imageView;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,8 +55,8 @@ public class ResendActivationFragment extends Fragment {
         TextView registerTextView = view.findViewById(R.id.resend_activation_register_textview);
         registerTextView.setOnClickListener(view1 -> loadFragment(new RegisterFragment()));
 
-        imageView=view.findViewById( R.id.resend_image );
-        Glide.with( requireContext() ).load( R.drawable.celesta_logo_long_2 ).into( imageView );
+        ImageView imageView = view.findViewById(R.id.resend_image);
+        Glide.with( requireContext() ).load( R.drawable.celesta_logo_long_2 ).into(imageView);
 
         Button resendActivationButton = view.findViewById(R.id.resend_activation_button);
         resendActivationButton.setOnClickListener(view12 -> {

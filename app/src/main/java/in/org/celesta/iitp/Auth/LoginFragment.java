@@ -40,7 +40,6 @@ public class LoginFragment extends Fragment {
     private Button loginButton;
     private ProgressDialog progressDialog;
     private Context context;
-    private ImageView imageView;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -68,8 +67,8 @@ public class LoginFragment extends Fragment {
         passwordInput = view.findViewById(R.id.login_password_edittext);
         loginButton = view.findViewById(R.id.login_button);
 
-        imageView=view.findViewById( R.id.login_image );
-        Glide.with( requireContext() ).load( R.drawable.celesta_logo_long_2 ).into( imageView );
+        ImageView imageView = view.findViewById(R.id.login_image);
+        Glide.with(requireContext()).load(R.drawable.celesta_logo_long_2).into(imageView);
 
         loginButton.setOnClickListener(view13 -> {
             if (!CheckNetwork.isNetworkConnected(context))
