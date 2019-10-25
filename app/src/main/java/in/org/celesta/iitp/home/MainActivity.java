@@ -29,6 +29,7 @@ import in.org.celesta.iitp.contact.ContactFragment;
 import in.org.celesta.iitp.R;
 import in.org.celesta.iitp.events.EventDetailsFragment;
 import in.org.celesta.iitp.events.EventsRecyclerAdapter;
+import in.org.celesta.iitp.gallery.Image;
 
 public class MainActivity extends AppCompatActivity implements EventsRecyclerAdapter.OnEventSelectedListener {
 
@@ -41,8 +42,9 @@ public class MainActivity extends AppCompatActivity implements EventsRecyclerAda
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setBackgroundDrawableResource(R.drawable.back2);
         setContentView(R.layout.activity_main);
+        getWindow().setBackgroundDrawableResource(R.drawable.back2);
+
 
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
