@@ -204,7 +204,16 @@ public class EventDetailsFragment extends BottomSheetDialogFragment {
         register.setOnClickListener(view15 -> {
             if (preferences.getBoolean("login_status", false)) {
                 if ("0".equals(current.getIsTeamEvent())) {
-                    registerSoloEvent();
+
+                    new AlertDialog.Builder(requireContext())
+                            .setTitle("Register")
+                            .setMessage("Register for solo event: " + current.getEvName() + " for ₹ " + current.getEvAmount())
+                            .setNegativeButton("Cancel", (dialog, id) -> {
+                                if (dialog != null) dialog.dismiss();
+                            })
+                            .setPositiveButton("Yes", (dialogInterface, i) -> registerSoloEvent())
+                            .show();
+
                 } else {
                     showAlertDialog();
                 }
@@ -272,16 +281,30 @@ public class EventDetailsFragment extends BottomSheetDialogFragment {
         });
         AlertDialog alertDialog = builder.create();
 
+        int memberCount = Integer.parseInt(current.getTeamMembers());
+
         TextView teamCaptain = dialogView.findViewById(R.id.team_captain_celesta_id);
         teamCaptain.setText(preferences.getString("celesta_id", ""));
 
+        EditText celestaId2 = dialogView.findViewById(R.id.input_celesta_id_2);
+        EditText celestaId3 = dialogView.findViewById(R.id.input_celesta_id_3);
+        EditText celestaId4 = dialogView.findViewById(R.id.input_celesta_id_4);
+        EditText celestaId5 = dialogView.findViewById(R.id.input_celesta_id_5);
+        EditText celestaId6 = dialogView.findViewById(R.id.input_celesta_id_6);
+
+        if (memberCount > 1)
+            celestaId2.setVisibility(View.VISIBLE);
+        if (memberCount > 2)
+            celestaId3.setVisibility(View.VISIBLE);
+        if (memberCount > 3)
+            celestaId4.setVisibility(View.VISIBLE);
+        if (memberCount > 4)
+            celestaId5.setVisibility(View.VISIBLE);
+        if (memberCount > 5)
+            celestaId6.setVisibility(View.VISIBLE);
+
         Button registerButton = dialogView.findViewById(R.id.register_team_event);
         registerButton.setOnClickListener(view -> {
-            EditText celestaId1 = dialogView.findViewById(R.id.input_celesta_id_1);
-            EditText celestaId2 = dialogView.findViewById(R.id.input_celesta_id_2);
-            EditText celestaId3 = dialogView.findViewById(R.id.input_celesta_id_3);
-            EditText celestaId4 = dialogView.findViewById(R.id.input_celesta_id_4);
-            EditText celestaId5 = dialogView.findViewById(R.id.input_celesta_id_5);
             EditText teamName = dialogView.findViewById(R.id.input_team_name);
 
             if (teamName.getText().toString().isEmpty()) {
@@ -289,8 +312,8 @@ public class EventDetailsFragment extends BottomSheetDialogFragment {
                 return;
             }
 
-            registerTeamEvent(teamName.getText().toString(), celestaId1.getText().toString(), celestaId2.getText().toString(),
-                    celestaId3.getText().toString(), celestaId4.getText().toString(), celestaId5.getText().toString(), alertDialog);
+            registerTeamEvent(teamName.getText().toString(), celestaId2.getText().toString(), celestaId3.getText().toString(),
+                    celestaId4.getText().toString(), celestaId5.getText().toString(), celestaId6.getText().toString(), alertDialog);
         });
 
         alertDialog.show();
