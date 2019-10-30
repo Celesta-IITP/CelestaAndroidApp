@@ -45,19 +45,6 @@
             android:textColor="@android:color/black" />
 
         <EditText
-            android:id="@+id/input_celesta_id_1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/bg_edit_text"
-            android:hint="Celesta Id of member 1"
-            android:inputType="text"
-            android:padding="12dp"
-            android:textColor="@android:color/black" />
-
-        <EditText
             android:id="@+id/input_celesta_id_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -68,7 +55,8 @@
             android:hint="Celesta Id of member 2"
             android:inputType="text"
             android:padding="12dp"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            android:visibility="gone" />
 
         <EditText
             android:id="@+id/input_celesta_id_3"
@@ -81,7 +69,8 @@
             android:hint="Celesta Id of member 3"
             android:inputType="text"
             android:padding="12dp"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            android:visibility="gone" />
 
         <EditText
             android:id="@+id/input_celesta_id_4"
@@ -94,7 +83,8 @@
             android:hint="Celesta Id of member 4"
             android:inputType="text"
             android:padding="12dp"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            android:visibility="gone" />
 
         <EditText
             android:id="@+id/input_celesta_id_5"
@@ -107,7 +97,22 @@
             android:hint="Celesta Id of member 5"
             android:inputType="text"
             android:padding="12dp"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/input_celesta_id_6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bg_edit_text"
+            android:hint="Celesta Id of member 6"
+            android:inputType="text"
+            android:padding="12dp"
+            android:textColor="@android:color/black"
+            android:visibility="gone" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/register_team_event"

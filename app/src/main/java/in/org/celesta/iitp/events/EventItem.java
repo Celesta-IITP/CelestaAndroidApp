@@ -65,6 +65,9 @@ public class EventItem {
     @SerializedName("map_url")
     @Expose
     private String mapUrl;
+    @SerializedName("team_members")
+    @Expose
+    private String teamMembers;
 
     public String getEvId() {
         return evId;
@@ -203,5 +206,13 @@ public class EventItem {
 
     public void setMapUrl(String mapUrl) {
         this.mapUrl = mapUrl;
+    }
+
+    public String getTeamMembers() {
+        return teamMembers;
+    }
+
+    public void setTeamMembers(String teamMembers) {
+        this.teamMembers = teamMembers;
     }
 }
