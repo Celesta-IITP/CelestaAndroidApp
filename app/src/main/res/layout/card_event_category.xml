@@ -20,7 +20,10 @@
             android:gravity="center"
             android:padding="8dp"
             android:textColor="@color/white"
-            android:textSize="22sp"
+            app:autoSizeTextType="uniform"
+            android:maxLines="1"
+            app:autoSizeMinTextSize="12sp"
+            app:autoSizeMaxTextSize="22sp"
             android:textStyle="bold"
             tools:text="Coding n design" />
 

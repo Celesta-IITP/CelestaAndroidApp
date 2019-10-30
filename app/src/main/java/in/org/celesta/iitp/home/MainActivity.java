@@ -1,15 +1,19 @@
 package in.org.celesta.iitp.home;
 
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -22,12 +26,24 @@ import androidx.preference.PreferenceManager;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.android.play.core.appupdate.AppUpdateInfo;
+import com.google.android.play.core.appupdate.AppUpdateManager;
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
+import com.google.android.play.core.install.InstallState;
+import com.google.android.play.core.install.InstallStateUpdatedListener;
+import com.google.android.play.core.install.model.InstallStatus;
+import com.google.android.play.core.install.model.UpdateAvailability;
+import com.google.android.play.core.tasks.Task;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import in.org.celesta.iitp.Auth.LoginRegisterActivity;
+import in.org.celesta.iitp.BuildConfig;
 import in.org.celesta.iitp.R;
 import in.org.celesta.iitp.events.EventDetailsFragment;
 import in.org.celesta.iitp.events.EventsRecyclerAdapter;
+
+import static com.google.android.play.core.install.model.AppUpdateType.IMMEDIATE;
 
 public class MainActivity extends AppCompatActivity implements EventsRecyclerAdapter.OnEventSelectedListener {
 
@@ -35,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements EventsRecyclerAda
     private MenuItem navAccount;
     private SharedPreferences prefs;
     private NavigationView navigationView;
+    private AppUpdateManager appUpdateManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +100,7 @@ public class MainActivity extends AppCompatActivity implements EventsRecyclerAda
 //        }
 //    }
 //
+
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -118,6 +136,8 @@ public class MainActivity extends AppCompatActivity implements EventsRecyclerAda
         if (PreferenceManager.getDefaultSharedPreferences(this).getBoolean("login_status", false))
             navAccount.setTitle("Profile");
         else navAccount.setTitle("Login/Register");
+
+        new Handler().postDelayed(this::updateApp, 1000);
     }
 
     @Override
@@ -142,6 +162,71 @@ public class MainActivity extends AppCompatActivity implements EventsRecyclerAda
                     .placeholder(R.mipmap.celesta_icon_round)
                     .into(profileImage);
             profileImage.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, LoginRegisterActivity.class)));
+        }
+    }
+
+    private void updateApp() {
+        Log.e(getClass().getSimpleName(), String.valueOf(BuildConfig.VERSION_CODE));
+
+        appUpdateManager = AppUpdateManagerFactory.create(this);
+        Task<AppUpdateInfo> appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
+
+        appUpdateInfoTask.addOnSuccessListener(appUpdateInfo -> {
+
+            if (appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED) {
+                popupSnackBarForCompleteUpdate();
+            } else if (appUpdateInfo.updateAvailability() == UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS) {
+                try {
+                    appUpdateManager.startUpdateFlowForResult(appUpdateInfo, IMMEDIATE, this, 1011);
+                } catch (IntentSender.SendIntentException e) {
+                    e.printStackTrace();
+                }
+            } else if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && appUpdateInfo.isUpdateTypeAllowed(IMMEDIATE)) {
+                try {
+                    appUpdateManager.startUpdateFlowForResult(appUpdateInfo, IMMEDIATE, this, 1011);
+                } catch (IntentSender.SendIntentException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    private InstallStateUpdatedListener updatedListener = new InstallStateUpdatedListener() {
+        @Override
+        public void onStateUpdate(InstallState installState) {
+            if (installState.installStatus() == InstallStatus.DOWNLOADED) {
+                popupSnackBarForCompleteUpdate();
+            } else if (installState.installStatus() == InstallStatus.INSTALLED) {
+                if (appUpdateManager != null) {
+                    appUpdateManager.unregisterListener(updatedListener);
+                }
+            } else {
+                Log.i(getClass().getSimpleName(), "InstallStateUpdatedListener: state: " + installState.installStatus());
+            }
+        }
+    };
+
+    private void popupSnackBarForCompleteUpdate() {
+        if (findViewById(R.id.drawer_layout) != null) {
+            Snackbar snackbar = Snackbar.make(findViewById(R.id.drawer_layout),
+                    "An update has just been downloaded.", Snackbar.LENGTH_INDEFINITE);
+            snackbar.setAction("INSTALL", view -> {
+                if (appUpdateManager != null)
+                    appUpdateManager.completeUpdate();
+            });
+            snackbar.setActionTextColor(Color.CYAN);
+            snackbar.show();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1011) {
+            if (resultCode != RESULT_OK) {
+                Log.e(getClass().getSimpleName(), "onActivityResult: app download failed");
+            }
         }
     }
 }

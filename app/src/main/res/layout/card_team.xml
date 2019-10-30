@@ -44,8 +44,11 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:text="Parth Kulkarni"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
+                app:autoSizeTextType="uniform"
+                android:maxLines="1"
+                app:autoSizeMinTextSize="12sp"
+                app:autoSizeMaxTextSize="20sp"
+                android:textColor="@color/white" />
 
             <TextView
                 android:id="@+id/post"
@@ -54,7 +57,10 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:textColor="@color/silver"
-                android:textSize="16sp"
+                app:autoSizeTextType="uniform"
+                android:maxLines="2"
+                app:autoSizeMinTextSize="12sp"
+                app:autoSizeMaxTextSize="16sp"
                 tools:text="Fest Convener" />
 
             <View
