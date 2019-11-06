@@ -2,9 +2,9 @@
 
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="4dp"
     app:cardBackgroundColor="@color/event_card_background"
     app:cardCornerRadius="8dp"
@@ -37,40 +37,39 @@
 
             <TextView
                 android:id="@+id/item_title_text"
-                tools:text="Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
                 android:ellipsize="end"
-                android:fontFamily="sans-serif"
-                android:maxLines="2"
+                android:maxLines="1"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:text="Title" />
 
             <TextView
                 android:id="@+id/item_time_text"
-                tools:text="10:00 am - 10:30 am"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
                 android:ellipsize="end"
-                android:fontFamily="sans-serif"
-                android:maxLines="2"
+                android:maxLines="1"
                 android:textColor="@color/colorAccent"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                tools:text="10:00 am - 10:30 am" />
 
             <TextView
                 android:id="@+id/item_venue_text"
-                tools:text="Room Blah Blah"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_marginBottom="4dp"
-                android:fontFamily="sans-serif"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:textAlignment="gravity"
                 android:textColor="@android:color/darker_gray"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                tools:text="Room Blah Blah" />
 
         </LinearLayout>
 
@@ -82,7 +81,7 @@
             android:layout_gravity="end|center"
             android:contentDescription="speaker avatar"
             android:scaleType="centerInside"
-            android:src="@drawable/logo_alt"/>
+            android:src="@drawable/logo_alt" />
 
     </LinearLayout>
 

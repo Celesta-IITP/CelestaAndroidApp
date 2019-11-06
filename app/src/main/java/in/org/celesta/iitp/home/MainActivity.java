@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements EventsRecyclerAda
         NavigationUI.setupWithNavController(navigationView, navController);
 
         FirebaseMessaging.getInstance().subscribeToTopic("all");
+        FirebaseMessaging.getInstance().subscribeToTopic("dev");
     }
 
 //    private void handleIntent(Intent appLinkIntent) {
