@@ -8,8 +8,8 @@ android {
         applicationId "in.org.celesta.iitp"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 3
-        versionName "1.2"
+        versionCode 5
+        versionName "1.4"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -52,9 +52,9 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.1.0'
     implementation 'androidx.navigation:navigation-ui:2.1.0'
 
-    implementation 'androidx.room:room-runtime:2.2.0'
-    annotationProcessor 'androidx.room:room-compiler:2.2.0'
-    androidTestImplementation 'androidx.room:room-testing:2.2.0'
+    implementation 'androidx.room:room-runtime:2.2.1'
+    annotationProcessor 'androidx.room:room-compiler:2.2.1'
+    androidTestImplementation 'androidx.room:room-testing:2.2.1'
 
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
     annotationProcessor 'androidx.lifecycle:lifecycle-common-java8:2.1.0'

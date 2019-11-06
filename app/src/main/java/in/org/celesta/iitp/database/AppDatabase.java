@@ -13,7 +13,7 @@ import in.org.celesta.iitp.gallery.GalleryDao;
 import in.org.celesta.iitp.gallery.Image;
 import in.org.celesta.iitp.utils.Converters;
 
-@Database(entities = {EventItem.class, Image.class}, version = 2, exportSchema = false)
+@Database(entities = {EventItem.class, Image.class}, version = 3, exportSchema = false)
 @TypeConverters(Converters.class)
 public abstract class AppDatabase extends RoomDatabase {
 
