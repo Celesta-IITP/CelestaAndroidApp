@@ -36,7 +36,7 @@ public class TeamFragment extends Fragment {
 
         allMembers.add(new TeamItem("Rakshit Maheshwari", "Overall Fest Coordinator", "9939512017", "https://www.facebook.com/rakshitm123", R.drawable.rakshit_circle2));
         allMembers.add(new TeamItem("Priyansh Singh Rao", "Coordinator - Media and Public Relations", "8058501770", "https://www.facebook.com/priyansh.rao.56", R.drawable.psr_c1));
-        allMembers.add(new TeamItem("Roushan Kumar", "Coordinator - Marketing and Sponsorship", "9610098566", "", R.drawable.roushan_c));
+        allMembers.add(new TeamItem("Roushan Kumar", "Coordinator - Marketing and Sponsorship", "9610098566", "https://www.facebook.com/CelestaIITP/", R.drawable.roushan_c));
         allMembers.add(new TeamItem("Aman Deep", "Coordinator - Media and Public Relations", "9931059201", "https://www.facebook.com/adeep02", R.drawable.aman_deep_c));
         allMembers.add(new TeamItem("Piyush Tiwari", "Coordinator - Events and Operations", "9834943057", "https://www.facebook.com/thebackpropogator", R.drawable.piytwr_c1));
         allMembers.add(new TeamItem("Mohit Kishore", "Coordinator - Events and Operations", "9570566557", "https://www.facebook.com/originalmk7", R.drawable.mohit_c1));
