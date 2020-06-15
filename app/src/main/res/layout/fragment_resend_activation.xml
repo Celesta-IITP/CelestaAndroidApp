@@ -46,6 +46,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/event_detail_card_background"
         android:padding="8dp"
         android:text="Resend Activation Link"
         android:textColor="@color/white" />

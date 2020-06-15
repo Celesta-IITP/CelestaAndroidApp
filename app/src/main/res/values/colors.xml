@@ -7,13 +7,13 @@
     <color name="medBlue">#4eb8dd</color>
     <color name="silver">#C0C0C0</color>
 
-    <color name="event_card_background">#55738485</color>
+    <color name="event_card_background">#80003153</color>
 
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="transparent">#00000000</color>
 
-    <color name="navigation_background">#aa646B6D</color>
-    <color name="event_detail_card_background">#661E263F</color>
+    <color name="navigation_background">#99000000</color>
+    <color name="event_detail_card_background">#99003153</color>
 
 </resources>
