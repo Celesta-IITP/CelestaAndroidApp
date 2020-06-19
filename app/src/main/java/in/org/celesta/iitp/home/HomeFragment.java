@@ -1,6 +1,7 @@
 package in.org.celesta.iitp.home;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -74,6 +75,7 @@ public class HomeFragment extends Fragment {
         int id = item.getItemId();
         if (id == R.id.action_contact) {
             NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+            Log.v("BC","this is :::"+getActivity());
             navController.navigate(R.id.option_contact);
             return true;
         }

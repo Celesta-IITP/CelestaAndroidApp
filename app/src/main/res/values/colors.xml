@@ -14,6 +14,6 @@
     <color name="transparent">#00000000</color>
 
     <color name="navigation_background">#99000000</color>
-    <color name="event_detail_card_background">#99003153</color>
+    <color name="event_detail_card_background">#B3003153</color>
 
 </resources>
