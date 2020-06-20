@@ -56,7 +56,7 @@ debugTests:
   interruptible: true
   stage: test
   script:
-    - ./gradlew -Pci --console=plain :app:testDebug
+    - ./gradlew -Pci --console=plain :app:testDebugUnitTest
 
 # Deployment to appetize.io, go through readme for more info
 deploy:
