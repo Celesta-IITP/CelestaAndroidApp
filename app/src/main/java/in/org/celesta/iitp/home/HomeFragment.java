@@ -75,7 +75,6 @@ public class HomeFragment extends Fragment {
         int id = item.getItemId();
         if (id == R.id.action_contact) {
             NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-            Log.v("BC","this is :::"+getActivity());
             navController.navigate(R.id.option_contact);
             return true;
         }
