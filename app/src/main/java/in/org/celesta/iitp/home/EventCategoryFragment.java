@@ -89,7 +89,7 @@ public class EventCategoryFragment extends Fragment {
     }
 
     private void observeAll() {
-        viewModel.loadAllClubs().observe(this, strings -> {
+        viewModel.loadAllClubs().observe(getViewLifecycleOwner(), strings -> {
 
             List<String> temp = new ArrayList<>();
 
