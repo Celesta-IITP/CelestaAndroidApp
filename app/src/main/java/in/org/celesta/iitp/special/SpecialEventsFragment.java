@@ -88,27 +88,27 @@ public class SpecialEventsFragment extends Fragment {
 
     private void observeAll() {
         if ("Exhibitions".equals(type)) {
-            viewModel.loadAllExhibitions().observe(this, eventItems -> {
+            viewModel.loadAllExhibitions().observe(getViewLifecycleOwner(), eventItems -> {
                 adapter.setEventItemList(eventItems);
             });
         }
         else if ("Schoolevents".equals(type)) {
-            viewModel.loadAllSchoolEvents().observe(this, eventItems -> {
+            viewModel.loadAllSchoolEvents().observe(getViewLifecycleOwner(), eventItems -> {
                 adapter.setEventItemList(eventItems);
             });
         }
         else if ("Ozone".equals(type)) {
-            viewModel.loadAllOzoneEvents().observe(this, eventItems -> {
+            viewModel.loadAllOzoneEvents().observe(getViewLifecycleOwner(), eventItems -> {
                 adapter.setEventItemList(eventItems);
             });
         }
         else if ("Workshops".equals(type)) {
-            viewModel.loadAllWorkshops().observe(this, eventItems -> {
+            viewModel.loadAllWorkshops().observe(getViewLifecycleOwner(), eventItems -> {
                 adapter.setEventItemList(eventItems);
             });
         }
         else if ("Guesttalks".equals(type)) {
-            viewModel.loadAllGuestLectures().observe(this, eventItems -> {
+            viewModel.loadAllGuestLectures().observe(getViewLifecycleOwner(), eventItems -> {
                 adapter.setEventItemList(eventItems);
             });
         }

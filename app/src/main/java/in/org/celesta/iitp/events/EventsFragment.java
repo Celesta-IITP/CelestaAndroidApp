@@ -84,7 +84,7 @@ public class EventsFragment extends Fragment {
     }
 
     private void observeAll() {
-        viewModel.loadAllEvents().observe(this, eventItems -> {
+        viewModel.loadAllEvents().observe(getViewLifecycleOwner(), eventItems -> {
             List<EventItem> newList = new ArrayList<>();
             for (EventItem n : eventItems) {
                 if (n.getEvClub().equals(club)) newList.add(n);
