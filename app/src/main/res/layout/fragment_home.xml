@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/back"
     tools:context=".home.HomeFragment">
 
+   <LinearLayout
+       android:id="@+id/logo"
+       android:layout_width="match_parent"
+       android:layout_height="300dp">
     <ImageView
         android:id="@+id/main_logo_iv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:padding="8dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/main_grid"/>
+        android:padding="8dp" />
+    </LinearLayout>
 
-    <LinearLayout
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_marginBottom="32dp"
@@ -73,191 +77,316 @@
             android:layout_height="match_parent"
             android:layout_weight="1" />
 
-    </LinearLayout>
+    </LinearLayout>-->
+<ScrollView
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/logo">
 
-    <GridLayout
-        android:id="@+id/main_grid"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginBottom="32dp"
-        android:columnCount="3"
-        android:rowCount="2"
-        app:layout_constraintBottom_toBottomOf="parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_below="@+id/logo">
 
-        <LinearLayout
-            android:id="@+id/main_event_ll"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_row="0"
-            android:layout_rowWeight="1"
-            android:layout_column="0"
-            android:layout_columnWeight="1"
-            android:orientation="vertical"
-            android:padding="24dp">
+   <RelativeLayout
+       android:id="@+id/main_event_ll"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginLeft="30dp"
+       android:layout_marginBottom="20dp">
+      <RelativeLayout
+        android:id="@+id/img1"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:background="@drawable/circle"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:src="@drawable/events_icon_2"
+            android:layout_margin="17dp"
+            android:tint="@color/white"/>
+      </RelativeLayout>
+       <RelativeLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/img1">
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Events"
+               android:textSize="20sp"
+               android:paddingLeft="8dp"
+               android:textColor="@color/white"/>
+       </RelativeLayout>
+   </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/main_pronite_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="20dp">
+        <RelativeLayout
+            android:id="@+id/img2"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:background="@drawable/circle"
+            android:orientation="vertical">
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:padding="16dp"
-                android:src="@drawable/events_icon_2"
-                android:tint="@android:color/white" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal|bottom"
-                android:text="Events"
-                android:textColor="@android:color/white"
-                android:textSize="16sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/main_pronite_ll"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_row="0"
-            android:layout_rowWeight="1"
-            android:layout_column="1"
-            android:layout_columnWeight="1"
-            android:orientation="vertical"
-            android:padding="24dp">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:padding="16dp"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
                 android:src="@drawable/ic_pronite"
-                android:tint="@android:color/white" />
-
+                android:layout_margin="17dp"
+                android:tint="@color/white"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img2">
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal|bottom"
                 android:text="Pronite"
-                android:textColor="@android:color/white"
-                android:textSize="16sp" />
+                android:textSize="20sp"
+                android:paddingLeft="8dp"
+                android:textColor="@color/white"/>
+        </RelativeLayout>
+</RelativeLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_row="0"
-            android:layout_rowWeight="1"
-            android:layout_column="2"
-            android:layout_columnWeight="1"
-            android:orientation="vertical"
-            android:padding="24dp">
+    <RelativeLayout
+        android:id="@+id/main_gallery_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="20dp">
+        <RelativeLayout
+            android:id="@+id/img3"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:background="@drawable/circle"
+            android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/main_gallery_ll"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:padding="16dp"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
                 android:src="@drawable/ic_gallery"
-                android:tint="@android:color/white" />
-
+                android:layout_margin="17dp"
+                android:tint="@color/white"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img3">
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal|bottom"
                 android:text="Gallery"
-                android:textColor="@android:color/white"
-                android:textSize="16sp" />
+                android:textSize="20sp"
+                android:paddingLeft="8dp"
+                android:textColor="@color/white"/>
+        </RelativeLayout>
+    </RelativeLayout>
 
-        </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/main_special_ll"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_row="1"
-            android:layout_rowWeight="1"
-            android:layout_column="0"
-            android:layout_columnWeight="1"
-            android:orientation="vertical"
-            android:padding="24dp">
+    <RelativeLayout
+        android:id="@+id/main_special_ll"
+        android:layout_width="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="20dp">
+        <RelativeLayout
+            android:id="@+id/img4"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:background="@drawable/circle"
+            android:orientation="vertical">
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:padding="16dp"
-                android:tint="@color/white"
-                android:src="@drawable/events_special" />
-
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:src="@drawable/events_special"
+                android:layout_margin="17dp"
+                android:tint="@color/white"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img4">
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal|bottom"
                 android:text="Special"
-                android:textColor="@android:color/white"
-                android:textSize="16sp" />
+                android:textSize="20sp"
+                android:paddingLeft="8dp"
+                android:textColor="@color/white"/>
+        </RelativeLayout>
+    </RelativeLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/main_team_ll"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_row="1"
-            android:layout_rowWeight="1"
-            android:layout_column="1"
-            android:layout_columnWeight="1"
-            android:orientation="vertical"
-            android:padding="24dp">
+    <RelativeLayout
+        android:id="@+id/main_team_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="20dp">
+        <RelativeLayout
+            android:id="@+id/img5"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:background="@drawable/circle"
+            android:orientation="vertical">
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:padding="16dp"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
                 android:src="@drawable/ic_team"
-                android:tint="@android:color/white" />
-
+                android:layout_margin="17dp"
+                android:tint="@color/white"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img5">
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal|bottom"
                 android:text="Team"
-                android:textColor="@android:color/white"
-                android:textSize="16sp" />
+                android:textSize="20sp"
+                android:paddingLeft="16dp"
+                android:textColor="@color/white"/>
+        </RelativeLayout>
+    </RelativeLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/main_sponsor_ll"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_row="1"
-            android:layout_rowWeight="1"
-            android:layout_column="2"
-            android:layout_columnWeight="1"
-            android:orientation="vertical"
-            android:padding="24dp">
+    <RelativeLayout
+        android:id="@+id/main_sponsor_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="20dp">
+        <RelativeLayout
+            android:id="@+id/img6"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:background="@drawable/circle"
+            android:orientation="vertical">
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:padding="16dp"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
                 android:src="@drawable/ic_sponsor"
-                android:tint="@android:color/white" />
-
+                android:layout_margin="17dp"
+                android:tint="@color/white"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img6">
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal|bottom"
                 android:text="Sponsors"
-                android:textColor="@android:color/white"
-                android:textSize="16sp" />
+                android:textSize="20sp"
+                android:paddingLeft="0dp"
+                android:textColor="@color/white"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>
+</ScrollView>
 
-        </LinearLayout>
 
-    </GridLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+<!--           <LinearLayout-->
+<!--               android:id="@+id/main_special_ll"-->
+<!--               android:layout_width="match_parent"-->
+<!--               android:layout_height="match_parent"-->
+<!--               android:layout_below="@+id/main_gallery_ll"-->
+<!--               android:orientation="horizontal">-->
+<!--               <LinearLayout-->
+<!--                   android:layout_width="100dp"-->
+<!--                   android:layout_height="100dp"-->
+<!--                   android:orientation="vertical">-->
+
+<!--                   <ImageView-->
+<!--                       android:layout_width="match_parent"-->
+<!--                       android:layout_height="match_parent"-->
+<!--                       android:padding="16dp"-->
+<!--                       android:src="@drawable/events_special"-->
+<!--                       android:tint="@android:color/white"/>-->
+<!--               </LinearLayout>-->
+<!--               <TextView-->
+<!--                   android:layout_width="match_parent"-->
+<!--                   android:layout_height="wrap_content"-->
+<!--                   android:gravity="bottom"-->
+<!--                   android:textSize="30sp"-->
+<!--                   android:text="Special"-->
+<!--                   android:textColor="@android:color/white" />-->
+
+<!--           </LinearLayout>-->
+
+<!--           <LinearLayout-->
+<!--               android:id="@+id/main_team_ll"-->
+<!--               android:layout_width="match_parent"-->
+<!--               android:layout_height="match_parent"-->
+<!--               android:layout_below="@+id/main_special_ll"-->
+<!--               android:orientation="horizontal">-->
+<!--               <LinearLayout-->
+<!--                   android:layout_width="100dp"-->
+<!--                   android:layout_height="100dp"-->
+<!--                   android:orientation="vertical">-->
+
+<!--                   <ImageView-->
+<!--                       android:layout_width="match_parent"-->
+<!--                       android:layout_height="match_parent"-->
+<!--                       android:padding="16dp"-->
+<!--                       android:src="@drawable/ic_team"-->
+<!--                       android:tint="@android:color/white"/>-->
+<!--               </LinearLayout>-->
+<!--               <TextView-->
+<!--                   android:layout_width="match_parent"-->
+<!--                   android:layout_height="wrap_content"-->
+<!--                   android:gravity="bottom"-->
+<!--                   android:textSize="30sp"-->
+<!--                   android:text="Team"-->
+<!--                   android:textColor="@android:color/white" />-->
+
+<!--           </LinearLayout>-->
+<!--           <LinearLayout-->
+<!--               android:id="@+id/main_sponsor_ll"-->
+<!--               android:layout_width="match_parent"-->
+<!--               android:layout_height="match_parent"-->
+<!--               android:layout_below="@+id/main_team_ll"-->
+<!--               android:orientation="horizontal">-->
+<!--               <LinearLayout-->
+<!--                   android:layout_width="100dp"-->
+<!--                   android:layout_height="100dp"-->
+<!--                   android:orientation="vertical">-->
+
+<!--                   <ImageView-->
+<!--                       android:layout_width="match_parent"-->
+<!--                       android:layout_height="match_parent"-->
+<!--                       android:padding="16dp"-->
+<!--                       android:src="@drawable/ic_sponsor"-->
+<!--                       android:tint="@android:color/white"/>-->
+<!--               </LinearLayout>-->
+<!--               <TextView-->
+<!--                   android:layout_width="match_parent"-->
+<!--                   android:layout_height="wrap_content"-->
+<!--                   android:gravity="bottom"-->
+<!--                   android:textSize="30sp"-->
+<!--                   android:text="Sponsors"-->
+<!--                   android:textColor="@android:color/white" />-->
+
+<!--           </LinearLayout>-->
+<!--       </RelativeLayout>-->
+
+
+
+
+</RelativeLayout>
